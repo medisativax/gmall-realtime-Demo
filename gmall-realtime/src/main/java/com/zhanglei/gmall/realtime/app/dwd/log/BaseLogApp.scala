@@ -3,13 +3,17 @@ package com.zhanglei.gmall.realtime.app.dwd.log
 import com.alibaba.fastjson.{JSON, JSONArray, JSONObject}
 import com.zhanglei.gmall.realtime.util.{DateFormatUtil, MyKakfaUtil}
 import org.apache.flink.api.common.functions.RichMapFunction
+import org.apache.flink.api.common.restartstrategy.RestartStrategies
 import org.apache.flink.api.common.state.{ValueState, ValueStateDescriptor}
 import org.apache.flink.api.scala.createTypeInformation
+import org.apache.flink.runtime.state.hashmap.HashMapStateBackend
+import org.apache.flink.streaming.api.CheckpointingMode
 import org.apache.flink.streaming.api.functions.ProcessFunction
 import org.apache.flink.streaming.api.scala.{DataStream, KeyedStream, OutputTag, StreamExecutionEnvironment}
 import org.apache.flink.util.Collector
 
 import java.lang
+
 // 流程：web/app -> Nginx -> 日志服务器 -> Flume -> kafka(ODS) -> FlinkApp -> kafka(DWD)
 // 程序流程：  mock(lg.sh) -> flume(f1.sh) -> kafka(zookeeper) -> BaseLogApp -> kafka(zookeeper)
 object BaseLogApp {
@@ -17,15 +21,15 @@ object BaseLogApp {
     //TODO 1.获取执行环境
     val env: StreamExecutionEnvironment = StreamExecutionEnvironment.getExecutionEnvironment
     env.setParallelism(1) //生产环境下为：kafka中topic的分区数
-    //     1.1 开启Checkpoint (生产环境一定要开启)
-    //    env.enableCheckpointing(5 * 60000L,CheckpointingMode.EXACTLY_ONCE)
-    //    env.getCheckpointConfig.setCheckpointTimeout(10 * 60000L)
-    //    env.getCheckpointConfig.setMaxConcurrentCheckpoints(2)    // 设置checkpoint的同时存在的数量
-    //    env.setRestartStrategy(RestartStrategies.fixedDelayRestart(3,5000L))    // 失败：每隔五秒重启一次，总共三次
-    //     1.2 设置状态后端 (生产环境一定要开启)
-    //    env.setStateBackend(new HashMapStateBackend())
-    //    env.getCheckpointConfig.setCheckpointStorage("hdfs://hadoop01:8020/gmall/ck")
-    //    System.setProperty("HADOOP_USER_NAME","root")
+//    // 1.1 开启Checkpoint (生产环境一定要开启)
+//    env.enableCheckpointing(5 * 60000L, CheckpointingMode.EXACTLY_ONCE)
+//    env.getCheckpointConfig.setCheckpointTimeout(10 * 60000L)
+//    env.getCheckpointConfig.setMaxConcurrentCheckpoints(2) // 设置checkpoint的同时存在的数量
+//    env.setRestartStrategy(RestartStrategies.fixedDelayRestart(3, 5000L)) // 失败：每隔五秒重启一次，总共三次
+//    // 1.2 设置状态后端 (生产环境一定要开启)
+//    env.setStateBackend(new HashMapStateBackend())
+//    env.getCheckpointConfig.setCheckpointStorage("hdfs://hadoop01:8020/gmall/ck")
+//    System.setProperty("HADOOP_USER_NAME", "root")
 
     //TODO 2.消费Kafka topic_log 中的数据 & 创建流
     val topic = "topic_log"
@@ -160,6 +164,6 @@ object BaseLogApp {
     actionDS.addSink(MyKakfaUtil.getFlinkKafkaProducer(action_topic))
     errorDS.addSink(MyKakfaUtil.getFlinkKafkaProducer(error_topic))
     //TODO 9.执行任务
-    env.execute()
+    env.execute("BaseLogApp")
   }
 }

@@ -11,7 +11,10 @@ import org.apache.flink.util.Collector
 import com.ververica.cdc.connectors.mysql.source.MySqlSource
 import com.zhanglei.gmall.realtime.app.func.{DimSinkFunction, TableProcessFunction}
 import com.zhanglei.gmall.realtime.bean.TableProcess
+import org.apache.flink.api.common.restartstrategy.RestartStrategies
 import org.apache.flink.api.common.state.MapStateDescriptor
+import org.apache.flink.runtime.state.hashmap.HashMapStateBackend
+import org.apache.flink.streaming.api.CheckpointingMode
 import org.apache.flink.streaming.api.datastream.BroadcastStream
 
 // Mock --> Mysql(logbin) --> Maxwell --> kafka(zookpeer) --> Dimapp --> Phoenix(hbase/zookeeper/HDFS)
@@ -21,12 +24,12 @@ object DimApp {
     // TODO 1.获取执行环境
     val env: StreamExecutionEnvironment = StreamExecutionEnvironment.getExecutionEnvironment
     env.setParallelism(1)   // 生产环境中设置为：kafka topic的分区数
-    // 1.1 开启Checkpoint (生产环境一定要开启)
+////     1.1 开启Checkpoint (生产环境一定要开启)
 //    env.enableCheckpointing(5 * 60000L,CheckpointingMode.EXACTLY_ONCE)
 //    env.getCheckpointConfig.setCheckpointTimeout(10 * 60000L)
 //    env.getCheckpointConfig.setMaxConcurrentCheckpoints(2)    // 设置checkpoint的同时存在的数量
 //    env.setRestartStrategy(RestartStrategies.fixedDelayRestart(3,5000L))    // 失败：每隔五秒重启一次，总共三次
-    // 1.2 设置状态后端 (生产环境一定要开启)
+////     1.2 设置状态后端 (生产环境一定要开启)
 //    env.setStateBackend(new HashMapStateBackend())
 //    env.getCheckpointConfig.setCheckpointStorage("hdfs://hadoop01:8020/gmall/ck")
 //    System.setProperty("HADOOP_USER_NAME","root")
