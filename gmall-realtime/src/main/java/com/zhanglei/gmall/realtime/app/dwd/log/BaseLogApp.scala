@@ -10,7 +10,8 @@ import org.apache.flink.streaming.api.scala.{DataStream, KeyedStream, OutputTag,
 import org.apache.flink.util.Collector
 
 import java.lang
-
+// 流程：web/app -> Nginx -> 日志服务器 -> Flume -> kafka(ODS) -> FlinkApp -> kafka(DWD)
+// 程序流程：  mock(lg.sh) -> flume(f1.sh) -> kafka(zookeeper) -> BaseLogApp -> kafka(zookeeper)
 object BaseLogApp {
   def main(args: Array[String]): Unit = {
     //TODO 1.获取执行环境
