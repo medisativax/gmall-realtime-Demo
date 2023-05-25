@@ -26,6 +26,18 @@
 
         <dependency>
             <groupId>org.apache.flink</groupId>
+            <artifactId>flink-cep_${scala.version}</artifactId>
+            <version>${flink.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-cep-scala_${scala.version}</artifactId>
+            <version>${flink.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.flink</groupId>
             <artifactId>flink-streaming-java_${scala.version}</artifactId>
             <version>${flink.version}</version>
         </dependency>
@@ -183,8 +195,6 @@
             </plugin>
         </plugins>
     </build>
-
-
 
 
 </project>
