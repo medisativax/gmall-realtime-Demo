@@ -56,4 +56,49 @@ object MyKakfaUtil {
         }
       },properties,FlinkKafkaProducer.Semantic.EXACTLY_ONCE)
   }
+
+  /**
+   * Kafka-Source DDL 语句
+   * @param topic   数据源主题
+   * @param groupId 消费者组
+   * @return 拼接好的 Kafka 数据源 DDL 语句
+   */
+  def getKafkaDDL(topic: String, groupId: String): String ={
+    return s"""
+      | WITH (
+      |  'connector' = 'kafka',
+      |  'topic' = '$topic',
+      |  'properties.bootstrap.servers' = '$KAKFA_SERVER',
+      |  'properties.group.id' = '$groupId',
+      |  'scan.startup.mode' = 'earliest-offset',
+      |  'format' = 'json'
+      |)
+      |""".stripMargin
+
+    return " with ('connector' = 'kafka', " +
+      " 'topic' = '" + topic + "'," +
+      " 'properties.bootstrap.servers' = '" + KAKFA_SERVER + "', " +
+      " 'properties.group.id' = '" + groupId + "', " +
+      " 'format' = 'json', " +
+      " 'scan.startup.mode' = 'group-offsets')";
+  }
+
+  /**
+   * Kafka-Sink DDL 语句
+   * @param topic 输出到 Kafka 的目标主题
+   * @return 拼接好的 Kafka-Sink DDL 语句
+   */
+  def getKafkaDB(groupId: String): String = {
+    return """
+      |CREATE TABLE topic_db (
+      |  `database` STRING,
+      |  `table` STRING,
+      |  `type` STRING,
+      |  `data` MAP<STRING,STRING>,
+      |  `old` MAP<STRING,STRING>,
+      |  `pt` AS PROCTIME()
+      |)
+      |""".stripMargin + getKafkaDDL("topic_db",groupId)
+  }
+
 }
