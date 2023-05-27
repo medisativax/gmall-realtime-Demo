@@ -22,7 +22,7 @@ object MysqlUtil {
       |  'table-name' = '$tableName',
       |  'lookup.cache.max-rows' = '10',
       |  'lookup.cache.ttl' = '1 hour',
-      |  'driver' = 'com.mysql.cj.jdbc.Driver'
+      |  'driver' = 'com.mysql.cj.jdbc.Driver',
       |  'username' = 'root',
       |  'password' = 'root'
       |)
