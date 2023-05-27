@@ -88,6 +88,22 @@ object MyKakfaUtil {
    * @param topic 输出到 Kafka 的目标主题
    * @return 拼接好的 Kafka-Sink DDL 语句
    */
+  def getKafkaSink(topic: String): String ={
+    return s"""
+         | WITH (
+         |  'connector' = 'kafka',
+         |  'topic' = '$topic',
+         |  'properties.bootstrap.servers' = '$KAKFA_SERVER',
+         |  'format' = 'json'
+         |)
+         |""".stripMargin
+  }
+
+  /**
+   * Kafka-Sink DDL 语句
+   * @param topic 输出到 Kafka 的目标主题
+   * @return 拼接好的 Kafka-Sink DDL 语句
+   */
   def getKafkaDB(groupId: String): String = {
     return """
       |CREATE TABLE topic_db (
