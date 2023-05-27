@@ -1,6 +1,6 @@
 package com.zhanglei.gmall.realtime.app.dwd.db
 
-import com.zhanglei.gmall.realtime.util.MyKakfaUtil
+import com.zhanglei.gmall.realtime.util.{MyKakfaUtil, MysqlUtil}
 import org.apache.flink.api.common.restartstrategy.RestartStrategies
 import org.apache.flink.api.scala.createTypeInformation
 import org.apache.flink.runtime.state.hashmap.HashMapStateBackend
@@ -16,6 +16,7 @@ object DwdTradeCartAdd {
     //TODO 1.获取执行环境
     val env: StreamExecutionEnvironment = StreamExecutionEnvironment.getExecutionEnvironment
     env.setParallelism(1) // 生产环境中设置为：kafka topic的分区数
+
     val tableEnv: StreamTableEnvironment = StreamTableEnvironment.create(env)
 
 //    // 1.1 开启Checkpoint (生产环境一定要开启)
@@ -61,16 +62,64 @@ object DwdTradeCartAdd {
         |""".stripMargin)
 
     //测试
-    tableEnv.toAppendStream[Row](cartAddTable)
-      .print(">>>>>>>>>")
+//    tableEnv.toAppendStream[Row](cartAddTable).print(">>>>>>>>>")
+    tableEnv.createTemporaryView("cart_info_table",cartAddTable)
 
     //TODO 4.读取mysql的 base_dic 表建立lookup表
-
+    tableEnv.executeSql(MysqlUtil.getBaseDicLookUpDDL)
 
     //TODO 5.关联两张表
+    val cartAddWithDicTable: Table = tableEnv.sqlQuery(
+      """
+        |select
+        |    ci.id,
+        |    ci.user_id,
+        |    ci.sku_id,
+        |    ci.cart_price,
+        |    ci.sku_num,
+        |    ci.img_url,
+        |    ci.sku_name,
+        |    ci.is_checked,
+        |    ci.create_time,
+        |    ci.operate_time,
+        |    ci.is_ordered,
+        |    ci.order_time,
+        |    ci.source_type source_type_id,
+        |    dic.dic_name source_type_name,
+        |    ci.source_id
+        |from cart_info_table ci
+        |join base_dic FOR SYSTEM_TIME AS OF ci.pt as dic
+        |on ci.source_type = dic.dic_code
+        |""".stripMargin)
+
     //TODO 6.使用DDL创建事实加购表
+    tableEnv.executeSql(
+      """
+        |create table dwd_cart_add(
+        |    `id` STRING,
+        |    `user_id` STRING,
+        |    `sku_id` STRING,
+        |    `cart_price` STRING,
+        |    `sku_num` STRING,
+        |    `img_url` STRING,
+        |    `sku_name` STRING,
+        |    `is_checked` STRING,
+        |    `create_time` STRING,
+        |    `operate_time` STRING,
+        |    `is_ordered` STRING,
+        |    `order_time` STRING,
+        |    `source_type_id` STRING,
+        |    `source_type_name` STRING,
+        |    `source_id` STRING
+        |)
+        |""".stripMargin + MyKakfaUtil.getKafkaSink("dwd_trade_cart_add"))
+
+
     //TODO 7.将数据写出
+    tableEnv.executeSql("insert into dwd_cart_add select * from " + cartAddWithDicTable)
+      .print()
+
     //TODO 8.执行任务
-    env.execute()
+    env.execute("DwdTradeCartAdd")
   }
 }
