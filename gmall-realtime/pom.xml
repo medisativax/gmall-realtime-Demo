@@ -69,7 +69,7 @@
         <dependency>
             <groupId>org.apache.flink</groupId>
             <artifactId>flink-table-planner-blink_2.12</artifactId>
-            <version>1.13.0</version>
+            <version>${flink.version}</version>
         </dependency>
 
         <dependency>
