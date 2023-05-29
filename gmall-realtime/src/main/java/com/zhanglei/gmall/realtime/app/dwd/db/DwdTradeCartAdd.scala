@@ -2,13 +2,11 @@ package com.zhanglei.gmall.realtime.app.dwd.db
 
 import com.zhanglei.gmall.realtime.util.{MyKakfaUtil, MysqlUtil}
 import org.apache.flink.api.common.restartstrategy.RestartStrategies
-import org.apache.flink.api.scala.createTypeInformation
 import org.apache.flink.runtime.state.hashmap.HashMapStateBackend
 import org.apache.flink.streaming.api.CheckpointingMode
 import org.apache.flink.streaming.api.scala.StreamExecutionEnvironment
-import org.apache.flink.table.api.{Table, TableResult}
+import org.apache.flink.table.api.Table
 import org.apache.flink.table.api.bridge.scala.StreamTableEnvironment
-import org.apache.flink.types.Row
 
 
 object DwdTradeCartAdd {
@@ -55,10 +53,10 @@ object DwdTradeCartAdd {
         |from topic_db
         |where `database` = 'gmall'
         |and `table` = 'cart_info'
-        |and `type` = 'insert'
+        |and (`type` = 'insert'
         |or (`type` = 'update' and
         |    `old`['sku_num'] is not null and
-        |    cast(`data`['sku_num'] as int) > cast(`old`['sku_num'] as int))
+        |    cast(`data`['sku_num'] as int) > cast(`old`['sku_num'] as int)))
         |""".stripMargin)
 
     //测试
