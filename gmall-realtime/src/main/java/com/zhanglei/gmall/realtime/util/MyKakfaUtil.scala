@@ -26,7 +26,7 @@ object MyKakfaUtil {
 
         override def deserialize(consumerRecord: ConsumerRecord[Array[Byte], Array[Byte]]): String =
           if (consumerRecord == null || consumerRecord.value() == null){
-            return null
+            return ""
           }else {
             return new String(consumerRecord.value())
           }
@@ -115,6 +115,24 @@ object MyKakfaUtil {
       |  `pt` AS PROCTIME()
       |)
       |""".stripMargin + getKafkaDDL("topic_db",groupId)
+  }
+
+  /**
+   * UpsertKafka-Sink DDL 语句
+   *
+   * @param topic 输出到 Kafka 的目标主题
+   * @return 拼接好的 UpsertKafka-Sink DDL 语句
+   */
+  def getUpsertKafkaDDL(topic: String): String ={
+    return s"""
+      | WITH (
+      |  'connector' = 'upsert-kafka',
+      |  'topic' = '$topic',
+      |  'properties.bootstrap.servers' = '$KAKFA_SERVER',
+      |  'key.format' = 'json',
+      |  'value.format' = 'json'
+      |)
+      |""".stripMargin
   }
 
 }
