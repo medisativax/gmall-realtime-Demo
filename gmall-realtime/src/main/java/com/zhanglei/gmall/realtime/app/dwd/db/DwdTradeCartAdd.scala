@@ -8,7 +8,9 @@ import org.apache.flink.streaming.api.scala.StreamExecutionEnvironment
 import org.apache.flink.table.api.Table
 import org.apache.flink.table.api.bridge.scala.StreamTableEnvironment
 
-
+/***
+ *  加购事务事实表
+ */
 object DwdTradeCartAdd {
   def main(args: Array[String]): Unit = {
     //TODO 1.获取执行环境

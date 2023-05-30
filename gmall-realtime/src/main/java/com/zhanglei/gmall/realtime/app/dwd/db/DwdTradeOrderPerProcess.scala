@@ -12,7 +12,9 @@ import org.apache.flink.types.Row
 
 import java.time.Duration
 
-
+/***
+ *  订单预处理事务事实表
+ */
 object DwdTradeOrderPerProcess {
   def main(args: Array[String]): Unit = {
     //TODO 1.获取执行环境

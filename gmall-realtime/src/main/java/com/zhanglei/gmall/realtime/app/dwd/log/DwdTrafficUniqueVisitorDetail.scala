@@ -17,6 +17,10 @@ import java.lang
 
 // 流程：web/app -> Nginx -> 日志服务器 -> Flume -> kafka(ODS) -> FlinkApp -> kafka(DWD) -> flinkapp -> kafka(dwd)
 // 程序流程：  mock(lg.sh) -> flume(f1.sh) -> kafka(zookeeper) -> BaseLogApp -> kafka(zookeeper) -> DwdTrafficUniqueVisitorDetail -> kafka(zookeeper)
+
+/***
+ *  独立访客事务事实表
+ */
 object DwdTrafficUniqueVisitorDetail {
   def main(args: Array[String]): Unit = {
     //TODO 1.搭建执行环境

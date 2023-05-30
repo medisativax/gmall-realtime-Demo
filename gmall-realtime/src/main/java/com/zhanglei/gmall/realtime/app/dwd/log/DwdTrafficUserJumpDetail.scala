@@ -20,6 +20,9 @@ import java.util
 
 // 流程：web/app -> Nginx -> 日志服务器 -> Flume -> kafka(ODS) -> FlinkApp -> kafka(DWD) -> flinkapp -> kafka(dwd)
 // 程序流程：  mock(lg.sh) -> flume(f1.sh) -> kafka(zookeeper) -> BaseLogApp -> kafka(zookeeper) -> DwdTrafficUserJumpDetail -> kafka(zookeeper)
+/***
+ *  用户跳出事务事实表
+ */
 object DwdTrafficUserJumpDetail {
   def main(args: Array[String]): Unit = {
     //TODO 1.获取执行环境
