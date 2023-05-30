@@ -10,6 +10,8 @@ import org.apache.flink.table.api.Table
 import org.apache.flink.table.api.bridge.scala.StreamTableEnvironment
 import org.apache.flink.types.Row
 
+import java.time.Duration
+
 
 object DwdTradeOrderPerProcess {
   def main(args: Array[String]): Unit = {
@@ -27,6 +29,8 @@ object DwdTradeOrderPerProcess {
 //    env.setStateBackend(new HashMapStateBackend())
 //    env.getCheckpointConfig.setCheckpointStorage("hdfs://hadoop01:8020/gmall/ck")
 //    System.setProperty("HADOOP_USER_NAME", "root")
+    // 1.3 设置状态的 TTL(生存时间)  (生产环境一定开启，设置为环境的最大乱序程度)
+    tableEnv.getConfig.setIdleStateRetention(Duration.ofSeconds(5))
 
     //TODO 2.创建 topic_db 表
     tableEnv.executeSql(MyKakfaUtil.getKafkaDB("order_per_process"))
