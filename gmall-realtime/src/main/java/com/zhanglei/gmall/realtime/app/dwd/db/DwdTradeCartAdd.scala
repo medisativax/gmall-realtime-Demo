@@ -11,6 +11,8 @@ import org.apache.flink.table.api.bridge.scala.StreamTableEnvironment
 /***
  *  加购事务事实表
  */
+//数据流程：web/app -> nginx -> mysql(bin-log) -> Maxwell -> kafka(ods) -> Flinkapp -> kafka(dwd)
+//程序流程：Mock -> mysql(bin-log) -> Maxwell -> kafka(zookeeper) -> DwdTradeCartAdd -> kafka(zookeeper)
 object DwdTradeCartAdd {
   def main(args: Array[String]): Unit = {
     //TODO 1.获取执行环境

@@ -15,6 +15,8 @@ import java.time.Duration
 /***
  *  订单预处理事务事实表
  */
+//数据流程：web/app -> nginx -> mysql(bin-log) -> Maxwell -> kafka(ods) -> Flinkapp -> kafka(dwd)
+//程序流程：Mock -> mysql(bin-log) -> Maxwell -> kafka(zookeeper) -> DwdTradeOrderPerProcess -> kafka(zookeeper)
 object DwdTradeOrderPerProcess {
   def main(args: Array[String]): Unit = {
     //TODO 1.获取执行环境
