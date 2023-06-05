@@ -119,7 +119,7 @@ class TableProcessFunction extends BroadcastProcessFunction[JSONObject,String,JS
       in1.put("sinkTable",tableProcess.SinkTable)
       collector.collect(in1)
     }else{
-      println("找不到对应key"+ tableName)
+      println("找不到对应key->"+ tableName)
     }
   }
 
