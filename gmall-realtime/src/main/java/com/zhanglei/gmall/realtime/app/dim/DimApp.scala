@@ -21,7 +21,7 @@ import org.apache.flink.streaming.api.datastream.BroadcastStream
 
 object DimApp {
   def main(args: Array[String]): Unit = {
-    // TODO 1.获取执行环境
+    //TODO 1.获取执行环境
     val env: StreamExecutionEnvironment = StreamExecutionEnvironment.getExecutionEnvironment
     env.setParallelism(1)   // 生产环境中设置为：kafka topic的分区数
 ////     1.1 开启Checkpoint (生产环境一定要开启)
@@ -34,12 +34,12 @@ object DimApp {
 //    env.getCheckpointConfig.setCheckpointStorage("hdfs://hadoop01:8020/gmall/ck")
 //    System.setProperty("HADOOP_USER_NAME","root")
 
-    // TODO 2.读取kakfa topic_db主题数据创建主流
+    //TODO 2.读取kakfa topic_db主题数据创建主流
     val topic = "topic_db"
     val groupId = "dim_app"
     val kafkaDS: DataStream[String] = env.addSource(MyKakfaUtil.getFlinkKafkaConsumer(topic, groupId))
 
-    // TODO 3.过滤掉非JSON数据&保留新增、变化以及初始化数据
+    //TODO 3.过滤掉非JSON数据&保留新增、变化以及初始化数据
     val filterJosnDS: DataStream[JSONObject] = kafkaDS.flatMap(new FlatMapFunction[String, JSONObject] {
       override def flatMap(t: String, collector: Collector[JSONObject]): Unit = {
         try {
@@ -55,7 +55,7 @@ object DimApp {
       }
     })
 
-    // TODO 4.使用FlinkCDC读取Mysql配置信息配置流
+    //TODO 4.使用FlinkCDC读取Mysql配置信息配置流
     val mySqlSource: MySqlSource[String] = MySqlSource.builder[String]()
       .hostname("hadoop01")
       .port(3306)
@@ -71,23 +71,23 @@ object DimApp {
       WatermarkStrategy.noWatermarks(),
       "MysqlSource")
 
-    // TODO 5.将配置流转换成为广播流
+    //TODO 5.将配置流转换成为广播流
     val mapStateDescriptor: MapStateDescriptor[String, TableProcess] =
       new MapStateDescriptor[String, TableProcess]("map-state", classOf[String], classOf[TableProcess])
 
     val broadcastStream: BroadcastStream[String] = mysqlSourceDS.broadcast(mapStateDescriptor)
 
-    // TODO 6.将主流与广播流连接
+    //TODO 6.将主流与广播流连接
     val connectedStream: BroadcastConnectedStream[JSONObject, String] = filterJosnDS.connect(broadcastStream)
 
-    // TODO 7.处理链接流，根据配置信息处理主流数据
+    //TODO 7.处理链接流，根据配置信息处理主流数据
     val dimDS: DataStream[JSONObject] = connectedStream.process(new TableProcessFunction(mapStateDescriptor))
 
-    // TODO 8.将数据写入到Phoenix
+    //TODO 8.将数据写入到Phoenix
     dimDS.print(">>>>>>>>>>>>>>>>>>")
     dimDS.addSink(new DimSinkFunction)
 
-    // TODO 9.启动任务
+    //TODO 9.启动任务
     env.execute("DimApp")
 
   }
