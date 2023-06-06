@@ -2,7 +2,7 @@ package com.zhanglei.gmall.realtime.util
 
 import com.alibaba.druid.pool.DruidPooledConnection
 import com.alibaba.fastjson.JSONObject
-import com.zhanglei.gmall.realtime.bean.GmallConfig
+import com.zhanglei.gmall.realtime.common.GmallConfig
 
 import java.sql.PreparedStatement
 import java.util

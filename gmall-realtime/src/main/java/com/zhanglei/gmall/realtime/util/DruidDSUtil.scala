@@ -1,7 +1,7 @@
 package com.zhanglei.gmall.realtime.util
 
 import com.alibaba.druid.pool.{DruidDataSource, DruidPooledConnection}
-import com.zhanglei.gmall.realtime.bean.GmallConfig
+import com.zhanglei.gmall.realtime.common.GmallConfig
 
 object DruidDSUtil {
   var druidDataSource: DruidDataSource = _

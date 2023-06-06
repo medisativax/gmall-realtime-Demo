@@ -3,7 +3,8 @@ package com.zhanglei.gmall.realtime.app.func
 import com.alibaba.fastjson.{JSON, JSONObject}
 import org.apache.flink.streaming.api.functions.co.BroadcastProcessFunction
 import org.apache.flink.util.Collector
-import com.zhanglei.gmall.realtime.bean.{GmallConfig, TableProcess}
+import com.zhanglei.gmall.realtime.bean.TableProcess
+import com.zhanglei.gmall.realtime.common.GmallConfig
 import org.apache.flink.api.common.state.{BroadcastState, MapStateDescriptor, ReadOnlyBroadcastState}
 import org.apache.flink.configuration.Configuration
 

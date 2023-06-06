@@ -1,4 +1,4 @@
-package com.zhanglei.gmall.realtime.bean
+package com.zhanglei.gmall.realtime.common
 
 object GmallConfig {
   // Phoenix库名// Phoenix库名
@@ -10,4 +10,9 @@ object GmallConfig {
   // Phoenix连接参数
   val PHOENIX_SERVER = "jdbc:phoenix:hadoop01,hadoop02,hadoop03:2181"
 
+  // ClickHouse驱动
+  val CLICKHOUSE_DRIVER = "ru.yandex.clickhouse.ClickHouseDriver"
+
+  // ClickHouse连接URL
+  val CLICKHOUSE_URL = "jdbc:clickhouse://hadoop102:8123/gmall_rebuild"
 }
