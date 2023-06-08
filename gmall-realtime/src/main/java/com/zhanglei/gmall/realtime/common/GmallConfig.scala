@@ -14,5 +14,11 @@ object GmallConfig {
   val CLICKHOUSE_DRIVER = "ru.yandex.clickhouse.ClickHouseDriver"
 
   // ClickHouse连接URL
-  val CLICKHOUSE_URL = "jdbc:clickhouse://hadoop102:8123/gmall_rebuild"
+  val CLICKHOUSE_URL = "jdbc:clickhouse://hadoop01:8123/gmall_rebuild"
+
+  // ClickHouse连接Username
+  val CLICKHOUSE_USERNAME = "root"
+
+  // ClickHouse连接Password
+  val CLICKHOUSE_PASSWORD = "root"
 }
