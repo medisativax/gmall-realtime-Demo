@@ -24,7 +24,7 @@
 
 ### 1.2 框架示意图
 
-![](\img\Snipaste_2023-03-09_19-54-30.png)
+![](/img/Snipaste_2023-03-09_19-54-30.png)
 
 ### 1.3 集群规划
 
@@ -48,7 +48,7 @@
 
 ### 2.0 工作流程图
 
-![image-20230314144721711](\img\image-20230314144721711.png)
+![image-20230314144721711](/img/image-20230314144721711.png)
 
 ### 2.1 SSH免密登录
 
@@ -417,11 +417,11 @@ chmod +x /root/bin/myhadoop.sh
 jpsall
 ```
 
-![](\img\image-20230309211008552.png)
+![](/img/image-20230309211008552.png)
 
-![image-20230309211034040](\img\image-20230309211034040.png)
+![image-20230309211034040](/img/image-20230309211034040.png)
 
-![image-20230309211112560](\img\image-20230309211112560.png)
+![image-20230309211112560](/img/image-20230309211112560.png)
 
 ### 2.6 安装ZK（Zookeeper）
 
@@ -513,7 +513,7 @@ zk.sh status
 zk.sh stop
 ```
 
-![image-20230309214430225](\img\image-20230309214430225.png)
+![image-20230309214430225](/img/image-20230309214430225.png)
 
 ### 2.7 安装Kafka
 
@@ -644,7 +644,7 @@ zk.sh stop
 jpsall							-- 查看Kafka是否启动成功
 ```
 
-![](\img\image-20230310134324320.png)
+![](/img/image-20230310134324320.png)
 
 ### 2.8 安装flume
 
@@ -672,7 +672,7 @@ export JAVA_HOME=/opt/module/jdk1.8.0_212
 
 **Flume安装示意图**
 
-![未命名文件](\img\未命名文件.png)
+![未命名文件](/img/未命名文件.png)
 
 #### 2.8.1 配置flume采集日志配置
 
@@ -839,7 +839,7 @@ import com.google.gson.JsonElement;
 public class JSONUtils {
 //    // 验证方法是否正确
 //    public static void main(String[] args) {
-//        System.out.println(isValiddate("{\"age\":\"18\"}"));
+//        System.out.println(isValiddate("{/"age/":/"18/"}"));
 //    }
 
     // 验证数据是否 JSON
@@ -857,7 +857,7 @@ public class JSONUtils {
 
 **打包**
 
-![image-20230311195257362](\img\image-20230311195257362.png)
+![image-20230311195257362](/img/image-20230311195257362.png)
 
 **将打好的包放入到hadoop01的/opt/module/flume/lib文件夹下面**
 
@@ -892,7 +892,7 @@ case $1 in
         for i in hadoop01 hadoop02
         do
                 echo " --------停止 $i 采集flume-------"
-                ssh $i "ps -ef | grep file-flume-kafka | grep -v grep |awk  '{print \$2}' | xargs -n1 kill -9 "
+                ssh $i "ps -ef | grep file-flume-kafka | grep -v grep |awk  '{print /$2}' | xargs -n1 kill -9 "
         done
 
 };;
@@ -909,7 +909,7 @@ jpsall
 f1.sh stop
 ```
 
-![image-20230311203619354](\img\image-20230311203619354.png)
+![image-20230311203619354](/img/image-20230311203619354.png)
 
 #### 2.8.3 配置flume采集日志配置
 
@@ -1031,7 +1031,7 @@ public class TimeStampInterceptor implements Interceptor {
 
 **打包**
 
-![](\img\image-20230311195257362.png)
+![](/img/image-20230311195257362.png)
 
 **将打好的包放入到hadoop03的/opt/module/flume/lib文件夹下面**
 
@@ -1066,7 +1066,7 @@ case $1 in
         for i in hadoop03
         do
                 echo " --------停止 $i 消费flume-------"
-                ssh $i "ps -ef | grep kafka-flume-hdfs | grep -v grep |awk '{print \$2}' | xargs -n1 kill"
+                ssh $i "ps -ef | grep kafka-flume-hdfs | grep -v grep |awk '{print /$2}' | xargs -n1 kill"
         done
 
 };;
@@ -1083,7 +1083,7 @@ jps
 f2.sh stop
 ```
 
-![image-20230311204932696](\img\image-20230311204932696.png)
+![image-20230311204932696](/img/image-20230311204932696.png)
 
 
 
@@ -1133,11 +1133,11 @@ jpsall
 cluster.sh stop
 ```
 
-![image-20230311210345653](\img\image-20230311210345653.png)
+![image-20230311210345653](/img/image-20230311210345653.png)
 
-![image-20230311210408914](\img\image-20230311210408914.png)
+![image-20230311210408914](/img/image-20230311210408914.png)
 
-![image-20230311210453630](\img\image-20230311210453630.png)
+![image-20230311210453630](/img/image-20230311210453630.png)
 
 
 
@@ -1145,7 +1145,7 @@ cluster.sh stop
 
 **将文件上传到hadoop01的/opt/module/applog目录下**
 
-![image-20230316133352068](\img\image-20230316133352068.png)
+![image-20230316133352068](/img/image-20230316133352068.png)
 
 ```shell
 mkdir /opt/module/applog/
@@ -1270,18 +1270,18 @@ chmod +x /root/bin/lg.shg
 
 ### 3.0 工作流程图
 
-![image-20230314144931927](\img\image-20230314144931927.png)
+![image-20230314144931927](/img/image-20230314144931927.png)
 
 ### 3.1 安装mysql
 
 **将安装包和JDBC驱动上传到/opt/software，共计6个**
 
-![image-20230314145136508](\img\image-20230314145136508.png)
+![image-20230314145136508](/img/image-20230314145136508.png)
 
 **将虚拟机自带的Mysql-libs卸载**
 
 ```shell
-rpm -qa | grep -i -E mysql\|mariadb | xargs -n1 rpm -e --nodeps
+rpm -qa | grep -i -E mysql/|mariadb | xargs -n1 rpm -e --nodeps
 ```
 
 **安装Mysql依赖，根据依赖包的序号依次按照**
@@ -1312,7 +1312,7 @@ systemctl start mysqld
 cat /var/log/mysqld.log | grep password
 ```
 
-![image-20230314150155089](\img\image-20230314150155089.png)
+![image-20230314150155089](/img/image-20230314150155089.png)
 
 ### 3.2 配置Mysql
 
@@ -1367,15 +1367,15 @@ quit;
 
 **连接数据库，执行sql脚本**
 
-![image-20230314151935479](C:\Users\zhang_lei\AppData\Roaming\Typora\typora-user-images\image-20230314151935479.png)
+![image-20230314151935479](C:/Users/zhang_lei/AppData/Roaming/Typora/typora-user-images/image-20230314151935479.png)
 
-![image-20230314152322477](\img\image-20230314152322477.png)
+![image-20230314152322477](/img/image-20230314152322477.png)
 
 **导入数据库结构脚本（gmall.sql）**
 
-![image-20230314152607206](C:\Users\zhang_lei\AppData\Roaming\Typora\typora-user-images\image-20230314152607206.png)
+![image-20230314152607206](C:/Users/zhang_lei/AppData/Roaming/Typora/typora-user-images/image-20230314152607206.png)
 
-![image-20230314152656005](C:\Users\zhang_lei\AppData\Roaming\Typora\typora-user-images\image-20230314152656005.png)
+![image-20230314152656005](C:/Users/zhang_lei/AppData/Roaming/Typora/typora-user-images/image-20230314152656005.png)
 
 ### 3.3 生成业务数据
 
@@ -1387,7 +1387,7 @@ mkdir /opt/module/db_log
 
 **把gmall2020-mock-db-2021-01-22.jar和application.properties上传到hadoop01的/opt/module/db_log路径上**
 
-![image-20230314153828366](C:\Users\zhang_lei\AppData\Roaming\Typora\typora-user-images\image-20230314153828366.png)
+![image-20230314153828366](C:/Users/zhang_lei/AppData/Roaming/Typora/typora-user-images/image-20230314153828366.png)
 
 **根据需求修改application.properties相关配置**
 
@@ -1468,7 +1468,7 @@ java -jar /opt/module/db_log/gmall2020-mock-db-2021-01-22.jar
 
 **上传sqoop的安装包到hadoop01的/opt/software**
 
-![image-20230316180641503](C:\Users\zhang_lei\AppData\Roaming\Typora\typora-user-images\image-20230316180641503.png)
+![image-20230316180641503](C:/Users/zhang_lei/AppData/Roaming/Typora/typora-user-images/image-20230316180641503.png)
 
 ```bash
 tar -zxf /opt/software/sqoop-1.4.6.bin__hadoop-2.0.4-alpha.tar.gz -C /opt/module/
@@ -1510,7 +1510,7 @@ cp /opt/software/mysql-connector-java-5.1.27-bin.jar /opt/module/sqoop/lib/
 
 ### 3.5 同步策略
 
-![image-20230317100403155](\img\image-20230317100403155.png)
+![image-20230317100403155](/img/image-20230317100403155.png)
 
 #### 3.5.1首日同步脚本（业务数据导入HDFS）
 
@@ -1532,19 +1532,19 @@ else
 fi 
 
 import_data(){
-$sqoop import \
---connect jdbc:mysql://hadoop01:3306/$APP \
---username root \
---password root \
---target-dir /origin_data/$APP/db/$1/$do_date \
---delete-target-dir \
---query "$2 where \$CONDITIONS" \
---num-mappers 1 \
---fields-terminated-by '\t' \
---compress \
---compression-codec gzip \
---null-string '\\N' \
---null-non-string '\\N'
+$sqoop import /
+--connect jdbc:mysql://hadoop01:3306/$APP /
+--username root /
+--password root /
+--target-dir /origin_data/$APP/db/$1/$do_date /
+--delete-target-dir /
+--query "$2 where /$CONDITIONS" /
+--num-mappers 1 /
+--fields-terminated-by '/t' /
+--compress /
+--compression-codec gzip /
+--null-string '//N' /
+--null-non-string '//N'
 }
 
 import_order_info(){
@@ -2026,19 +2026,19 @@ else
 fi
 
 import_data(){
-$sqoop import \
---connect jdbc:mysql://hadoop01:3306/$APP \
---username root \
---password root \
---target-dir /origin_data/$APP/db/$1/$do_date \
---delete-target-dir \
---query "$2 and  \$CONDITIONS" \
---num-mappers 1 \
---fields-terminated-by '\t' \
---compress \
---compression-codec gzip \
---null-string '\\N' \
---null-non-string '\\N'
+$sqoop import /
+--connect jdbc:mysql://hadoop01:3306/$APP /
+--username root /
+--password root /
+--target-dir /origin_data/$APP/db/$1/$do_date /
+--delete-target-dir /
+--query "$2 and  /$CONDITIONS" /
+--num-mappers 1 /
+--fields-terminated-by '/t' /
+--compress /
+--compression-codec gzip /
+--null-string '//N' /
+--null-non-string '//N'
 }
 
 
@@ -2527,7 +2527,7 @@ esac
 
 **把apache-hive-3.1.2-bin.tar.gz上传到hadoop01的/opt/software目录下**
 
-![image-20230317105713170](\img\image-20230317105713170.png)
+![image-20230317105713170](/img/image-20230317105713170.png)
 
 
 
@@ -2730,7 +2730,7 @@ default
 
 **上传并解压，解压spark-3.0.0-bin-hadoop3.2.tgz**
 
-![image-20230317160042013](\img\image-20230317160042013.png)
+![image-20230317160042013](/img/image-20230317160042013.png)
 
 ```bash
 tar -zxf /opt/software/spark-3.0.0-bin-hadoop3.2.tgz -C /opt/module
@@ -2831,7 +2831,7 @@ hive (default)> create table student(id int, name string);
 hive (default)> insert into table student values(1,"zhangsan");
 ```
 
-![image-20230318150022045](\img\image-20230318150022045.png)
+![image-20230318150022045](/img/image-20230318150022045.png)
 
 #### 4.2.2 Yarn配置
 
@@ -2872,7 +2872,7 @@ start-yarn.sh
 
 ### 5.1、数仓分层
 
-![image-20230609143636509](\img\image-20230609143636509.png)
+![image-20230609143636509](/img/image-20230609143636509.png)
 
 ### 5.2、ODS脚本
 
@@ -8791,7 +8791,7 @@ CREATE EXTERNAL TABLE ods_activity_info(
     `create_time` STRING  COMMENT '创建时间'
 ) COMMENT '活动信息表'
 PARTITIONED BY (`dt` STRING)
-ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '/t'
 LOCATION '/warehouse/gmall/ods/ods_activity_info/';
 ```
 
@@ -8824,7 +8824,7 @@ CREATE EXTERNAL TABLE ods_activity_rule(
     `benefit_level` STRING COMMENT '优惠级别'
 ) COMMENT '活动规则表'
 PARTITIONED BY (`dt` STRING)
-ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '/t'
 
 
 
@@ -8874,7 +8874,7 @@ CREATE EXTERNAL TABLE ods_sku_attr_value(
     `value_name` STRING COMMENT '平台属性值名称'
 ) COMMENT 'sku平台属性表'
 PARTITIONED BY (`dt` STRING)
-ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '/t'
 LOCATION '/warehouse/gmall/ods/ods_sku_attr_value/';
 ```
 
@@ -8896,7 +8896,7 @@ CREATE EXTERNAL TABLE ods_base_category1(
     `name` STRING COMMENT '名称'
 ) COMMENT '商品一级分类表'
 PARTITIONED BY (`dt` STRING)
-ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '/t'
 LOCATION '/warehouse/gmall/ods/ods_base_category1/';
 ```
 
@@ -8920,7 +8920,7 @@ CREATE EXTERNAL TABLE ods_base_category2(
     `category1_id` STRING COMMENT '一级品类id'
 ) COMMENT '商品二级分类表'
 PARTITIONED BY (`dt` STRING)
-ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '/t'
 LOCATION '/warehouse/gmall/ods/ods_base_category2/';
 ```
 
@@ -8944,7 +8944,7 @@ CREATE EXTERNAL TABLE ods_base_category3(
     `category2_id` STRING COMMENT '二级品类id'
 ) COMMENT '商品三级分类表'
 PARTITIONED BY (`dt` STRING)
-ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '/t'
 LOCATION '/warehouse/gmall/ods/ods_base_category3/';
 ```
 
@@ -8972,7 +8972,7 @@ CREATE EXTERNAL TABLE ods_base_dic(
     `operate_time` STRING COMMENT '操作日期'
 ) COMMENT '编码字典表'
 PARTITIONED BY (`dt` STRING)
-ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '/t'
 LOCATION '/warehouse/gmall/ods/ods_base_dic/';
 ```
 
@@ -9001,7 +9001,7 @@ CREATE EXTERNAL TABLE ods_base_province (
     `iso_code` STRING COMMENT 'ISO-3166编码，供可视化使用',
     `iso_3166_2` STRING COMMENT 'IOS-3166-2编码，供可视化使用'
 )  COMMENT '省份表'
-ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '/t'
 LOCATION '/warehouse/gmall/ods/ods_base_province/';
 ```
 
@@ -9022,7 +9022,7 @@ CREATE EXTERNAL TABLE ods_base_region (
     `id` STRING COMMENT '编号',
     `region_name` STRING COMMENT '地区名称'
 )  COMMENT '地区表'
-ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '/t'
 LOCATION '/warehouse/gmall/ods/ods_base_region/';
 ```
 
@@ -9045,7 +9045,7 @@ CREATE EXTERNAL TABLE ods_base_trademark (
     `tm_name` STRING COMMENT '品牌名称'
 )  COMMENT '品牌表'
 PARTITIONED BY (`dt` STRING)
-ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '/t'
 LOCATION '/warehouse/gmall/ods/ods_base_trademark/';
 ```
 
@@ -9089,7 +9089,7 @@ CREATE EXTERNAL TABLE ods_cart_info(
     `source_id` STRING COMMENT '来源编号'
 ) COMMENT '加购表'
 PARTITIONED BY (`dt` STRING)
-ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '/t'
 LOCATION '/warehouse/gmall/ods/ods_cart_info/';
 ```
 
@@ -9125,7 +9125,7 @@ CREATE EXTERNAL TABLE ods_comment_info(
     `create_time` STRING COMMENT '评价时间'
 ) COMMENT '商品评论表'
 PARTITIONED BY (`dt` STRING)
-ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '/t'
 LOCATION '/warehouse/gmall/ods/ods_comment_info/';
 ```
 
@@ -9176,7 +9176,7 @@ CREATE EXTERNAL TABLE ods_coupon_info(
     `expire_time` STRING COMMENT '过期时间'
 ) COMMENT '优惠券表'
 PARTITIONED BY (`dt` STRING)
-ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '/t'
 LOCATION '/warehouse/gmall/ods/ods_coupon_info/';
 ```
 
@@ -9221,7 +9221,7 @@ CREATE EXTERNAL TABLE ods_coupon_use(
     `expire_time` STRING COMMENT '过期时间'
 ) COMMENT '优惠券领用表'
 PARTITIONED BY (`dt` STRING)
-ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '/t'
 LOCATION '/warehouse/gmall/ods/ods_coupon_use/';
 ```
 
@@ -9253,7 +9253,7 @@ CREATE EXTERNAL TABLE ods_favor_info(
     `cancel_time` STRING COMMENT '取消时间'
 ) COMMENT '商品收藏表'
 PARTITIONED BY (`dt` STRING)
-ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '/t'
 LOCATION '/warehouse/gmall/ods/ods_favor_info/';
 ```
 
@@ -9296,7 +9296,7 @@ CREATE EXTERNAL TABLE ods_order_detail(
     `split_coupon_amount` DECIMAL(16,2) COMMENT '分摊优惠券优惠'
 ) COMMENT '订单详情表'
 PARTITIONED BY (`dt` STRING)
-ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '/t'
 LOCATION '/warehouse/gmall/ods/ods_order_detail/';
 ```
 
@@ -9328,7 +9328,7 @@ CREATE EXTERNAL TABLE ods_order_detail_activity(
     `create_time` STRING COMMENT '创建时间'
 ) COMMENT '订单详情活动关联表'
 PARTITIONED BY (`dt` STRING)
-ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '/t'
 LOCATION '/warehouse/gmall/ods/ods_order_detail_activity/';
 ```
 
@@ -9360,7 +9360,7 @@ CREATE EXTERNAL TABLE ods_order_detail_coupon(
     `create_time` STRING COMMENT '创建时间'
 ) COMMENT '订单明细优惠券关联表'
 PARTITIONED BY (`dt` STRING)
-ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '/t'
 LOCATION '/warehouse/gmall/ods/ods_order_detail_coupon/';
 ```
 
@@ -9420,7 +9420,7 @@ CREATE EXTERNAL TABLE ods_order_info (
     `feight_fee_reduce` DECIMAL(16,2)  COMMENT '运费减免'
 ) COMMENT '订单表'
 PARTITIONED BY (`dt` STRING)
-ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '/t'
 LOCATION '/warehouse/gmall/ods/ods_order_info/';
 ```
 
@@ -9459,7 +9459,7 @@ CREATE EXTERNAL TABLE ods_order_refund_info(
     `create_time` STRING COMMENT '退单时间'
 ) COMMENT '退单表'
 PARTITIONED BY (`dt` STRING)
-ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '/t'
 LOCATION '/warehouse/gmall/ods/ods_order_refund_info/';
 ```
 
@@ -9485,7 +9485,7 @@ CREATE EXTERNAL TABLE ods_order_status_log (
     `operate_time` STRING COMMENT '修改时间'
 )  COMMENT '订单状态表'
 PARTITIONED BY (`dt` STRING)
-ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '/t'
 LOCATION '/warehouse/gmall/ods/ods_order_status_log/';
 ```
 
@@ -9526,7 +9526,7 @@ CREATE EXTERNAL TABLE ods_payment_info(
     `callback_time` STRING COMMENT '回调时间'
 )  COMMENT '支付流水表'
 PARTITIONED BY (`dt` STRING)
-ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '/t'
 LOCATION '/warehouse/gmall/ods/ods_payment_info/';
 ```
 
@@ -9567,7 +9567,7 @@ CREATE EXTERNAL TABLE ods_refund_payment(
     `callback_time` STRING COMMENT '回调时间'
 )  COMMENT '支付流水表'
 PARTITIONED BY (`dt` STRING)
-ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '/t'
 LOCATION '/warehouse/gmall/ods/ods_refund_payment/';
 ```
 
@@ -9597,7 +9597,7 @@ CREATE EXTERNAL TABLE ods_sku_attr_value(
     `value_name` STRING COMMENT '平台属性值名称'
 ) COMMENT 'sku平台属性表'
 PARTITIONED BY (`dt` STRING)
-ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '/t'
 LOCATION '/warehouse/gmall/ods/ods_sku_attr_value/';
 ```
 
@@ -9636,7 +9636,7 @@ CREATE EXTERNAL TABLE ods_sku_info(
     `create_time` STRING COMMENT '创建时间'
 ) COMMENT 'SKU商品表'
 PARTITIONED BY (`dt` STRING)
-ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '/t'
 LOCATION '/warehouse/gmall/ods/ods_sku_info/';
 ```
 
@@ -9668,7 +9668,7 @@ CREATE EXTERNAL TABLE ods_sku_sale_attr_value(
     `sale_attr_value_name` STRING COMMENT '销售属性值名称'
 ) COMMENT 'sku销售属性名称'
 PARTITIONED BY (`dt` STRING)
-ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '/t'
 LOCATION '/warehouse/gmall/ods/ods_sku_sale_attr_value/';
 ```
 
@@ -9695,7 +9695,7 @@ CREATE EXTERNAL TABLE ods_spu_info(
     `tm_id` STRING COMMENT '品牌id'
 ) COMMENT 'SPU商品表'
 PARTITIONED BY (`dt` STRING)
-ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '/t'
 LOCATION '/warehouse/gmall/ods/ods_spu_info/';
 ```
 
@@ -9769,7 +9769,7 @@ CREATE EXTERNAL TABLE ods_user_info(
     `operate_time` STRING COMMENT '操作时间'
 ) COMMENT '用户表'
 PARTITIONED BY (`dt` STRING)
-ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '/t'
 LOCATION '/warehouse/gmall/ods/ods_user_info/';
 ```
 
