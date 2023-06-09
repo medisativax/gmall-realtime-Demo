@@ -1468,7 +1468,7 @@ java -jar /opt/module/db_log/gmall2020-mock-db-2021-01-22.jar
 
 **上传sqoop的安装包到hadoop01的/opt/software**
 
-![image-20230316180641503](/\img\image-20230316180641503.png)
+![image-20230316180641503](/img/image-20230316180641503.png)
 
 ```bash
 tar -zxf /opt/software/sqoop-1.4.6.bin__hadoop-2.0.4-alpha.tar.gz -C /opt/module/
