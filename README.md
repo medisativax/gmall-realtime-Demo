@@ -1367,15 +1367,15 @@ quit;
 
 **连接数据库，执行sql脚本**
 
-![image-20230314151935479](C:/Users/zhang_lei/AppData/Roaming/Typora/typora-user-images/image-20230314151935479.png)
+![image-20230314151935479](/img/image-20230314151935479.png)
 
 ![image-20230314152322477](/img/image-20230314152322477.png)
 
 **导入数据库结构脚本（gmall.sql）**
 
-![image-20230314152607206](C:/Users/zhang_lei/AppData/Roaming/Typora/typora-user-images/image-20230314152607206.png)
+![image-20230314152607206](img/image-20230314152607206.png)
 
-![image-20230314152656005](C:/Users/zhang_lei/AppData/Roaming/Typora/typora-user-images/image-20230314152656005.png)
+![image-20230314152656005](/img/image-20230314152656005.png)
 
 ### 3.3 生成业务数据
 
@@ -1387,7 +1387,7 @@ mkdir /opt/module/db_log
 
 **把gmall2020-mock-db-2021-01-22.jar和application.properties上传到hadoop01的/opt/module/db_log路径上**
 
-![image-20230314153828366](C:/Users/zhang_lei/AppData/Roaming/Typora/typora-user-images/image-20230314153828366.png)
+![image-20230314153828366](/img/image-20230314153828366.png)
 
 **根据需求修改application.properties相关配置**
 
@@ -1468,7 +1468,7 @@ java -jar /opt/module/db_log/gmall2020-mock-db-2021-01-22.jar
 
 **上传sqoop的安装包到hadoop01的/opt/software**
 
-![image-20230316180641503](C:/Users/zhang_lei/AppData/Roaming/Typora/typora-user-images/image-20230316180641503.png)
+![image-20230316180641503](/\img\image-20230316180641503.png)
 
 ```bash
 tar -zxf /opt/software/sqoop-1.4.6.bin__hadoop-2.0.4-alpha.tar.gz -C /opt/module/
