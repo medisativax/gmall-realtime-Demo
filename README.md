@@ -2,7 +2,7 @@
 
 
 
-# 练习·尚硅谷大数据项目 （电商平台）
+# 尚硅谷大数据项目 （电商平台）
 
 
 
@@ -6792,7 +6792,7 @@ esac
 
 ### 5.6、DWT脚本
 
-##### 5.6.1、DWT层首日数据导入脚本
+#### 5.6.1、DWT层首日数据导入脚本
 
 ```shell
 #!/bin/bash
@@ -7631,7 +7631,7 @@ case $1 in
 esac
 ```
 
-##### 5.6.2、DWT层每日数据导入脚本
+#### 5.6.2、DWT层每日数据导入脚本
 
 ```shell
 #!/bin/bash
@@ -8754,6 +8754,223 @@ case $1 in
         hadoop fs -rm -r -f /warehouse/gmall/dwt/dwt_activity_topic/dt=$clear_date
         hadoop fs -rm -r -f /warehouse/gmall/dwt/dwt_coupon_topic/dt=$clear_date
         hadoop fs -rm -r -f /warehouse/gmall/dwt/dwt_area_topic/dt=$clear_date
+    ;;
+esac
+```
+
+### 5.7、ADS脚本
+
+#### 5.7.1、ADS数据装载脚本
+
+```shell
+#!/bin/bash
+
+APP=gmall
+APP1=gmall_dim
+APP2=gmall_dwd
+APP3=gmall_dws
+APP4=gmall_dwt
+APP5=gmall_ads
+
+# 如果是输入的日期按照取输入日期；如果没输入日期取当前时间的前一天
+if [ -n "$2" ] ;then
+    do_date=$2
+else 
+    do_date=`date -d "-1 day" +%F`
+fi
+
+ads_activity_stats="
+insert overwrite table ${APP5}.ads_visity_stats
+select *
+from ${APP5}.ads_visity_stats
+union
+select '$do_date'                                                           dt,
+       cast(is_new as string)                                                 is_new,
+       cast(1 as bigint)                                                      recent_days,
+       channel,
+       count(distinct (mid_id))                                               uv_count,
+       cast(sum(during_time) / 1000 as bigint)                                duration_sec,
+       cast(avg(during_time) / 1000 as bigint)                                avg_duration_sec,
+       sum(page_count)                                                        page_count,
+       cast(avg(page_count) as bigint)                                        avg_page_count,
+       count(*)                                                               sv_count,
+       sum(if(page_count = 1, 1, 0))                                          bounce_count,
+       cast(sum(if(page_count = 1, 1, 0)) / count(*) * 100 as decimal(16, 2)) bounce_rate
+
+from (
+         select is_new,
+                channel,
+                session_id,
+                mid_id,
+                sum(during_time) during_time,
+                count(*)         page_count
+         from (select if(visit_date_first = '$do_date', 1, 0)                                               is_new,
+                      channel,
+                      t1.mid_id,
+                      last_page_id,
+                      page_id,
+                      during_time,
+                      ts,
+                      concat(t1.mid_id, '-',
+                             last_value(session_start_point, true) over (partition by t1.mid_id order by ts)) session_id
+               from (select channel,
+                            mid_id,
+                            last_page_id,
+                            page_id,
+                            during_time,
+                            ts,
+                            if(last_page_id is null, ts, null) session_start_point
+                     from ${APP2}.dwd_page_log
+                     where dt = '$do_date') t1
+                        left join (
+                   select mid_id,
+                          visit_date_first
+                   from ${APP4}.dwt_visitor_topic
+               ) t0 on t0.mid_id = t1.mid_id
+              ) t2
+         group by session_id, mid_id, channel, is_new
+     ) t3
+group by channel, is_new
+union
+select '$do_date'                                                           dt,
+       cast(is_new as string)                                                 is_new,
+       cast(1 as bigint)                                                      recent_days,
+       channel,
+       count(distinct (mid_id))                                               uv_count,
+       cast(sum(during_time) / 1000 as bigint)                                duration_sec,
+       cast(avg(during_time) / 1000 as bigint)                                avg_duration_sec,
+       sum(page_count)                                                        page_count,
+       cast(avg(page_count) as bigint)                                        avg_page_count,
+       count(*)                                                               sv_count,
+       sum(if(page_count = 1, 1, 0))                                          bounce_count,
+       cast(sum(if(page_count = 1, 1, 0)) / count(*) * 100 as decimal(16, 2)) bounce_rate
+
+from (
+         select is_new,
+                channel,
+                session_id,
+                mid_id,
+                sum(during_time) during_time,
+                count(*)         page_count
+         from (select if(visit_date_first = date_add('$do_date',-6), 1, 0)                                               is_new,
+                      channel,
+                      t1.mid_id,
+                      last_page_id,
+                      page_id,
+                      during_time,
+                      ts,
+                      concat(t1.mid_id, '-',
+                             last_value(session_start_point, true) over (partition by t1.mid_id order by ts)) session_id
+               from (select channel,
+                            mid_id,
+                            last_page_id,
+                            page_id,
+                            during_time,
+                            ts,
+                            if(last_page_id is null, ts, null) session_start_point
+                     from ${APP2}.dwd_page_log
+                     where dt = date_add('$do_date',-6)) t1
+                        left join (
+                   select mid_id,
+                          visit_date_first
+                   from ${APP4}.dwt_visitor_topic
+               ) t0 on t0.mid_id = t1.mid_id
+              ) t2
+         group by session_id, mid_id, channel, is_new
+     ) t3
+group by channel, is_new
+union
+select '$do_date'                                                           dt,
+       cast(is_new as string)                                                 is_new,
+       cast(1 as bigint)                                                      recent_days,
+       channel,
+       count(distinct (mid_id))                                               uv_count,
+       cast(sum(during_time) / 1000 as bigint)                                duration_sec,
+       cast(avg(during_time) / 1000 as bigint)                                avg_duration_sec,
+       sum(page_count)                                                        page_count,
+       cast(avg(page_count) as bigint)                                        avg_page_count,
+       count(*)                                                               sv_count,
+       sum(if(page_count = 1, 1, 0))                                          bounce_count,
+       cast(sum(if(page_count = 1, 1, 0)) / count(*) * 100 as decimal(16, 2)) bounce_rate
+
+from (
+         select is_new,
+                channel,
+                session_id,
+                mid_id,
+                sum(during_time) during_time,
+                count(*)         page_count
+         from (select if(visit_date_first = date_add('$do_date',-29), 1, 0)                                               is_new,
+                      channel,
+                      t1.mid_id,
+                      last_page_id,
+                      page_id,
+                      during_time,
+                      ts,
+                      concat(t1.mid_id, '-',
+                             last_value(session_start_point, true) over (partition by t1.mid_id order by ts)) session_id
+               from (select channel,
+                            mid_id,
+                            last_page_id,
+                            page_id,
+                            during_time,
+                            ts,
+                            if(last_page_id is null, ts, null) session_start_point
+                     from ${APP2}.dwd_page_log
+                     where dt = date_add('$do_date',-29)) t1
+                        left join (
+                   select mid_id,
+                          visit_date_first
+                   from ${APP4}.dwt_visitor_topic
+               ) t0 on t0.mid_id = t1.mid_id
+              ) t2
+         group by session_id, mid_id, channel, is_new
+     ) t3
+group by channel, is_new;
+"
+
+
+
+
+case $1 in
+    "ads_activity_stats" )
+        hive -e "$ads_activity_stats" 
+    ;;
+    "ads_coupon_stats" )
+        hive -e "$ads_coupon_stats"
+    ;;
+    "ads_order_by_province" )
+        hive -e "$ads_order_by_province" 
+    ;;
+    "ads_order_spu_stats" )
+        hive -e "$ads_order_spu_stats" 
+    ;;
+    "ads_order_total" )
+        hive -e "$ads_order_total" 
+    ;;
+    "ads_page_path" )
+        hive -e "$ads_page_path" 
+    ;;
+    "ads_repeat_purchase" )
+        hive -e "$ads_repeat_purchase" 
+    ;;
+    "ads_user_action" )
+        hive -e "$ads_user_action" 
+    ;;
+    "ads_user_change" )
+        hive -e "$ads_user_change" 
+    ;;
+    "ads_user_retention" )
+        hive -e "$ads_user_retention" 
+    ;;
+    "ads_user_total" )
+        hive -e "$ads_user_total" 
+    ;;
+    "ads_visity_stats" )
+        hive -e "$ads_visity_stats" 
+    ;;
+    "all" )
+        hive -e "$ads_activity_stats$ads_coupon_stats$ads_order_by_province$ads_order_spu_stats$ads_order_total$ads_page_path$ads_repeat_purchase$ads_user_action$ads_user_change$ads_user_retention$ads_user_total$ads_visity_stats"
     ;;
 esac
 ```
@@ -10975,7 +11192,28 @@ TBLPROPERTIES ("parquet.compression"="gzip");
 
 ## 1.6、电商系统构建表（ADS层数据构建）
 
+#### 1.6.1、访客统计表
 
+```hive
+drop table if exists ads_visity_stats;
+create external table ads_visity_stats
+(
+    dt               string comment '统计日期',
+    is_new           string comment '新老客户，1：新 0：老',
+    recent_days      BIGINT COMMENT '最近天数,1:最近1天,7:最近7天,30:最近30天',
+    channel          STRING COMMENT '渠道',
+    uv_count         bigint comment '访客数',
+    duration_sec     bigint comment '页面停留时长',
+    avg_duration_sec bigint comment '平均页面停留时长',
+    page_count       bigint comment '页面浏览总数',
+    avg_page_count   bigint comment '平均页面浏览数',
+    sv_count         bigint comment '会话总数',
+    bounce_count     bigint comment '跳出数',
+    bounce_rate      bigint comment '跳出率'
+) COMMENT '访客统计'
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+    LOCATION '/warehouse/gmall/ads/ads_visit_stats/';
+```
 
 
 
