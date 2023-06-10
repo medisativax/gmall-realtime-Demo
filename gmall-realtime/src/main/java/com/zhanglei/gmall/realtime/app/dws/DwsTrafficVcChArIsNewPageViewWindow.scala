@@ -98,8 +98,8 @@ object DwsTrafficVcChArIsNewPageViewWindow {
       trafficPageViewWithPageDS
     )
 
-    //TODO 5.提取事件时间并生成时间戳
-    val trafficPageViewWithWmDS: DataStream[TrafficPageViewBean] = unionDS.assignTimestampsAndWatermarks(WatermarkStrategy.forBoundedOutOfOrderness[TrafficPageViewBean](Duration.ofSeconds(2))
+    //TODO 5.提取事件时间并生成时间戳   DwdTrafficUserJumpDetail 延迟十二秒输出，DwsTrafficVcChArIsNewPageViewWindow 延迟两秒关闭窗口，总共延迟关闭十四秒
+    val trafficPageViewWithWmDS: DataStream[TrafficPageViewBean] = unionDS.assignTimestampsAndWatermarks(WatermarkStrategy.forBoundedOutOfOrderness[TrafficPageViewBean](Duration.ofSeconds(14))
       .withTimestampAssigner(new SerializableTimestampAssigner[TrafficPageViewBean] {
         override def extractTimestamp(t: TrafficPageViewBean, l: Long): Long = t.ts
       }))
