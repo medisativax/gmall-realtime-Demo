@@ -1,5 +1,9 @@
 package com.zhanglei.gmall.realtime.bean
 
+import lombok.{AllArgsConstructor, Data}
+
+@Data
+@AllArgsConstructor
 case class TrafficPageViewBean(
                               // 窗口起始时间
                               var stt: String,

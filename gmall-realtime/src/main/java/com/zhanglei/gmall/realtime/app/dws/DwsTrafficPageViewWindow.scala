@@ -42,7 +42,7 @@ object DwsTrafficPageViewWindow {
 
     //TODO 2.读取kafka页面主题数据创建流
     val topic = "dwd_traffic_page_log"
-    val groupId = "dwd_traffic_page_view_window"
+    val groupId = "dws_traffic_page_view_window"
     val kafkaDS: DataStream[String] = env.addSource(MyKakfaUtil.getFlinkKafkaConsumer(topic, groupId))
 
     //TODO 3.将每一行数据转换成JSON对象，过滤出 首页和商品详情页

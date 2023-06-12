@@ -58,7 +58,7 @@ object DwdTrafficUserJumpDetail {
 
     //TODO 4.按照mid分组
     val keyedStream: KeyedStream[JSONObject, String] = jsonObjectDS
-      .assignTimestampsAndWatermarks(WatermarkStrategy.forBoundedOutOfOrderness(Duration.ofSeconds(2))
+      .assignTimestampsAndWatermarks(WatermarkStrategy.forBoundedOutOfOrderness[JSONObject](Duration.ofSeconds(2))
         .withTimestampAssigner(new SerializableTimestampAssigner[JSONObject] {
           override def extractTimestamp(t: JSONObject, l: Long): Long = t.getLong("ts")
         }))

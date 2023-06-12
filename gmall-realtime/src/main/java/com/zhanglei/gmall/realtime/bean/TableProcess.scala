@@ -1,8 +1,9 @@
 package com.zhanglei.gmall.realtime.bean
 
-import lombok.Data
+import lombok.{AllArgsConstructor, Data}
 
 @Data
+@AllArgsConstructor
 case class TableProcess(
                          // 来源表
                          var sourceTable: String,
