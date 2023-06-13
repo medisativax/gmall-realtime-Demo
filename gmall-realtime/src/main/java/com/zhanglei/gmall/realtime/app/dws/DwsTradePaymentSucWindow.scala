@@ -25,7 +25,6 @@ object DwsTradePaymentSucWindow {
   def main(args: Array[String]): Unit = {
     //TODO 1.获取执行环境
     val env: StreamExecutionEnvironment = StreamExecutionEnvironment.getExecutionEnvironment
-    val tableEnv: StreamTableEnvironment = StreamTableEnvironment.create(env)
     env.setParallelism(1) // 生产环境中设置为：kafka topic的分区数
 
     //    // 1.1 开启Checkpoint (生产环境一定要开启)

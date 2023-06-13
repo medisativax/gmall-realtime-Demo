@@ -28,7 +28,6 @@ object DwsTradeOrderWindow {
   def main(args: Array[String]): Unit = {
     //TODO 1.环境搭建
     val env: StreamExecutionEnvironment = StreamExecutionEnvironment.getExecutionEnvironment
-    val tableEnv: StreamTableEnvironment = StreamTableEnvironment.create(env)
     env.setParallelism(1) // 生产环境中设置为：kafka topic的分区数
 
     //    // 1.1 开启Checkpoint (生产环境一定要开启)
@@ -129,7 +128,6 @@ object DwsTradeOrderWindow {
       }
     })
 
-    tradeOrderDS.print("tttttt>>>>>>>")
     //TODO 9.开窗、聚合
     val resultDS: DataStream[TradeOrderBean] = tradeOrderDS.windowAll(TumblingEventTimeWindows.of(org.apache.flink.streaming.api.windowing.time.Time.seconds(10)))
       .reduce(new ReduceFunction[TradeOrderBean] {
@@ -138,7 +136,7 @@ object DwsTradeOrderWindow {
           t.orderNewUserCount += t1.orderNewUserCount
           t.orderActivityReduceAmount += t1.orderActivityReduceAmount
           t.orderCouponReduceAmount += t1.orderCouponReduceAmount
-          t.orderOriginalTotalAmount += t1.orderCouponReduceAmount
+          t.orderOriginalTotalAmount += t1.orderOriginalTotalAmount
           t
         }
       }, new AllWindowFunction[TradeOrderBean, TradeOrderBean, TimeWindow] {
