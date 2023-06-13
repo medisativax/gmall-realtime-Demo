@@ -76,7 +76,8 @@ object DwdTradePayDetailSuc {
         |    source_type_name STRING,
         |    split_activity_amount STRING,
         |    split_coupon_amount STRING,
-        |    split_total_amount STRING
+        |    split_total_amount STRING,
+        |    row_op_ts TIMESTAMP_LTZ(3)
         |)
         |""".stripMargin + MyKakfaUtil.getKafkaDDL("dwd_trade_order_detail","pay_detail_suc"))
     //测试
@@ -108,7 +109,8 @@ object DwdTradePayDetailSuc {
         |    od.order_price,
         |    od.split_activity_amount,
         |    od.split_coupon_amount,
-        |    od.split_total_amount split_payment_amount
+        |    od.split_total_amount split_payment_amount,
+        |    od.row_op_ts
         |from payment_info pi
         |join dwd_trade_order_detail od
         |on pi.order_id = od.order_id
@@ -143,6 +145,7 @@ object DwdTradePayDetailSuc {
         |    split_activity_amount STRING,
         |    split_coupon_amount STRING,
         |    split_payment_amount STRING,
+        |    row_op_ts TIMESTAMP_LTZ(3),
         |    primary key(order_detail_id) not enforced
         |)
         |""".stripMargin + MyKakfaUtil.getUpsertKafkaDDL("dwd_trade_pay_detail_suc"))

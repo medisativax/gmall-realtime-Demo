@@ -192,7 +192,8 @@ object DwdTradeOrderPerProcess {
         |    oc.coupon_id,
         |    oc.coupon_use_id,
         |    oi.`type`,
-        |    oi.`old`
+        |    oi.`old`,
+        |    current_row_timestamp() row_op_ts
         |from order_detail_table od
         |join order_info_table oi
         |on od.order_id = oi.id
@@ -255,6 +256,7 @@ object DwdTradeOrderPerProcess {
         |    `coupon_use_id` STRING,
         |    `type` STRING,
         |    `old` map<STRING,STRING>,
+        |    row_op_ts TIMESTAMP_LTZ(3),
         |    primary key(id) not enforced
         |)
         |""".stripMargin + MyKakfaUtil.getUpsertKafkaDDL("dwd_trade_order_per_process"))

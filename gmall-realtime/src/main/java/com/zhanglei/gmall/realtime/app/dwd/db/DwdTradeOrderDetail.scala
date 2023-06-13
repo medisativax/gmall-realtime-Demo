@@ -82,7 +82,8 @@ object DwdTradeOrderDetail {
         |    `coupon_id` STRING,
         |    `coupon_use_id` STRING,
         |    `type` STRING,
-        |    `old` map<STRING,STRING>
+        |    `old` map<STRING,STRING>,
+        |    row_op_ts TIMESTAMP_LTZ(3)
         |)
         |""".stripMargin + MyKakfaUtil.getKafkaDDL("dwd_trade_order_per_process","order_detail"))
 
@@ -107,7 +108,8 @@ object DwdTradeOrderDetail {
         |    source_type_name,
         |    split_activity_amount,
         |    split_coupon_amount,
-        |    split_total_amount
+        |    split_total_amount,
+        |    row_op_ts
         |from dwd_order_pre
         |where `type` = 'insert'
         |""".stripMargin)
@@ -134,7 +136,8 @@ object DwdTradeOrderDetail {
         |    source_type_name STRING,
         |    split_activity_amount STRING,
         |    split_coupon_amount STRING,
-        |    split_total_amount STRING
+        |    split_total_amount STRING,
+        |    row_op_ts TIMESTAMP_LTZ(3)
         |)
         |""".stripMargin + MyKakfaUtil.getKafkaSink("dwd_trade_order_detail"))
     //TODO 5.将数据写出到kafka

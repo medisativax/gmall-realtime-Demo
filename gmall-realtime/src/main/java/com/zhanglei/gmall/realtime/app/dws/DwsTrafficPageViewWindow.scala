@@ -129,7 +129,6 @@ object DwsTrafficPageViewWindow {
           tranfficHomeDetailPageViewBean.stt = DateFormatUtil.toYmdHms(window.getStart)
           tranfficHomeDetailPageViewBean.edt = DateFormatUtil.toYmdHms(window.getEnd)
           tranfficHomeDetailPageViewBean.ts = System.currentTimeMillis()
-
           out.collect(tranfficHomeDetailPageViewBean)
         }
       })
