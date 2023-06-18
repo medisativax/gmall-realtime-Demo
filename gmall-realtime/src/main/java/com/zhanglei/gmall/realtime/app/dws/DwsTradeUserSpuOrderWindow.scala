@@ -1,22 +1,24 @@
 package com.zhanglei.gmall.realtime.app.dws
 
 import com.alibaba.fastjson.{JSON, JSONObject}
+import com.zhanglei.gmall.realtime.app.func.DimAsyncAFunction
 import com.zhanglei.gmall.realtime.bean.TradeTrademarkCategoryUserSpuOrderBean
 import com.zhanglei.gmall.realtime.util.{DateFormatUtil, MyKakfaUtil, TimestampLtz3CompareUtil}
-import org.apache.flink.api.common.functions.{FlatMapFunction, MapFunction, RichMapFunction}
+import org.apache.flink.api.common.functions.{FlatMapFunction, MapFunction}
 import org.apache.flink.api.common.restartstrategy.RestartStrategies
 import org.apache.flink.api.common.state.{ValueState, ValueStateDescriptor}
 import org.apache.flink.api.scala.createTypeInformation
-import org.apache.flink.configuration.Configuration
+
 import org.apache.flink.runtime.state.hashmap.HashMapStateBackend
 import org.apache.flink.streaming.api.CheckpointingMode
 import org.apache.flink.streaming.api.functions.KeyedProcessFunction
-import org.apache.flink.streaming.api.scala.{DataStream, KeyedStream, StreamExecutionEnvironment}
+import org.apache.flink.streaming.api.scala.{AsyncDataStream, DataStream, KeyedStream, StreamExecutionEnvironment}
 import org.apache.flink.util.Collector
-import org.apache.thrift.ProcessFunction
+
 
 import java.util
-import scala.collection.mutable
+import java.util.concurrent.TimeUnit
+
 
 object DwsTradeUserSpuOrderWindow {
   def main(args: Array[String]): Unit = {
@@ -24,15 +26,15 @@ object DwsTradeUserSpuOrderWindow {
     val env: StreamExecutionEnvironment = StreamExecutionEnvironment.getExecutionEnvironment
     env.setParallelism(1) // 生产环境中设置为：kafka topic的分区数
 
-    //    // 1.1 开启Checkpoint (生产环境一定要开启)
-    //    env.enableCheckpointing(5 * 60000L, CheckpointingMode.EXACTLY_ONCE)
-    //    env.getCheckpointConfig.setCheckpointTimeout(10 * 60000L)
-    //    env.getCheckpointConfig.setMaxConcurrentCheckpoints(2) // 设置checkpoint的同时存在的数量
-    //    env.setRestartStrategy(RestartStrategies.fixedDelayRestart(3, 5000L)) // 失败：每隔五秒重启一次，总共三次
-    //    // 1.2 设置状态后端 (生产环境一定要开启)
-    //    env.setStateBackend(new HashMapStateBackend())
-    //    env.getCheckpointConfig.setCheckpointStorage("hdfs://hadoop01:8020/gmall/ck")
-    //    System.setProperty("HADOOP_USER_NAME", "root")
+//    // 1.1 开启Checkpoint (生产环境一定要开启)
+//    env.enableCheckpointing(5 * 60000L, CheckpointingMode.EXACTLY_ONCE)
+//    env.getCheckpointConfig.setCheckpointTimeout(10 * 60000L)
+//    env.getCheckpointConfig.setMaxConcurrentCheckpoints(2) // 设置checkpoint的同时存在的数量
+//    env.setRestartStrategy(RestartStrategies.fixedDelayRestart(3, 5000L)) // 失败：每隔五秒重启一次，总共三次
+//    // 1.2 设置状态后端 (生产环境一定要开启)
+//    env.setStateBackend(new HashMapStateBackend())
+//    env.getCheckpointConfig.setCheckpointStorage("hdfs://hadoop01:8020/gmall/ck")
+//    System.setProperty("HADOOP_USER_NAME", "root")
 
     //TODO 2.读取kafka DWD 下单主题数据
     val topic = "dwd_trade_order_detail"
@@ -98,18 +100,31 @@ object DwsTradeUserSpuOrderWindow {
     })
 
     //TODO 7.关联sku_info维度表，补充spu_id,tm_id,category3_id
-    tradeUserSpuDS.map(new RichMapFunction[TradeTrademarkCategoryUserSpuOrderBean, TradeTrademarkCategoryUserSpuOrderBean] {
+    //    tradeUserSpuDS.map(new RichMapFunction[TradeTrademarkCategoryUserSpuOrderBean, TradeTrademarkCategoryUserSpuOrderBean] {
+    //
+    //      override def open(parameters: _root_.org.apache.flink.configuration.Configuration): Unit = {
+    //        //建立Phoenix连接池
+    //      }
+    //
+    //      override def map(in: _root_.com.zhanglei.gmall.realtime.bean.TradeTrademarkCategoryUserSpuOrderBean): _root_.com.zhanglei.gmall.realtime.bean.TradeTrademarkCategoryUserSpuOrderBean = {
+    //        //查询维度表数据，将数据封装在JAVABean中
+    //        return null
+    //      }
+    //    })
+    val tradeUserSpuWithSkuDS: DataStream[TradeTrademarkCategoryUserSpuOrderBean] = AsyncDataStream.unorderedWait(tradeUserSpuDS,
+      new DimAsyncAFunction[TradeTrademarkCategoryUserSpuOrderBean]("DIM_SKU_INFO") {
+        override def getkey(input: TradeTrademarkCategoryUserSpuOrderBean): String = input.getSkuId
 
-      override def open(parameters: _root_.org.apache.flink.configuration.Configuration): Unit = {
-        //建立连接
-      }
+        override def join(input: TradeTrademarkCategoryUserSpuOrderBean, dimInfo: JSONObject): Unit = {
+          input.setSpuId(dimInfo.getString("SPU_ID"))
+          input.setTrademarkId(dimInfo.getString("TM_ID"))
+          input.setCategory3Id(dimInfo.getString("CATEGORY3_ID"))
 
-      override def map(in: _root_.com.zhanglei.gmall.realtime.bean.TradeTrademarkCategoryUserSpuOrderBean): _root_.com.zhanglei.gmall.realtime.bean.TradeTrademarkCategoryUserSpuOrderBean = {
-        //查询维度表数据，将数据封装在JAVABean中
-        return null
-      }
-    })
+        }
+      },
+      100, TimeUnit.SECONDS)
 
+    tradeUserSpuWithSkuDS.print("tradeUserSpuWithSkuDS>>>>>>")
     //TODO 8.提取事件时间生成Watermark
     //TODO 9.分组、开窗、聚合
     //TODO 10.关联spu,tm,category维度表，补充信息

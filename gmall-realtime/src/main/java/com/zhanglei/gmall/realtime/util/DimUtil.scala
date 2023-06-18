@@ -24,7 +24,7 @@ object DimUtil {
 
     //拼接sql语句
     val querySql: String = "select * from " + GmallConfig.HBASE_SCHEMA + "." + tableName + " where id='" + key + "'"
-    println("查询语句>>>>" + querySql)
+
     //查询数据
     val queryList: List[JSONObject] = JDBCUtil.queryList(connection, querySql, classOf[JSONObject], upderScoreToCamel = false)
     //将从Phoenix查询到数据写入Redis
