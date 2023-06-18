@@ -97,13 +97,16 @@ object DwsTrafficPageViewWindow {
         var homeCt = 0L
         var detailCt = 0L
         // 如果状态为空或者状态时间和当前时间不同，则为需求数据
-        if (homelastDt == null || !homelastDt.equals(curDt)) {
-          homeCt = 1L
-          homeLastState.update(curDt)
-        }
-        if (detailLastDt == null || !detailLastDt.equals(curDt)) {
-          detailCt = 1L
-          homeLastState.update(curDt)
+        if ("home".equals(in.getJSONObject("page").getString("page_id"))){
+          if (homelastDt == null || !homelastDt.equals(curDt)) {
+            homeCt = 1L
+            homeLastState.update(curDt)
+          }
+        } else {
+          if (detailLastDt == null || !detailLastDt.equals(curDt)) {
+            detailCt = 1L
+            homeLastState.update(curDt)
+          }
         }
         // 满足任何一个数据不为0，则输出
         if (homeCt == 1L || detailCt == 1L) {

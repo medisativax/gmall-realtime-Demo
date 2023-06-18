@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
  * @author zhang_lei
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.TYPE)
+@Target(ElementType.FIELD)
 public @interface TransientSink {
     
 }
