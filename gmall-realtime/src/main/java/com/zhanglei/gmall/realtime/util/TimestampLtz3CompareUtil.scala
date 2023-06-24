@@ -1,6 +1,14 @@
 package com.zhanglei.gmall.realtime.util
 
 object TimestampLtz3CompareUtil {
+  // 判断时间是否为整 2023-06-12 11:59:37z
+  def getpintBofore(timeArr:String): String = {
+    if (timeArr.length > 3){
+      return "000"
+    }
+    return timeArr
+  }
+
   // 数据格式 2022-04-01 10:20:47.302Z
   def compare(timestamp1: String, timestamp2: String): Int = {
     // 1. 去除末尾的时区标志，'Z' 表示 0 时区
@@ -9,8 +17,8 @@ object TimestampLtz3CompareUtil {
     // 2.提取小于 1秒的部分
     val timeArr1: Array[String] = cleanedTime1.split("\\.")
     val timeArr2: Array[String] = cleanedTime2.split("\\.")
-    val stringbuilder1: String = new StringBuilder("000").append(timeArr1(timeArr1.length - 1)).toString
-    val stringbuilder2: String = new StringBuilder("000").append(timeArr2(timeArr2.length - 1)).toString
+    val stringbuilder1: String = new StringBuilder("000").append(getpintBofore(timeArr1(timeArr1.length - 1))).toString
+    val stringbuilder2: String = new StringBuilder("000").append(getpintBofore(timeArr2(timeArr2.length - 1))).toString
     val microseconds1: String = stringbuilder1.substring(stringbuilder1.length-3,stringbuilder1.length)
     val microseconds2: String = stringbuilder2.substring(stringbuilder2.length-3,stringbuilder2.length)
     val micro1: Int = microseconds1.toInt
@@ -32,6 +40,6 @@ object TimestampLtz3CompareUtil {
   }
 
   def main(args: Array[String]): Unit = {
-    println(compare("2023-06-12 11:59:37.408Z", "2023-06-12 11:59:37.408Z"))
+    println(compare("2023-06-12 11:59:37.408Z", "2023-06-12 11:59:37z"))
   }
 }

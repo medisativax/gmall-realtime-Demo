@@ -9,7 +9,7 @@ import org.apache.flink.streaming.api.scala.async.{ResultFuture, RichAsyncFuncti
 
 import java.util.concurrent.ThreadPoolExecutor
 
-abstract class DimAsyncAFunction[T] extends RichAsyncFunction[T, T] {
+abstract class DimAsyncAFunction[T] extends RichAsyncFunction[T, T] with DimJoinFunction[T] {
   var dataSource: DruidDataSource = _
   var threadPoolExecutor: ThreadPoolExecutor = _
   var tableName: String = _
@@ -24,10 +24,6 @@ abstract class DimAsyncAFunction[T] extends RichAsyncFunction[T, T] {
 
     threadPoolExecutor = ThreadPoolUtil.getThreadPoolExecutor
   }
-
-  def getkey(input: T): String
-
-  def join(input: T, dimInfo: JSONObject): Unit
 
   override def asyncInvoke(input: T, resultFuture: ResultFuture[T]): Unit = {
     threadPoolExecutor.execute(new Runnable {

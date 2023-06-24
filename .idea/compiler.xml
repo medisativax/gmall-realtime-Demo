@@ -2,14 +2,17 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="gmall-realtime" />
+        <module name="gmall-dataInterface" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="gmall-dataInterface" target="1.8" />
       <module name="gmall-realtime" target="1.8" />
     </bytecodeTargetLevel>
   </component>
