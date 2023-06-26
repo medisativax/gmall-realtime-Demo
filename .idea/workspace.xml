@@ -4,44 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad468a1b-3183-4401-8447-14b93599c91a" name="变更" comment="">
-      <change afterPath="$PROJECT_DIR$/Data_presentation/static/css/liMarquee.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_presentation/static/images/2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_presentation/static/images/3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_presentation/static/images/4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_presentation/static/images/5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_presentation/static/images/6.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_presentation/static/js/echarts-wordcloud.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_presentation/static/js/echarts-wordcloud.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_presentation/static/js/jquery-2.1.1.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_presentation/static/js/jquery.liMarquee.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_presentation/templates/test.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gmall-dataInterface/src/main/java/com/zhanglei/gmalldatainterface/bean/SpuBean.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gmall-dataInterface/src/main/java/com/zhanglei/gmalldatainterface/mapper/ChannelMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gmall-dataInterface/src/main/java/com/zhanglei/gmalldatainterface/mapper/SpuMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gmall-dataInterface/src/main/java/com/zhanglei/gmalldatainterface/mapper/WordCloudMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gmall-dataInterface/src/main/java/com/zhanglei/gmalldatainterface/service/ChannelService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gmall-dataInterface/src/main/java/com/zhanglei/gmalldatainterface/service/SpuService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gmall-dataInterface/src/main/java/com/zhanglei/gmalldatainterface/service/WordCloudService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gmall-dataInterface/src/main/java/com/zhanglei/gmalldatainterface/service/impl/ChannelServerIMPL.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gmall-dataInterface/src/main/java/com/zhanglei/gmalldatainterface/service/impl/SpuServiceIMPL.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gmall-dataInterface/src/main/java/com/zhanglei/gmalldatainterface/service/impl/WordCloudIMPL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data_presentation/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/Data_presentation/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data_presentation/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/Data_presentation/static/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data_presentation/static/css/swiper.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/Data_presentation/static/css/swiper.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data_presentation/static/images/1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Data_presentation/static/images/1.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data_presentation/static/js/jquery.js" beforeDir="false" afterPath="$PROJECT_DIR$/Data_presentation/static/js/jquery.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data_presentation/static/js/js.js" beforeDir="false" afterPath="$PROJECT_DIR$/Data_presentation/static/js/js.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data_presentation/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Data_presentation/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gmall-dataInterface/src/main/java/com/zhanglei/gmalldatainterface/contorller/pyechartsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gmall-dataInterface/src/main/java/com/zhanglei/gmalldatainterface/contorller/pyechartsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gmall-realtime/src/main/java/com/zhanglei/gmall/realtime/app/dim/DimApp.scala" beforeDir="false" afterPath="$PROJECT_DIR$/gmall-realtime/src/main/java/com/zhanglei/gmall/realtime/app/dim/DimApp.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gmall-realtime/src/main/java/com/zhanglei/gmall/realtime/app/dws/DwsTrafficVcChArIsNewPageViewWindow.scala" beforeDir="false" afterPath="$PROJECT_DIR$/gmall-realtime/src/main/java/com/zhanglei/gmall/realtime/app/dws/DwsTrafficVcChArIsNewPageViewWindow.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gmall-realtime/src/main/java/com/zhanglei/gmall/realtime/util/DimUtil.scala" beforeDir="false" afterPath="$PROJECT_DIR$/gmall-realtime/src/main/java/com/zhanglei/gmall/realtime/util/DimUtil.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gmall-realtime/target/classes/com/zhanglei/gmall/realtime/app/dim/DimApp$.class" beforeDir="false" afterPath="$PROJECT_DIR$/gmall-realtime/target/classes/com/zhanglei/gmall/realtime/app/dim/DimApp$.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gmall-realtime/target/classes/com/zhanglei/gmall/realtime/app/dws/DwsTrafficVcChArIsNewPageViewWindow$.class" beforeDir="false" afterPath="$PROJECT_DIR$/gmall-realtime/target/classes/com/zhanglei/gmall/realtime/app/dws/DwsTrafficVcChArIsNewPageViewWindow$.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gmall-realtime/target/classes/com/zhanglei/gmall/realtime/util/DimUtil$.class" beforeDir="false" afterPath="$PROJECT_DIR$/gmall-realtime/target/classes/com/zhanglei/gmall/realtime/util/DimUtil$.class" afterDir="false" />
-    </list>
+    <list default="true" id="ad468a1b-3183-4401-8447-14b93599c91a" name="变更" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -179,6 +142,7 @@
       <workItem from="1687340123060" duration="303000" />
       <workItem from="1687586173367" duration="10082000" />
       <workItem from="1687664101368" duration="16069000" />
+      <workItem from="1687767653369" duration="356000" />
     </task>
     <task id="LOCAL-00001" summary="code">
       <created>1687089366171</created>
@@ -194,13 +158,21 @@
       <option name="project" value="LOCAL" />
       <updated>1687588205070</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="code">
+      <created>1687767797911</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1687767797911</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <MESSAGE value="code" />
     <option name="LAST_COMMIT_MESSAGE" value="code" />
   </component>
