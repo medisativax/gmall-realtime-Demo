@@ -5,10 +5,13 @@
     <title>index</title>
     <script type="text/javascript" src="../static/js/jquery.js"></script>
     <script type="text/javascript" src="../static/js/echarts.min.js"></script>
+    <script type="text/javascript" src="../static/js/echarts-wordcloud.js"></script>
+    <script type="text/javascript" src="../static/js/jquery.liMarquee.js"></script>
     <script type="text/javascript" src="../static/js/js.js"></script>
     <script src="../static/js/swiper.min.js"></script>
     <link rel="stylesheet" href="../static/css/swiper.min.css">
     <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/liMarquee.css">
 </head>
 <body>
 <div class="head clearfix">
@@ -20,7 +23,7 @@
 
         </ul>
     </div>
-    <h1 class="pulll_left">某某科技有限公司-生产数据中心</h1>
+    <h1 class="pulll_left">C.C · 电商数据展示平台</h1>
     <div class="menu menu2 pulll_left">
         <ul>
             <li><a href="">功能菜单一 </a></li>
@@ -52,19 +55,19 @@
     <ul class="clearfix nav1">
         <li style="width: 25%">
             <div class="box">
-                <div class="tit">标题样式</div>
+                <div class="tit">标题样式六</div>
                 <div class="boxnav" id="echart1" style="height: 180px;">
 
                 </div>
             </div>
             <div class="box">
-                <div class="tit">标题样式</div>
+                <div class="tit">用户访问渠道·Top5</div>
                 <div class="boxnav" style="height: 180px;" id="echart21">
                 </div>
             </div>
 
             <div class="box">
-                <div class="tit">标题样式</div>
+                <div class="tit">用户搜索词·词云</div>
                 <div class="boxnav" id="echart3" style="height: 240px;">
 
                 </div>
@@ -76,8 +79,6 @@
                 <div class="boxnav mapc" style="height: 500px; position: relative; padding: 0">
 
 
-                    <!-- Swiper -->
-
                     <div class="swiper-container gallery-top">
                         <div class="mapnav">
                             <ul>
@@ -87,23 +88,23 @@
                                 </li>
                                 <li>
                                     <div><span>下单数</span>
-                                        <p id="下单数">913452</p></div>
+                                        <p id="下单数">0</p></div>
                                 </li>
                                 <li>
                                     <div><span>下单人数</span>
-                                        <p id="下单人数">19532</p></div>
+                                        <p id="下单人数">0</p></div>
                                 </li>
                                 <li>
                                     <div><span>退单数</span>
-                                        <p id="退单数">521711</p></div>
+                                        <p id="退单数">0</p></div>
                                 </li>
                                 <li>
                                     <div><span>退单人数</span>
-                                        <p id="退单人数">521711</p></div>
+                                        <p id="退单人数">0</p></div>
                                 </li>
                             </ul>
                             <script>
-                                function makeAjaxRequest(){
+                                function makeAjaxRequest() {
                                     $.ajax({
                                         url: "http://localhost:8070/api/pyecharts/gmv",
                                         type: "GET",
@@ -113,10 +114,11 @@
                                         }
                                     });
                                 }
+
                                 // 每隔10秒执行一次Ajax请求
                                 setInterval(makeAjaxRequest, 10000);
 
-                                function makeAjaxRequest1(){
+                                function makeAjaxRequest1() {
                                     $.ajax({
                                         url: "http://localhost:8070/api/pyecharts/statistics",
                                         type: "GET",
@@ -129,23 +131,20 @@
                                         }
                                     });
                                 }
+
                                 // 每隔10秒执行一次Ajax请求
                                 setInterval(makeAjaxRequest1, 10000);
                             </script>
 
                         </div>
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide" style="background-image:url(../static/images/1.jpg)"></div>
-                            <div class="swiper-slide" style="background-image:url(../static/images/1.jpg)"></div>
-                            <div class="swiper-slide" style="background-image:url(../static/images/1.jpg)"></div>
-                            <div class="swiper-slide" style="background-image:url(../static/images/1.jpg)"></div>
-                            <div class="swiper-slide" style="background-image:url(../static/images/1.jpg)"></div>
-                            <div class="swiper-slide" style="background-image:url(../static/images/1.jpg)"></div>
-
-
+                            <div class="swiper-slide active" style="background-image:url(../static/images/1.jpg)"></div>
+                            <div class="swiper-slide" style="background-image:url(../static/images/2.jpg)"></div>
+                            <div class="swiper-slide" style="background-image:url(../static/images/3.jpg)"></div>
+                            <div class="swiper-slide" style="background-image:url(../static/images/4.jpg)"></div>
+                            <div class="swiper-slide" style="background-image:url(../static/images/5.jpg)"></div>
+                            <div class="swiper-slide" style="background-image:url(../static/images/6.jpg)"></div>
                         </div>
-
-                        <!-- Add Arrows -->
 
                         <div class="swiper-button-next swiper-button-white"></div>
 
@@ -157,16 +156,17 @@
 
                         <div class="swiper-wrapper">
                             <div class="swiper-slide" style="background-image:url(../static/images/1.jpg)"></div>
-                            <div class="swiper-slide" style="background-image:url(../static/images/1.jpg)"></div>
-                            <div class="swiper-slide" style="background-image:url(../static/images/1.jpg)"></div>
-                            <div class="swiper-slide" style="background-image:url(../static/images/1.jpg)"></div>
-                            <div class="swiper-slide" style="background-image:url(../static/images/1.jpg)"></div>
-                            <div class="swiper-slide" style="background-image:url(../static/images/1.jpg)"></div>
+                            <div class="swiper-slide" style="background-image:url(../static/images/2.jpg)"></div>
+                            <div class="swiper-slide" style="background-image:url(../static/images/3.jpg)"></div>
+                            <div class="swiper-slide" style="background-image:url(../static/images/4.jpg)"></div>
+                            <div class="swiper-slide" style="background-image:url(../static/images/5.jpg)"></div>
+                            <div class="swiper-slide" style="background-image:url(../static/images/6.jpg)"></div>
 
                         </div>
 
                     </div>
                     <script>
+
                         var galleryThumbs = new Swiper('.gallery-thumbs', {
                             spaceBetween: 0,
                             slidesPerView: 5,
@@ -180,6 +180,11 @@
                                 nextEl: '.swiper-button-next',
                                 prevEl: '.swiper-button-prev',
                             },
+                            loop: true,
+                            autoplay: {
+                                delay: 3000,
+                                disableOnInteraction: false,
+                            },
                             thumbs: {
                                 swiper: galleryThumbs
                             }
@@ -188,23 +193,437 @@
                 </div>
             </div>
             <ul class="nav1">
-                <li style="width: 50%">
+                <li style="width: 100%">
                     <div class="box">
-                        <div class="tit">标题样式</div>
+                        <ul class="tit container">
+                            <div class="div" style="display: flex;justify-content: center;align-items: center;">序号</div>
+                            <div class="div" style="display: flex;justify-content: center;align-items: center;">SUP 名称
+                            </div>
+                            <div class="div" style="display: flex;justify-content: center;align-items: center;">下单次数
+                            </div>
+                            <div class="div" style="display: flex;justify-content: center;align-items: center;">下单人数
+                            </div>
+                            <div class="div" style="display: flex;justify-content: center;align-items: center;">下单总金额
+                            </div>
+                        </ul>
+                        <style>
+                            .container {
+                                display: flex;
+                            }
+
+                            .div {
+                                flex: 1;
+                                height: 12px;
+                                margin-right: 10px;
+                            }
+
+                            .spu {
+                                margin: auto;
+                                height: 100%;
+                                width: 200px;
+                                white-space: nowrap; /* 防止换行 */
+                                overflow: hidden; /* 超出部分隐藏 */
+                                text-overflow: ellipsis; /* 使用省略号表示被截断的文本 */
+                                font-family: 'static/font/DS-DIGIB.TTF', serif;
+                                font-weight: 700;
+                            }
+
+                            .spu_list {
+                                height: 30px;
+                            }
+
+                            .spu_list:nth-child(odd) {
+                                background-color: rgba(252, 147, 188, 1);
+                            }
+
+                            .spu_list:nth-child(even) {
+                                background-color: rgba(0, 204, 255, 0.8);
+                            }
+
+                            .div:last-child {
+                                margin-right: 0; /* 移除最后一个 div 的右边距 */
+                            }
+
+                            .my-e
+
+
+                        </style>
                         <div class="boxnav" id="echart4" style="height: 200px;">
+                            <ul>
+                                <div class="container spu_list">
+                                    <li class="div spu" id="spuId"
+                                        style="display: flex;justify-content: center;align-items: center;">
 
+                                    </li>
+                                    <li class="div spu" id="spuName"
+                                        style="display: flex;justify-content: center;align-items: center;">
+
+                                    </li>
+                                    <li class="div spu" id="orderCount"
+                                        style="display: flex;justify-content: center;align-items: center;">
+
+                                    </li>
+                                    <li class="div spu" id="uuCount"
+                                        style="display: flex;justify-content: center;align-items: center;">
+
+                                    </li>
+                                    <li class="div spu" id="orderAmount"
+                                        style="display: flex;justify-content: center;align-items: center;">
+
+                                    </li>
+                                </div>
+                                <div class="container spu_list">
+                                    <li class="div spu" id="spuId1"
+                                        style="display: flex;justify-content: center;align-items: center;">
+
+                                    </li>
+                                    <li class="div spu" id="spuName1"
+                                        style="display: flex;justify-content: center;align-items: center;">
+
+                                    </li>
+                                    <li class="div spu" id="orderCount1"
+                                        style="display: flex;justify-content: center;align-items: center;">
+
+                                    </li>
+                                    <li class="div spu" id="uuCount1"
+                                        style="display: flex;justify-content: center;align-items: center;">
+
+                                    </li>
+                                    <li class="div spu" id="orderAmount1"
+                                        style="display: flex;justify-content: center;align-items: center;">
+
+                                    </li>
+                                </div>
+                                <div class="container spu_list">
+                                    <li class="div spu" id="spuId2"
+                                        style="display: flex;justify-content: center;align-items: center;">
+
+                                    </li>
+                                    <li class="div spu" id="spuName2"
+                                        style="display: flex;justify-content: center;align-items: center;">
+
+                                    </li>
+                                    <li class="div spu" id="orderCount2"
+                                        style="display: flex;justify-content: center;align-items: center;">
+
+                                    </li>
+                                    <li class="div spu" id="uuCount2"
+                                        style="display: flex;justify-content: center;align-items: center;">
+
+                                    </li>
+                                    <li class="div spu" id="orderAmount2"
+                                        style="display: flex;justify-content: center;align-items: center;">
+
+                                    </li>
+                                </div>
+                                <div class="container spu_list">
+                                    <li class="div spu" id="spuId3"
+                                        style="display: flex;justify-content: center;align-items: center;">
+
+                                    </li>
+                                    <li class="div spu" id="spuName3"
+                                        style="display: flex;justify-content: center;align-items: center;">
+
+                                    </li>
+                                    <li class="div spu" id="orderCount3"
+                                        style="display: flex;justify-content: center;align-items: center;">
+
+                                    </li>
+                                    <li class="div spu" id="uuCount3"
+                                        style="display: flex;justify-content: center;align-items: center;">
+
+                                    </li>
+                                    <li class="div spu" id="orderAmount3"
+                                        style="display: flex;justify-content: center;align-items: center;">
+
+                                    </li>
+                                </div>
+                                <div class="container spu_list">
+                                    <li class="div spu" id="spuId4"
+                                        style="display: flex;justify-content: center;align-items: center;">
+
+                                    </li>
+                                    <li class="div spu" id="spuName4"
+                                        style="display: flex;justify-content: center;align-items: center;">
+
+                                    </li>
+                                    <li class="div spu" id="orderCount4"
+                                        style="display: flex;justify-content: center;align-items: center;">
+
+                                    </li>
+                                    <li class="div spu" id="uuCount4"
+                                        style="display: flex;justify-content: center;align-items: center;">
+
+                                    </li>
+                                    <li class="div spu" id="orderAmount4"
+                                        style="display: flex;justify-content: center;align-items: center;">
+
+                                    </li>
+                                </div>
+                                <div class="container spu_list">
+                                    <li class="div spu" id="spuId5"
+                                        style="display: flex;justify-content: center;align-items: center;">
+
+                                    </li>
+                                    <li class="div spu" id="spuName5"
+                                        style="display: flex;justify-content: center;align-items: center;">
+
+                                    </li>
+                                    <li class="div spu" id="orderCount5"
+                                        style="display: flex;justify-content: center;align-items: center;">
+
+                                    </li>
+                                    <li class="div spu" id="uuCount5"
+                                        style="display: flex;justify-content: center;align-items: center;">
+
+                                    </li>
+                                    <li class="div spu" id="orderAmount5"
+                                        style="display: flex;justify-content: center;align-items: center;">
+
+                                    </li>
+                                </div>
+                                <div class="container spu_list">
+                                    <li class="div spu" id="spuId6"
+                                        style="display: flex;justify-content: center;align-items: center;">
+
+                                    </li>
+                                    <li class="div spu" id="spuName6"
+                                        style="display: flex;justify-content: center;align-items: center;">
+
+                                    </li>
+                                    <li class="div spu" id="orderCount6"
+                                        style="display: flex;justify-content: center;align-items: center;">
+
+                                    </li>
+                                    <li class="div spu" id="uuCount6"
+                                        style="display: flex;justify-content: center;align-items: center;">
+
+                                    </li>
+                                    <li class="div spu" id="orderAmount6"
+                                        style="display: flex;justify-content: center;align-items: center;">
+
+                                    </li>
+                                </div>
+                                <div class="container spu_list">
+                                    <li class="div spu" id="spuId7"
+                                        style="display: flex;justify-content: center;align-items: center;">
+
+                                    </li>
+                                    <li class="div spu" id="spuName7"
+                                        style="display: flex;justify-content: center;align-items: center;">
+
+                                    </li>
+                                    <li class="div spu" id="orderCount7"
+                                        style="display: flex;justify-content: center;align-items: center;">
+
+                                    </li>
+                                    <li class="div spu" id="uuCount7"
+                                        style="display: flex;justify-content: center;align-items: center;">
+
+                                    </li>
+                                    <li class="div spu" id="orderAmount7"
+                                        style="display: flex;justify-content: center;align-items: center;">
+
+                                    </li>
+                                </div>
+                                <div class="container spu_list">
+                                    <li class="div spu" id="spuId8"
+                                        style="display: flex;justify-content: center;align-items: center;">
+
+                                    </li>
+                                    <li class="div spu" id="spuName8"
+                                        style="display: flex;justify-content: center;align-items: center;">
+
+                                    </li>
+                                    <li class="div spu" id="orderCount8"
+                                        style="display: flex;justify-content: center;align-items: center;">
+
+                                    </li>
+                                    <li class="div spu" id="uuCount8"
+                                        style="display: flex;justify-content: center;align-items: center;">
+
+                                    </li>
+                                    <li class="div spu" id="orderAmount8"
+                                        style="display: flex;justify-content: center;align-items: center;">
+
+                                    </li>
+                                </div>
+                                <div class="container spu_list">
+                                    <li class="div spu" id="spuId9"
+                                        style="display: flex;justify-content: center;align-items: center;">
+
+                                    </li>
+                                    <li class="div spu" id="spuName9"
+                                        style="display: flex;justify-content: center;align-items: center;">
+
+                                    </li>
+                                    <li class="div spu" id="orderCount9"
+                                        style="display: flex;justify-content: center;align-items: center;">
+
+                                    </li>
+                                    <li class="div spu" id="uuCount9"
+                                        style="display: flex;justify-content: center;align-items: center;">
+
+                                    </li>
+                                    <li class="div spu" id="orderAmount9"
+                                        style="display: flex;justify-content: center;align-items: center;">
+
+                                    </li>
+                                </div>
+                                <div class="container spu_list">
+                                    <li class="div spu" id="spuId10"
+                                        style="display: flex;justify-content: center;align-items: center;">
+
+                                    </li>
+                                    <li class="div spu" id="spuName10"
+                                        style="display: flex;justify-content: center;align-items: center;">
+
+                                    </li>
+                                    <li class="div spu" id="orderCount10"
+                                        style="display: flex;justify-content: center;align-items: center;">
+
+                                    </li>
+                                    <li class="div spu" id="uuCount10"
+                                        style="display: flex;justify-content: center;align-items: center;">
+
+                                    </li>
+                                    <li class="div spu" id="orderAmount10"
+                                        style="display: flex;justify-content: center;align-items: center;">
+
+                                    </li>
+                                </div>
+                                <div class="container spu_list">
+                                    <li class="div spu" id="spuId11"
+                                        style="display: flex;justify-content: center;align-items: center;">
+
+                                    </li>
+                                    <li class="div spu" id="spuName11"
+                                        style="display: flex;justify-content: center;align-items: center;">
+
+                                    </li>
+                                    <li class="div spu" id="orderCount11"
+                                        style="display: flex;justify-content: center;align-items: center;">
+
+                                    </li>
+                                    <li class="div spu" id="uuCount11"
+                                        style="display: flex;justify-content: center;align-items: center;">
+
+                                    </li>
+                                    <li class="div spu" id="orderAmount11"
+                                        style="display: flex;justify-content: center;align-items: center;">
+
+                                    </li>
+                                </div>
+                            </ul>
                         </div>
+                        <script>
+                            function makeAjaxRequest() {
+                                $.ajax({
+                                    url: "http://localhost:8070/api/pyecharts/Spu",
+                                    type: "GET",
+                                    dataType: "JSON",
+                                    success: function (res) {
+                                        document.getElementById("spuId").innerHTML = 0;
+                                        document.getElementById("spuName").innerHTML = res.data[0]["spuName"];
+                                        document.getElementById("orderCount").innerHTML = res.data[0]["orderCount"];
+                                        document.getElementById("uuCount").innerHTML = res.data[0]["uuCount"];
+                                        document.getElementById("orderAmount").innerHTML = res.data[0]["orderAmount"];
+                                        document.getElementById("spuId1").innerHTML = 1;
+                                        document.getElementById("spuName1").innerHTML = res.data[1]["spuName"];
+                                        document.getElementById("orderCount1").innerHTML = res.data[1]["orderCount"];
+                                        document.getElementById("uuCount1").innerHTML = res.data[1]["uuCount"];
+                                        document.getElementById("orderAmount1").innerHTML = res.data[1]["orderAmount"];
+                                        document.getElementById("spuId2").innerHTML = 2;
+                                        document.getElementById("spuName2").innerHTML = res.data[2]["spuName"];
+                                        document.getElementById("orderCount2").innerHTML = res.data[2]["orderCount"];
+                                        document.getElementById("uuCount2").innerHTML = res.data[2]["uuCount"];
+                                        document.getElementById("orderAmount2").innerHTML = res.data[2]["orderAmount"];
+                                        document.getElementById("spuId3").innerHTML = 3;
+                                        document.getElementById("spuName3").innerHTML = res.data[3]["spuName"];
+                                        document.getElementById("orderCount3").innerHTML = res.data[3]["orderCount"];
+                                        document.getElementById("uuCount3").innerHTML = res.data[3]["uuCount"];
+                                        document.getElementById("orderAmount3").innerHTML = res.data[3]["orderAmount"];
+                                        document.getElementById("spuId4").innerHTML = 4;
+                                        document.getElementById("spuName4").innerHTML = res.data[4]["spuName"];
+                                        document.getElementById("orderCount4").innerHTML = res.data[4]["orderCount"];
+                                        document.getElementById("uuCount4").innerHTML = res.data[4]["uuCount"];
+                                        document.getElementById("orderAmount4").innerHTML = res.data[4]["orderAmount"];
+                                        document.getElementById("spuId5").innerHTML = 5;
+                                        document.getElementById("spuName5").innerHTML = res.data[5]["spuName"];
+                                        document.getElementById("orderCount5").innerHTML = res.data[5]["orderCount"];
+                                        document.getElementById("uuCount5").innerHTML = res.data[5]["uuCount"];
+                                        document.getElementById("orderAmount5").innerHTML = res.data[5]["orderAmount"];
+                                        document.getElementById("spuId6").innerHTML = 6;
+                                        document.getElementById("spuName6").innerHTML = res.data[6]["spuName"];
+                                        document.getElementById("orderCount6").innerHTML = res.data[6]["orderCount"];
+                                        document.getElementById("uuCount6").innerHTML = res.data[6]["uuCount"];
+                                        document.getElementById("orderAmount6").innerHTML = res.data[6]["orderAmount"];
+                                        document.getElementById("spuId7").innerHTML = 7;
+                                        document.getElementById("spuName7").innerHTML = res.data[7]["spuName"];
+                                        document.getElementById("orderCount7").innerHTML = res.data[7]["orderCount"];
+                                        document.getElementById("uuCount7").innerHTML = res.data[7]["uuCount"];
+                                        document.getElementById("orderAmount7").innerHTML = res.data[7]["orderAmount"];
+                                        document.getElementById("spuId8").innerHTML = 8;
+                                        document.getElementById("spuName8").innerHTML = res.data[8]["spuName"];
+                                        document.getElementById("orderCount8").innerHTML = res.data[8]["orderCount"];
+                                        document.getElementById("uuCount8").innerHTML = res.data[8]["uuCount"];
+                                        document.getElementById("orderAmount8").innerHTML = res.data[8]["orderAmount"];
+                                        document.getElementById("spuId9").innerHTML = 9;
+                                        document.getElementById("spuName9").innerHTML = res.data[9]["spuName"];
+                                        document.getElementById("orderCount9").innerHTML = res.data[9]["orderCount"];
+                                        document.getElementById("uuCount9").innerHTML = res.data[9]["uuCount"];
+                                        document.getElementById("orderAmount9").innerHTML = res.data[9]["orderAmount"];
+                                        document.getElementById("spuId10").innerHTML = 10;
+                                        document.getElementById("spuName10").innerHTML = res.data[10]["spuName"];
+                                        document.getElementById("orderCount10").innerHTML = res.data[10]["orderCount"];
+                                        document.getElementById("uuCount10").innerHTML = res.data[10]["uuCount"];
+                                        document.getElementById("orderAmount10").innerHTML = res.data[10]["orderAmount"];
+                                        document.getElementById("spuId11").innerHTML = 11;
+                                        document.getElementById("spuName11").innerHTML = res.data[11]["spuName"];
+                                        document.getElementById("orderCount11").innerHTML = res.data[11]["orderCount"];
+                                        document.getElementById("uuCount11").innerHTML = res.data[11]["uuCount"];
+                                        document.getElementById("orderAmount11").innerHTML = res.data[11]["orderAmount"];
+
+                                    }
+                                });
+                            }
+
+                            setInterval(makeAjaxRequest, 1000);
+                        </script>
+                        <style>
+                            #echart4 {
+                                height: 200px; /* 设置容器的高度 */
+                                overflow: hidden; /* 隐藏溢出内容 */
+                            }
+
+                            #echart4 ul {
+                                list-style-type: none;
+                                margin: 0;
+                                padding: 0;
+                                animation: marquee 20s linear infinite; /* 设置滚动动画 */
+                                position: relative; /* 添加相对定位，用于实现循环效果 */
+                                top: 0; /* 初始位置 */
+                            }
+
+                            #echart4 li {
+                                line-height: 40px; /* 设置行高，控制垂直间距 */
+                            }
+
+                            @keyframes marquee {
+                                0% {
+                                    top: 0; /* 初始位置 */
+                                }
+                                50% {
+                                    top: -100%; /* 中间位置，根据需要调整滚动距离 */
+                                }
+                                100% {
+                                    top: 0; /* 结束位置，回到初始位置 */
+                                }
+                            }
+                        </style>
                     </div>
                 </li>
-                <li style="width: 50%">
 
-                    <div class="box">
-                        <div class="tit">标题样式</div>
-                        <div class="boxnav" id="echart5" style="height: 200px;">
-
-                        </div>
-                    </div>
-                </li>
             </ul>
 
         </li>
@@ -230,16 +649,16 @@
                 </div>
             </div>
             <div class="box">
-                <div class="tit">标题样式</div>
+                <div class="tit">我是标题三</div>
                 <div class="boxnav" id="echart6" style="height: 170px;"></div>
             </div>
 
             <div class="box">
-                <div class="tit">标题样式</div>
+                <div class="tit">我是标题四</div>
                 <div class="boxnav" style="height: 170px;" id="echart7"></div>
             </div>
             <div class="box">
-                <div class="tit">标题样式</div>
+                <div class="tit">我是标题五</div>
                 <div class="boxnav" style="height: 170px;">
                     <ul class="gnlb">
                         <li><span>月平均小时：<em>119351</em></span></li>

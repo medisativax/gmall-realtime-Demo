@@ -79,16 +79,16 @@ object DwsTrafficVcChArIsNewPageViewWindow {
       val common: JSONObject = jsonObject.getJSONObject("common")
       val page: JSONObject = jsonObject.getJSONObject("page")
       val lastPageId: String = page.getString("last_page_id")
-      var sv = 0L
+      var svCt = 0L
       if (lastPageId==null){
-          sv = 1L
+          svCt = 1L
       }
       TrafficPageViewBean(stt = "", edt = "",
         vc = common.getString("vc"),
         ch = common.getString("ch"),
         ar = common.getString("ar"),
         isNew = common.getString("is_new"),
-        uvCt = 0L, svCt = sv, pvCt = 1L, durSum = page.getLong("during_time"), ujCt = 0L,
+        uvCt = 0L, svCt = svCt, pvCt = 1L, durSum = page.getLong("during_time"), ujCt = 0L,
         ts = jsonObject.getLong("ts"))
     })
 
