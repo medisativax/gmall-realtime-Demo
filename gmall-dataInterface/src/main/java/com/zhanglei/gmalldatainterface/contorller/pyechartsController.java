@@ -186,6 +186,43 @@ public class pyechartsController {
     }
 
 
+    @Autowired
+    private ProvinceCountMapper provinceCountMapper;
+
+    @CrossOrigin
+    @RequestMapping("/provincecount")
+    public String getProvinceCount(@RequestParam(value = "date",defaultValue = "0") int date){
+        if (date == 0){
+            date = getToday();
+        }
+        List<Statistic> provinceCount = provinceCountMapper.selectProvinceCount(date);
+        if (provinceCount == null){
+            return "";
+        }
+        StringBuilder rows = new StringBuilder("[");
+        for (int i = 0; i < provinceCount.size(); i++) {
+            Statistic province = provinceCount.get(i);
+            String type = province.getType();
+            Integer orderCt = province.getOrderCt();
+            rows.append("{\n" +
+                    "\t\"value\": " + orderCt + ",\n" +
+                    "\t\"name\": \"" + type + "\"\n" +
+                    "}\n");
+
+            if (i < provinceCount.size() - 1) {
+                rows.append(",");
+            } else {
+                rows.append("]");
+            }
+        }
+        return "{" +
+                "    \"status\":0," +
+                "    \"msg\":\"\"," +
+                "    \"data\": " + rows +
+                "}";
+    }
+
+
     private int getToday(){
         long ts = System.currentTimeMillis();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd");

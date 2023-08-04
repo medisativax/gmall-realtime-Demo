@@ -2,7 +2,8 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>index</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据展示平台</title>
     <script type="text/javascript" src="../static/js/jquery.js"></script>
     <script type="text/javascript" src="../static/js/echarts.min.js"></script>
     <script type="text/javascript" src="../static/js/echarts-wordcloud.js"></script>
@@ -15,7 +16,7 @@
 </head>
 <body>
 <div class="head clearfix">
-    <div class="home"><a href=""><img src="../static/images/Home.png" width="28"> <i> 首页</i></a></div>
+    <div class="home"><a href="/home"><img src="../static/images/Home.png" width="28"> <i> 首页</i></a></div>
     <div class="menu menu1 pulll_left">
         <ul>
             <li><a href="">功能菜单一 </a></li>
@@ -55,14 +56,14 @@
     <ul class="clearfix nav1">
         <li style="width: 25%">
             <div class="box">
-                <div class="tit">标题样式六</div>
-                <div class="boxnav" id="echart1" style="height: 180px;">
+                <div class="tit">各省份购买占比</div>
+                <div class="boxnav" id="echart1" style="height: 240px;">
 
                 </div>
             </div>
             <div class="box">
                 <div class="tit">用户访问渠道·Top5</div>
-                <div class="boxnav" style="height: 180px;" id="echart21">
+                <div class="boxnav" style="height: 240px;" id="echart21">
                 </div>
             </div>
 
@@ -116,7 +117,7 @@
                                 }
 
                                 // 每隔10秒执行一次Ajax请求
-                                setInterval(makeAjaxRequest, 10000);
+                                setInterval(makeAjaxRequest, 2000);
 
                                 function makeAjaxRequest1() {
                                     $.ajax({
@@ -133,7 +134,7 @@
                                 }
 
                                 // 每隔10秒执行一次Ajax请求
-                                setInterval(makeAjaxRequest1, 10000);
+                                setInterval(makeAjaxRequest1, 2000);
                             </script>
 
                         </div>
@@ -194,7 +195,7 @@
             </div>
             <ul class="nav1">
                 <li style="width: 100%">
-                    <div class="box">
+                    <div class="box" style="height: 362px">
                         <ul class="tit container">
                             <div class="div" style="display: flex;justify-content: center;align-items: center;">序号</div>
                             <div class="div" style="display: flex;justify-content: center;align-items: center;">SUP 名称
@@ -248,7 +249,7 @@
 
 
                         </style>
-                        <div class="boxnav" id="echart4" style="height: 200px;">
+                        <div class="boxnav" id="echart4">
                             <ul>
                                 <div class="container spu_list">
                                     <li class="div spu" id="spuId"
@@ -592,7 +593,7 @@
                         </script>
                         <style>
                             #echart4 {
-                                height: 200px; /* 设置容器的高度 */
+                                height: 320px; /* 设置容器的高度 */
                                 overflow: hidden; /* 隐藏溢出内容 */
                             }
 
@@ -600,13 +601,13 @@
                                 list-style-type: none;
                                 margin: 0;
                                 padding: 0;
-                                animation: marquee 20s linear infinite; /* 设置滚动动画 */
+                                animation: marquee 15s linear infinite; /* 设置滚动动画 */
                                 position: relative; /* 添加相对定位，用于实现循环效果 */
                                 top: 0; /* 初始位置 */
                             }
 
                             #echart4 li {
-                                line-height: 40px; /* 设置行高，控制垂直间距 */
+                                line-height: 20px; /* 设置行高，控制垂直间距 */
                             }
 
                             @keyframes marquee {
@@ -614,7 +615,7 @@
                                     top: 0; /* 初始位置 */
                                 }
                                 50% {
-                                    top: -100%; /* 中间位置，根据需要调整滚动距离 */
+                                    top: -16%; /* 中间位置，根据需要调整滚动距离 */
                                 }
                                 100% {
                                     top: 0; /* 结束位置，回到初始位置 */
@@ -635,31 +636,64 @@
                         <div class="">
                             <div class="wt1">
                                 <div class="wt2"><img src="../static/images/weather.png">
-                                    <p>29<sup>℃</sup></p></div>
-                                <span>多云转晴</span>
+                                    <p id="实时温度">0<sup>℃</sup></p></div>
+                                <span id="天气情况">c.c.</span>
                             </div>
 
                         </div>
                         <div class="wt03">
-                            <p><span>气温：</span>20 ~ 32℃</p>
-                            <p><span>降水量：</span>32毫米</p>
-                            <p><span>风况：</span>西北风微风</p>
+                            <p><span>气温：</span><span id="气温">c.c.</span><span>星期：</span><span id="星期">c.c.</span></p>
+                            <p><span>湿度：</span><span id="湿度">c.c.</span><span>地区：</span><span id="地区">c.c.</span></p>
+                            <p><span>风况：</span><span id="风况">c.c.</span><span>空质：</span><span id="空气质量">c.c</span></p>
                         </div>
+                        <script>
+                            $.ajax({
+                                url: "https://www.yiketianqi.com/free/day?appid=99843139&appsecret=8Qxh0NDo&unescape=1&cityid=101250101",
+                                type: "GET",
+                                dataType: "JSON",
+                                success: function (res) {
+                                    document.getElementById("气温").innerHTML = res["tem_day"] + "~" + res["tem_night"] + "℃";
+                                    document.getElementById("实时温度").innerHTML = res["tem"];
+                                    document.getElementById("湿度").innerHTML = res["humidity"];
+                                    document.getElementById("风况").innerHTML = res["win"] +"   "+ res["win_speed"];
+                                    document.getElementById("天气情况").innerHTML = res["wea"];
+                                    document.getElementById("空气质量").innerHTML = res["air"];
+                                    document.getElementById("星期").innerHTML = res["week"];
+                                    document.getElementById("地区").innerHTML = res["city"];
+                                }
+                            });
+                            setInterval(makeAjaxRequest3, 60000);
+                            function makeAjaxRequest3() {
+                                $.ajax({
+                                    url: "https://www.yiketianqi.com/free/day?appid=99843139&appsecret=8Qxh0NDo&unescape=1&cityid=101250101",
+                                    type: "GET",
+                                    dataType: "JSON",
+                                    success: function (res) {
+                                        document.getElementById("qiwen").innerHTML = res["tem_day"] + "~" + res["tem_night"];
+                                        document.getElementById("shishiwendu").innerHTML = res["tem"];
+                                        document.getElementById("jiangshuiliang").innerHTML = res["humidity"];
+                                        document.getElementById("fengkuang").innerHTML = res["win"];
+                                        document.getElementById("tiqnqiqingkuang").innerHTML = res["wea"];
+                                    }
+                                });
+                            }
+
+                        </script>
                     </div>
                 </div>
             </div>
             <div class="box">
                 <div class="tit">我是标题三</div>
-                <div class="boxnav" id="echart6" style="height: 170px;"></div>
+                <div class="boxnav" id="echart6" style="height: 220px;"></div>
             </div>
 
             <div class="box">
                 <div class="tit">我是标题四</div>
-                <div class="boxnav" style="height: 170px;" id="echart7"></div>
+                <div class="boxnav" style="height: 220px;" id="echart7"></div>
             </div>
             <div class="box">
                 <div class="tit">我是标题五</div>
-                <div class="boxnav" style="height: 170px;">
+                <div class="boxnav" style="height: 190px;">
                     <ul class="gnlb">
                         <li><span>月平均小时：<em>119351</em></span></li>
                         <li><span>月平均小时：<em>119351</em></span></li>

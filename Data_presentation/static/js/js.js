@@ -3,10 +3,8 @@
 })
 $(function () {
     echarts_1();
-
     echarts_3();
     echarts_21();
-
     echarts_6();
     echarts_7();
 
@@ -14,141 +12,47 @@ $(function () {
     function echarts_1() {
         // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('echart1'));
-        option = {
+
+        var option = {
             tooltip: {
-                trigger: 'axis',
-
-                axisPointer: {
-                    type: 'shadow'
-                }
+                trigger: 'item'
             },
-            legend: {
-                data: ['业务1', '业务2', '业务3', '业务4'],
-                left: 'center',
-                textStyle: {color: "#fff"},
-            },
-            grid: {
-                left: '0',
-                top: '30',
-                right: '10',
-                bottom: '0',
-                containLabel: true
-            },
-
-            xAxis: [{
-                type: 'category',
-                boundaryGap: false,
-                data: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
-                axisLine: {
-                    lineStyle: {
-                        color: 'rgba(255,255,255,0.12)'
-                    }
-                },
-                axisLabel: {
-                    //   margin: 10,
-                    color: '#e2e9ff',
-                    textStyle: {
-                        fontSize: 14
-                    },
-                },
-            }],
-            yAxis: [{
-                splitNumber: 3,
-                axisLabel: {
-                    formatter: '{value}',
-                    color: '#e2e9ff',
-                },
-                axisLine: {
-                    show: false
-                },
-                splitLine: {
-                    lineStyle: {
-                        color: 'rgba(255,255,255,0.12)',
-                        type: 'dotted'
-                    }
-                }
-            }],
             series: [
                 {
-                    name: '业务1',
-                    type: 'line',
-                    smooth: true,
-                    symbol: 'circle',
-                    symbolSize: 5,
-                    showSymbol: false,
-                    lineStyle: {
-
-                        normal: {
-                            color: '#fbc20e',
-                            width: 2
+                    name: '各省份购买人数',
+                    type: 'pie',
+                    radius: '80%',
+                    data: [
+                        {value: 0, name: 'c.c'},
+                        {value: 0, name: 'c.c'}
+                    ],
+                    emphasis: {
+                        itemStyle: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
                         }
-                    },
-
-                    itemStyle: {normal: {color: '#fbc20e',}},
-                    data: [6, 2, 5, 1, 7, 4, 13, 4, 18, 6, 8, 4],
-
-                },
-                {
-                    name: '业务2',
-                    type: 'line',
-                    smooth: true,
-                    symbol: 'circle',
-                    symbolSize: 3,
-                    showSymbol: false,
-                    lineStyle: {
-
-                        normal: {
-                            color: '#f7717e',
-                            width: 2
-                        }
-                    },
-                    itemStyle: {normal: {color: '#f7717e',}},
-                    data: [4, 6, 4, 8, 6, 8, 4, 6, 2, 5, 1, 7],
-
-                },
-                {
-                    name: '业务3',
-                    type: 'line',
-                    smooth: true,
-                    symbol: 'circle',
-                    symbolSize: 3,
-                    showSymbol: false,
-                    lineStyle: {
-
-                        normal: {
-                            color: '#4670f4',
-                            width: 2
-                        }
-                    },
-
-                    itemStyle: {normal: {color: '#4670f4',}},
-                    data: [8, 6, 8, 4, 4, 6, 5, 4, 6, 2, 1, 7],
-
-                },
-                {
-                    name: '业务4',
-                    type: 'line',
-                    smooth: true,
-                    symbol: 'circle',
-                    symbolSize: 3,
-                    showSymbol: false,
-                    lineStyle: {
-
-                        normal: {
-                            color: '#64cd84',
-                            width: 2
-                        }
-                    },
-
-                    itemStyle: {normal: {color: '#64cd84',}},
-                    data: [8, 4, 6, 5, 4, 6, 2, 1, 7, 6, 8, 4],
-
+                    }
                 }
-
             ]
         };
-        // 使用刚指定的配置项和数据显示图表。
         myChart.setOption(option);
+        setInterval(makeAjaxRequest1, 2000);
+
+        function makeAjaxRequest1() {
+            $.ajax({
+                url: "http://192.168.0.199:8070/api/pyecharts/provincecount",
+                type: "GET",
+                dataType: "JSON",
+                success: function (res) {
+                    option.series[0].data = res.data
+                    // 使用刚指定的配置项和数据显示图表。
+                    myChart.setOption(option);
+                }
+            });
+        }
+
+        // 使用刚指定的配置项和数据显示图表。
         window.addEventListener("resize", function () {
             myChart.resize();
         });
@@ -240,9 +144,9 @@ $(function () {
         };
         myChart.setOption(option);
 
-        setInterval(makeAjaxRequest1, 10000);
+        setInterval(makeAjaxRequest2, 2000);
 
-        function makeAjaxRequest1() {
+        function makeAjaxRequest2() {
             $.ajax({
                 url: "http://192.168.0.199:8070/api/pyecharts/channels",
                 type: "GET",
@@ -256,8 +160,6 @@ $(function () {
                 }
             });
         }
-
-        // 每隔10秒执行一次Ajax请求
 
         window.addEventListener("resize", function () {
             myChart.resize();
@@ -307,9 +209,9 @@ $(function () {
                 data: keywords
             }]
         };
-        setInterval(makeAjaxRequest1, 10000);
+        setInterval(makeAjaxRequest3, 2000);
 
-        function makeAjaxRequest1() {
+        function makeAjaxRequest3() {
             $.ajax({
                 url: "http://localhost:8070/api/pyecharts/wordCloud",
                 type: "GET",
@@ -331,84 +233,7 @@ $(function () {
 
     function echarts_6() {
         var myChart = echarts.init(document.getElementById('echart6'));
-        option = {
-            tooltip: {
-                trigger: 'axis',
-                axisPointer: {
-                    type: 'shadow'
-                }
-            },
-            color: ["#248ff7", '#64cd84'],
-            legend: {
-                data: ['系统外部', '系统内部'],
-                left: 'center',
-                textStyle: {color: "#fff"},
-                itemWidth: 15,
-                itemHeight: 10,
-            },
-            grid: {
-                left: '0',
-                top: '30',
-                right: '10',
-                bottom: '0',
-                containLabel: true
-            },
 
-            xAxis: [{
-                type: 'category',
-                // boundaryGap: false,
-                data: ['1', '2', '3', '4', '5'],
-                axisLine: {
-                    lineStyle: {
-                        color: 'rgba(255,255,255,0.12)'
-                    }
-                },
-                axisLabel: {
-                    //   margin: 10,
-                    color: '#e2e9ff',
-                    textStyle: {
-                        fontSize: 14
-                    },
-                },
-            }],
-            yAxis: [{
-                splitNumber: 3,
-                axisLabel: {
-                    formatter: '{value}',
-                    color: '#e2e9ff',
-                },
-                axisLine: {
-                    show: false
-                },
-                splitLine: {
-                    lineStyle: {
-                        color: 'rgba(255,255,255,0.12)',
-                        type: 'dotted'
-                    }
-                }
-            }],
-            series: [
-                {
-                    name: '系统外部',
-                    type: 'bar',
-                    stack: '排名',
-                    data: [120, 132, 101, 134, 90],
-                    barWidth: 15
-                },
-                {
-                    name: '系统内部',
-                    type: 'bar',
-                    stack: '排名',
-                    data: [220, 182, 191, 234, 290],
-                    barWidth: 15,
-                    itemStyle: {
-                        normal: {
-                            barBorderRadius: [30, 30, 0, 0],
-                        }
-                    }
-                },
-            ]
-        };
         myChart.setOption(option);
         window.addEventListener("resize", function () {
             myChart.resize();
@@ -417,136 +242,8 @@ $(function () {
 
     function echarts_7() {
         var myChart = echarts.init(document.getElementById('echart7'));
-        option = {
-            tooltip: {
-                trigger: 'axis',
-                axisPointer: {
-                    type: 'shadow'
-                }
-            },
-            legend: {
-                data: ['昨日', '今日', '平均'],
-                left: 'center',
-                textStyle: {color: "#fff"},
-            },
-            grid: {
-                left: '0',
-                top: '30',
-                right: '10',
-                bottom: '0',
-                containLabel: true
-            },
 
-            xAxis: [{
-                type: 'category',
-                boundaryGap: false,
-                data: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
-                axisLine: {
-                    lineStyle: {
-                        color: 'rgba(255,255,255,0.12)'
-                    }
-                },
-                axisLabel: {
-                    //   margin: 10,
-                    color: '#e2e9ff',
-                    textStyle: {
-                        fontSize: 14
-                    },
-                },
-            }],
-            yAxis: [{
-                splitNumber: 3,
-                axisLabel: {
-                    formatter: '{value}',
-                    color: '#e2e9ff',
-                },
-                axisLine: {
-                    show: false
-                },
-                splitLine: {
-                    lineStyle: {
-                        color: 'rgba(255,255,255,0.12)',
-                        type: 'dotted'
-                    }
-                }
-            }],
-            series: [
-                {
-                    name: '昨日',
-                    type: 'line',
-                    //  smooth: true,
-                    symbol: 'circle',
-                    symbolSize: 5,
-                    showSymbol: false,
-                    areaStyle: {
-
-                        normal: {
-
-                            color: 'rgba(101,192,205,.3)'
-
-                        }
-
-                    },
-                    lineStyle: {
-                        normal: {
-                            color: '#58c8da',
-                            width: 2
-                        }
-                    },
-
-                    itemStyle: {normal: {color: '#58c8da',}},
-                    data: [8, 6, 8, 4, 4, 6, 2, 4, 6, 5, 1, 7],
-
-                },
-                {
-                    name: '今日',
-                    type: 'line',
-                    //   smooth: true,
-                    symbol: 'circle',
-                    symbolSize: 3,
-                    showSymbol: false,
-                    areaStyle: {
-
-                        normal: {
-                            color: 'rgba(218,179,101,.3)'
-                        }
-
-                    },
-
-                    lineStyle: {
-
-                        normal: {
-                            color: '#f7b851',
-                            width: 2
-                        }
-                    },
-
-                    itemStyle: {normal: {color: '#f7b851',}},
-                    data: [8, 4, 6, 7, 6, 8, 4, 5, 4, 6, 2, 6],
-
-                },
-                {
-                    name: '平均',
-                    type: 'line',
-                    //   smooth: true,
-                    symbol: 'circle',
-                    symbolSize: 3,
-                    showSymbol: false,
-                    lineStyle: {
-
-                        normal: {
-                            color: '#fff',
-                            width: 1,
-                            type: 'dotted'
-                        }
-                    },
-                    itemStyle: {normal: {color: '#fff',}},
-                    data: [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5],
-
-                }
-            ]
-        };
-        myChart.setOption(option);
+        // myChart.setOption(option);
         window.addEventListener("resize", function () {
             myChart.resize();
         });
