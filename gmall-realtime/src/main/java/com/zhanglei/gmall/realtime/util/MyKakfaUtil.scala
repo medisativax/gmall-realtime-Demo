@@ -13,6 +13,13 @@ object MyKakfaUtil {
 
   val KAKFA_SERVER = "hadoop01:9092"
 
+  /**
+   * 获得Kafka-consumer
+   *
+   * @param topic   kafka主题
+   * @param groupId 消费者组
+   * @return FlinkKafkaConsumer类型
+   */
   def getFlinkKafkaConsumer(topic: String,groupId: String): FlinkKafkaConsumer[String] ={
 
     val properties = new Properties()
