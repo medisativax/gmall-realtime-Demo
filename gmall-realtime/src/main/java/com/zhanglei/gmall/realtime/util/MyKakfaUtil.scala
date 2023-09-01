@@ -14,8 +14,7 @@ object MyKakfaUtil {
   val KAKFA_SERVER = "hadoop01:9092"
 
   /**
-   * 获得Kafka-consumer
-   *
+   * 获得 Kafka-consumer
    * @param topic   kafka主题
    * @param groupId 消费者组
    * @return FlinkKafkaConsumer类型

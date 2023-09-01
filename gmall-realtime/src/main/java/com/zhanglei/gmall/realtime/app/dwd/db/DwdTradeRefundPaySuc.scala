@@ -38,7 +38,7 @@ object DwdTradeRefundPaySuc {
 //    env.setStateBackend(new HashMapStateBackend())
 //    env.getCheckpointConfig.setCheckpointStorage("hdfs://hadoop01:8020/gmall/ck")
 //    System.setProperty("HADOOP_USER_NAME", "root")
-    //    1.3 设置状态的 TTL(生存时间)(设置为环境的最大乱序程度)
+    // 1.3 设置状态的 TTL(生存时间)(设置为环境的最大乱序程度)
     tableEnv.getConfig.setIdleStateRetention(Duration.ofSeconds(5))
 
     //TODO 2.读取 topic_db 数据 ,创建 topic_db 表

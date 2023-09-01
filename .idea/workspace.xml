@@ -4,18 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad468a1b-3183-4401-8447-14b93599c91a" name="变更" comment="">
-      <change afterPath="$PROJECT_DIR$/Data_presentation/static/css/register.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_presentation/templates/forgot_password.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data_presentation/templates/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/demo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/demo.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data_presentation/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/Data_presentation/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data_presentation/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/Data_presentation/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data_presentation/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/Data_presentation/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data_presentation/templates/test.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gmall-realtime/src/main/java/com/zhanglei/gmall/realtime/util/MyKakfaUtil.scala" beforeDir="false" afterPath="$PROJECT_DIR$/gmall-realtime/src/main/java/com/zhanglei/gmall/realtime/util/MyKakfaUtil.scala" afterDir="false" />
-    </list>
+    <list default="true" id="ad468a1b-3183-4401-8447-14b93599c91a" name="变更" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -199,7 +188,7 @@
       <workItem from="1693289727315" duration="6098000" />
       <workItem from="1693314163821" duration="1121000" />
       <workItem from="1693471640594" duration="741000" />
-      <workItem from="1693543536225" duration="1658000" />
+      <workItem from="1693543536225" duration="2127000" />
     </task>
     <task id="LOCAL-00001" summary="code">
       <created>1687089366171</created>
@@ -250,7 +239,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687768874528</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="code">
+      <created>1693545208628</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1693545208628</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
