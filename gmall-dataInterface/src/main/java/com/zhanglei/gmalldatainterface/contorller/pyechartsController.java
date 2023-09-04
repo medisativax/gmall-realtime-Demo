@@ -2,6 +2,7 @@ package com.zhanglei.gmalldatainterface.contorller;
 
 import com.zhanglei.gmalldatainterface.bean.SpuBean;
 import com.zhanglei.gmalldatainterface.bean.Statistic;
+import com.zhanglei.gmalldatainterface.bean.Trademark;
 import com.zhanglei.gmalldatainterface.mapper.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -210,6 +212,47 @@ public class pyechartsController {
                     "}\n");
 
             if (i < provinceCount.size() - 1) {
+                rows.append(",");
+            } else {
+                rows.append("]");
+            }
+        }
+        return "{" +
+                "    \"status\":0," +
+                "    \"msg\":\"\"," +
+                "    \"data\": " + rows +
+                "}";
+    }
+
+    @Autowired
+    private TrademarkMapper trademarkMapper;
+
+    @CrossOrigin
+    @RequestMapping("/trademark")
+    public String getTrademarkMapper(@RequestParam(value = "date",defaultValue = "0") int date){
+        if (date == 0){
+            date = getToday();
+        }
+        List<Trademark> trademarks = trademarkMapper.selectTrademark(date);
+        if (trademarks == null){
+            return "";
+        }
+        StringBuilder rows = new StringBuilder("[");
+        for (int i = 0; i < trademarks.size(); i++) {
+            Trademark trademark = trademarks.get(i);
+            String type = trademark.getTrademarkName();
+            List<Double> orderCt = new ArrayList<>();
+            orderCt.add(Double.valueOf(trademark.getOrderCount()));
+            orderCt.add(Double.valueOf(trademark.getUuCount()));
+            orderCt.add(trademark.getOrderAmount());
+            orderCt.add(Double.valueOf(trademark.getRefundCount()));
+            orderCt.add(Double.valueOf(trademark.getUuRefundCount()));
+            rows.append("{\n" +
+                    "\t\"value\": " + orderCt + ",\n" +
+                    "\t\"name\": \"" + type + "\"\n" +
+                    "}\n");
+
+            if (i < trademarks.size() - 1) {
                 rows.append(",");
             } else {
                 rows.append("]");
