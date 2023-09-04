@@ -5,19 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ad468a1b-3183-4401-8447-14b93599c91a" name="变更" comment="">
-      <change afterPath="$PROJECT_DIR$/gmall-dataInterface/src/main/java/com/zhanglei/gmalldatainterface/bean/Trademark.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gmall-dataInterface/src/main/java/com/zhanglei/gmalldatainterface/mapper/TrademarkMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gmall-dataInterface/src/main/java/com/zhanglei/gmalldatainterface/service/TrademarkService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gmall-dataInterface/src/main/java/com/zhanglei/gmalldatainterface/service/impl/TrademarkIMPL.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data_presentation/static/js/js.js" beforeDir="false" afterPath="$PROJECT_DIR$/Data_presentation/static/js/js.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data_presentation/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Data_presentation/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gmall-dataInterface/src/main/java/com/zhanglei/gmalldatainterface/contorller/pyechartsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gmall-dataInterface/src/main/java/com/zhanglei/gmalldatainterface/contorller/pyechartsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gmall-dataInterface/target/classes/com/zhanglei/gmalldatainterface/contorller/pyechartsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/gmall-dataInterface/target/classes/com/zhanglei/gmalldatainterface/contorller/pyechartsController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gmall-realtime/target/classes/com/zhanglei/gmall/realtime/app/dwd/db/DwdTradePayDetailSuc$.class" beforeDir="false" afterPath="$PROJECT_DIR$/gmall-realtime/target/classes/com/zhanglei/gmall/realtime/app/dwd/db/DwdTradePayDetailSuc$.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gmall-realtime/target/classes/com/zhanglei/gmall/realtime/util/MyKakfaUtil$$anon$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/gmall-realtime/target/classes/com/zhanglei/gmall/realtime/util/MyKakfaUtil$$anon$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gmall-realtime/target/classes/com/zhanglei/gmall/realtime/util/MyKakfaUtil$$anon$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/gmall-realtime/target/classes/com/zhanglei/gmall/realtime/util/MyKakfaUtil$$anon$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gmall-realtime/target/classes/com/zhanglei/gmall/realtime/util/MyKakfaUtil$.class" beforeDir="false" afterPath="$PROJECT_DIR$/gmall-realtime/target/classes/com/zhanglei/gmall/realtime/util/MyKakfaUtil$.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -222,7 +211,7 @@
       <workItem from="1693543536225" duration="10297000" />
       <workItem from="1693633803336" duration="9947000" />
       <workItem from="1693727486013" duration="6001000" />
-      <workItem from="1693801532945" duration="3613000" />
+      <workItem from="1693801532945" duration="4269000" />
     </task>
     <task id="LOCAL-00001" summary="code">
       <created>1687089366171</created>
@@ -287,7 +276,14 @@
       <option name="project" value="LOCAL" />
       <updated>1693545912572</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="code">
+      <created>1693806342889</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1693806342889</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
