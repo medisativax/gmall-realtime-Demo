@@ -6,7 +6,6 @@ $(function () {
   echarts_3();
   echarts_21();
   echarts_6();
-  echarts_7();
 
   function echarts_1() {
     // 基于准备好的dom，初始化echarts实例
@@ -15,6 +14,16 @@ $(function () {
     var option = {
       tooltip: {
         trigger: "item",
+      },
+      legend: {
+        selector: ['all', 'inverse'],
+        type: 'scroll',
+        orient: 'vertical',
+        right: 'right',
+        textStyle: {
+          color: 'red',
+          fontSize: 15,
+        }
       },
       series: [
         {
@@ -40,7 +49,7 @@ $(function () {
 
     function makeAjaxRequest1() {
       $.ajax({
-        url: "http://192.168.0.199:8070/api/pyecharts/provincecount",
+        url: "http://localhost:8070/api/pyecharts/provincecount",
         type: "GET",
         dataType: "JSON",
         success: function (res) {
@@ -164,7 +173,7 @@ $(function () {
 
     function makeAjaxRequest2() {
       $.ajax({
-        url: "http://192.168.0.199:8070/api/pyecharts/channels",
+        url: "http://localhost:8070/api/pyecharts/channels",
         type: "GET",
         dataType: "JSON",
         success: function (res) {
@@ -300,6 +309,9 @@ $(function () {
           fontWeight: "bold",
         },
       },
+      tooltip: {
+            trigger: 'item'
+        },
       radar: {
         //   shape: 'circle',
         indicator: [
@@ -331,34 +343,8 @@ $(function () {
           },
           data: [
             {
-              value: [72, 57, 16409, 1, 1],
-              name: "索芙特",
-              label: {
-                normal: {
-                  show: true,
-                  formatter: function (params) {
-                    return params.value;
-                  },
-                  textStyle: {
-                    fontSize:15
-                  }
-                },
-              }
-            },
-            {
-              value: [77, 65, 1296423, 1, 1],
-              name: "苹果",
-              label: {
-                normal: {
-                  show: true,
-                  formatter: function (params) {
-                    return params.value;
-                  },
-                  textStyle: {
-                    fontSize:15
-                  }
-                },
-              }
+              value: [0, 0 ,0, 0, 0],
+              name: "c.c.",
             },
           ],
         },
@@ -369,37 +355,42 @@ $(function () {
 
     function makeAjaxRequest3() {
       $.ajax({
-        url: "http://localhost:8070/api/pyecharts/trademark?date=20230624",
+        url: "http://localhost:8070/api/pyecharts/trademark",
         type: "GET",
         dataType: "JSON",
         success: function (res) {
           option.series[0].data = res.data;
-          option.series[0].label = {
+          option.series[0].areaStyle = {
             normal: {
-              show: true,
-              formatter: function (params) {
-                return params.value;
-              },
-              textStyle: {
-                fontSize: 15
+              opacity: 0.5, // 设置填充颜色的透明度
+            },
+          };
+          let t;
+          option.radar.indicator[0].max = 0;
+          option.radar.indicator[1].max = 0;
+          option.radar.indicator[2].max = 0;
+          option.radar.indicator[3].max = 0;
+          option.radar.indicator[4].max = 0;
+          for (const i in res.data) {
+            var temp = res.data[i];
+            for (let j = 0; j < 5; j++) {
+              if (temp.value[j] > option.radar.indicator[j].max){
+                option.radar.indicator[j].max = temp.value[j];
               }
             }
-          };
+          }
+          option.radar.indicator[0].max += 10
+          option.radar.indicator[1].max += 10
+          option.radar.indicator[2].max += 100000
+          option.radar.indicator[3].max += 2
+          option.radar.indicator[4].max += 2
+
           // 使用刚指定的配置项和数据显示图表。
           myChart.setOption(option);
         },
       });
     }
     myChart.setOption(option);
-    window.addEventListener("resize", function () {
-      myChart.resize();
-    });
-  }
-
-  function echarts_7() {
-    var myChart = echarts.init(document.getElementById("echart7"));
-
-    // myChart.setOption(option);
     window.addEventListener("resize", function () {
       myChart.resize();
     });

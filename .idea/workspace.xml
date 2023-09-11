@@ -5,8 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ad468a1b-3183-4401-8447-14b93599c91a" name="变更" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/demo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/demo.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gmall-realtime/target/classes/com/zhanglei/gmall/realtime/app/dwd/db/DwdTradePayDetailSuc$.class" beforeDir="false" afterPath="$PROJECT_DIR$/gmall-realtime/target/classes/com/zhanglei/gmall/realtime/app/dwd/db/DwdTradePayDetailSuc$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data_presentation/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/Data_presentation/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data_presentation/static/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/Data_presentation/static/css/login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data_presentation/static/js/js.js" beforeDir="false" afterPath="$PROJECT_DIR$/Data_presentation/static/js/js.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data_presentation/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Data_presentation/templates/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,35 +71,71 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;ShowUsagesActions.previewPropertyKey&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;1.8&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/zhang_lei/Desktop&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;模块&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.44367817&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;bf9a10ac78828e2e03e0470819f58f5c&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "ShowUsagesActions.previewPropertyKey": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "jdk.selected.JAVA_MODULE": "1.8",
+    "last_opened_file_path": "C:/Users/zhang_lei/Desktop",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "项目",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.44367817",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "spring.configuration.checksum": "bf9a10ac78828e2e03e0470819f58f5c"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\zhang_lei\Desktop\Medisativa\demo\gmall-dataInterface\src\main" />
     </key>
   </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="Application" />
+        <option value="PythonConfigurationType" />
+        <option value="ScalaScriptConsoleRunConfiguration" />
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
   <component name="RunManager" selected="Spring Boot.GmallDataInterfaceApplication">
-    <configuration name="DwdTradeOrderPerProcess" type="Application" factoryName="Application" temporary="true">
+    <configuration name="BaseLogApp" type="Application" factoryName="Application" activateToolWindowBeforeRun="false">
+      <option name="MAIN_CLASS_NAME" value="com.zhanglei.gmall.realtime.app.dwd.log.BaseLogApp" />
+      <module name="gmall-realtime" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.zhanglei.gmall.realtime.app.dwd.log.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DwdTradeOrderDetail" type="Application" factoryName="Application" activateToolWindowBeforeRun="false">
+      <option name="MAIN_CLASS_NAME" value="com.zhanglei.gmall.realtime.app.dwd.db.DwdTradeOrderDetail" />
+      <module name="gmall-realtime" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.zhanglei.gmall.realtime.app.dwd.db.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DwdTradeOrderPerProcess" type="Application" factoryName="Application" activateToolWindowBeforeRun="false">
       <option name="MAIN_CLASS_NAME" value="com.zhanglei.gmall.realtime.app.dwd.db.DwdTradeOrderPerProcess" />
       <module name="gmall-realtime" />
       <extension name="coverage">
@@ -108,8 +148,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DwdTradePayDetailSuc" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="com.zhanglei.gmall.realtime.app.dwd.db.DwdTradePayDetailSuc" />
+    <configuration name="DwdTradeOrderRefund" type="Application" factoryName="Application" activateToolWindowBeforeRun="false">
+      <option name="MAIN_CLASS_NAME" value="com.zhanglei.gmall.realtime.app.dwd.db.DwdTradeOrderRefund" />
       <module name="gmall-realtime" />
       <extension name="coverage">
         <pattern>
@@ -121,8 +161,34 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DwsTradePaymentSucWindow" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="com.zhanglei.gmall.realtime.app.dws.DwsTradePaymentSucWindow" />
+    <configuration name="DwdTrafficUniqueVisitorDetail" type="Application" factoryName="Application" activateToolWindowBeforeRun="false">
+      <option name="MAIN_CLASS_NAME" value="com.zhanglei.gmall.realtime.app.dwd.log.DwdTrafficUniqueVisitorDetail" />
+      <module name="gmall-realtime" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.zhanglei.gmall.realtime.app.dwd.log.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DwdTrafficUserJumpDetail" type="Application" factoryName="Application" activateToolWindowBeforeRun="false">
+      <option name="MAIN_CLASS_NAME" value="com.zhanglei.gmall.realtime.app.dwd.log.DwdTrafficUserJumpDetail" />
+      <module name="gmall-realtime" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.zhanglei.gmall.realtime.app.dwd.log.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DwsTradeProvinceOrderWindow" type="Application" factoryName="Application" activateToolWindowBeforeRun="false">
+      <option name="MAIN_CLASS_NAME" value="com.zhanglei.gmall.realtime.app.dws.DwsTradeProvinceOrderWindow" />
       <module name="gmall-realtime" />
       <extension name="coverage">
         <pattern>
@@ -134,7 +200,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DwsTradeUserSpuOrderWindow" type="Application" factoryName="Application" temporary="true">
+    <configuration name="DwsTradeTrademarkCategoryUserRefundWindow" type="Application" factoryName="Application" activateToolWindowBeforeRun="false">
+      <option name="MAIN_CLASS_NAME" value="com.zhanglei.gmall.realtime.app.dws.DwsTradeTrademarkCategoryUserRefundWindow" />
+      <module name="gmall-realtime" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.zhanglei.gmall.realtime.app.dws.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DwsTradeUserSpuOrderWindow" type="Application" factoryName="Application" activateToolWindowBeforeRun="false">
       <option name="MAIN_CLASS_NAME" value="com.zhanglei.gmall.realtime.app.dws.DwsTradeUserSpuOrderWindow" />
       <module name="gmall-realtime" />
       <extension name="coverage">
@@ -147,7 +226,56 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GmallDataInterfaceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+    <configuration name="DwsTrafficSourceKeywordPageViewWindow" type="Application" factoryName="Application" activateToolWindowBeforeRun="false">
+      <option name="MAIN_CLASS_NAME" value="com.zhanglei.gmall.realtime.app.dws.DwsTrafficSourceKeywordPageViewWindow" />
+      <module name="gmall-realtime" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.zhanglei.gmall.realtime.app.dws.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DwsTrafficVcChArIsNewPageViewWindow" type="Application" factoryName="Application" activateToolWindowBeforeRun="false">
+      <option name="MAIN_CLASS_NAME" value="com.zhanglei.gmall.realtime.app.dws.DwsTrafficVcChArIsNewPageViewWindow" />
+      <module name="gmall-realtime" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.zhanglei.gmall.realtime.app.dws.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="app" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="demo" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="E:\Anaconda3\envs\Data_presentation\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Data_presentation" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Data_presentation/app.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="GmallDataInterfaceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" activateToolWindowBeforeRun="false" nameIsGenerated="true">
+      <option name="ACTIVE_PROFILES" />
       <module name="gmall-dataInterface" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.zhanglei.gmalldatainterface.GmallDataInterfaceApplication" />
       <extension name="coverage">
@@ -160,15 +288,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Spring Boot.GmallDataInterfaceApplication" />
-        <item itemvalue="应用程序.DwdTradePayDetailSuc" />
-        <item itemvalue="应用程序.DwsTradePaymentSucWindow" />
-        <item itemvalue="应用程序.DwdTradeOrderPerProcess" />
-        <item itemvalue="应用程序.DwsTradeUserSpuOrderWindow" />
-      </list>
-    </recent_temporary>
+    <list>
+      <item itemvalue="Python.app" />
+      <item itemvalue="Spring Boot.GmallDataInterfaceApplication" />
+      <item itemvalue="应用程序.BaseLogApp" />
+      <item itemvalue="应用程序.DwdTradeOrderDetail" />
+      <item itemvalue="应用程序.DwdTradeOrderPerProcess" />
+      <item itemvalue="应用程序.DwdTradeOrderRefund" />
+      <item itemvalue="应用程序.DwdTrafficUniqueVisitorDetail" />
+      <item itemvalue="应用程序.DwdTrafficUserJumpDetail" />
+      <item itemvalue="应用程序.DwsTradeProvinceOrderWindow" />
+      <item itemvalue="应用程序.DwsTradeTrademarkCategoryUserRefundWindow" />
+      <item itemvalue="应用程序.DwsTradeUserSpuOrderWindow" />
+      <item itemvalue="应用程序.DwsTrafficSourceKeywordPageViewWindow" />
+      <item itemvalue="应用程序.DwsTrafficVcChArIsNewPageViewWindow" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="SpringBeansView">
@@ -212,6 +346,21 @@
       <workItem from="1693633803336" duration="9947000" />
       <workItem from="1693727486013" duration="6001000" />
       <workItem from="1693801532945" duration="4269000" />
+      <workItem from="1693822538276" duration="6432000" />
+      <workItem from="1693881828640" duration="1294000" />
+      <workItem from="1693883133043" duration="3313000" />
+      <workItem from="1693889525841" duration="566000" />
+      <workItem from="1693983744891" duration="5946000" />
+      <workItem from="1694062054702" duration="7339000" />
+      <workItem from="1694070826255" duration="322000" />
+      <workItem from="1694071284310" duration="1080000" />
+      <workItem from="1694072504875" duration="1663000" />
+      <workItem from="1694074887019" duration="767000" />
+      <workItem from="1694151274707" duration="2683000" />
+      <workItem from="1694333033316" duration="48000" />
+      <workItem from="1694342827540" duration="320000" />
+      <workItem from="1694403992099" duration="60000" />
+      <workItem from="1694413499523" duration="1805000" />
     </task>
     <task id="LOCAL-00001" summary="code">
       <created>1687089366171</created>
@@ -283,7 +432,14 @@
       <option name="project" value="LOCAL" />
       <updated>1693806342889</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="code">
+      <created>1693822570809</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1693822570809</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -339,6 +495,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="code" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/demo$app.coverage" NAME="app 覆盖结果" MODIFIED="1693552647986" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Data_presentation" />
+    <SUITE FILE_PATH="coverage/demo$app.coverage" NAME="app 覆盖结果" MODIFIED="1694414485322" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Data_presentation" />
   </component>
 </project>

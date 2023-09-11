@@ -1,5 +1,6 @@
 ﻿<!doctype html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,6 +15,7 @@
     <link rel="stylesheet" href="../static/css/style.css">
     <link rel="stylesheet" href="../static/css/liMarquee.css">
 </head>
+
 <body>
 <div class="head clearfix">
     <div class="home"><a href="/home"><img src="../static/images/Home.png" width="28"> <i> 首页</i></a></div>
@@ -35,20 +37,20 @@
     <div class="time" id="showTime">2023/6/12 17:00:12</div>
     <script>
         var t = null;
-        t = setTimeout(time, 1000);//開始运行
+        t = setTimeout(time, 1000); //開始运行
         function time() {
-            clearTimeout(t);//清除定时器
+            clearTimeout(t); //清除定时器
             dt = new Date();
             var y = dt.getFullYear();
             var mt = dt.getMonth() + 1;
             var day = dt.getDate();
-            var h = dt.getHours();//获取时
-            var m = dt.getMinutes();//获取分
-            var s = dt.getSeconds();//获取秒
-            document.getElementById("showTime").innerHTML = y + "/" + mt + "/" + day + " " + h + ":" + m + ":" + s + "";
+            var h = dt.getHours(); //获取时
+            var m = dt.getMinutes(); //获取分
+            var s = dt.getSeconds(); //获取秒
+            document.getElementById("showTime").innerHTML = y + "/" + mt + "/" + day + " " + h + ":" + m + ":" + s +
+                "";
             t = setTimeout(time, 1000); //设定定时器，循环运行
         }
-
     </script>
 </div>
 <div class="mainbox">
@@ -84,23 +86,28 @@
                             <ul>
                                 <li>
                                     <div><span>当日收入总金额</span>
-                                        <p id="amount">0</p></div>
+                                        <p id="amount">0</p>
+                                    </div>
                                 </li>
                                 <li>
                                     <div><span>下单数</span>
-                                        <p id="下单数">0</p></div>
+                                        <p id="下单数">0</p>
+                                    </div>
                                 </li>
                                 <li>
                                     <div><span>下单人数</span>
-                                        <p id="下单人数">0</p></div>
+                                        <p id="下单人数">0</p>
+                                    </div>
                                 </li>
                                 <li>
                                     <div><span>退单数</span>
-                                        <p id="退单数">0</p></div>
+                                        <p id="退单数">0</p>
+                                    </div>
                                 </li>
                                 <li>
                                     <div><span>退单人数</span>
-                                        <p id="退单人数">0</p></div>
+                                        <p id="退单人数">0</p>
+                                    </div>
                                 </li>
                             </ul>
                             <script>
@@ -124,10 +131,14 @@
                                         type: "GET",
                                         dataType: "JSON",
                                         success: function (res) {
-                                            document.getElementById(res.data[0].type).innerHTML = res.data[0].value;
-                                            document.getElementById(res.data[1].type).innerHTML = res.data[1].value;
-                                            document.getElementById(res.data[2].type).innerHTML = res.data[2].value;
-                                            document.getElementById(res.data[3].type).innerHTML = res.data[3].value;
+                                            document.getElementById(res.data[0].type).innerHTML = res
+                                                .data[0].value;
+                                            document.getElementById(res.data[1].type).innerHTML = res
+                                                .data[1].value;
+                                            document.getElementById(res.data[2].type).innerHTML = res
+                                                .data[2].value;
+                                            document.getElementById(res.data[3].type).innerHTML = res
+                                                .data[3].value;
                                         }
                                     });
                                 }
@@ -138,7 +149,8 @@
 
                         </div>
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide active" style="background-image:url(../static/images/1.jpg)"></div>
+                            <div class="swiper-slide active" style="background-image:url(../static/images/1.jpg)">
+                            </div>
                             <div class="swiper-slide" style="background-image:url(../static/images/2.png)"></div>
                             <div class="swiper-slide" style="background-image:url(../static/images/3.jpg)"></div>
                             <div class="swiper-slide" style="background-image:url(../static/images/4.jpg)"></div>
@@ -166,7 +178,6 @@
 
                     </div>
                     <script>
-
                         var galleryThumbs = new Swiper('.gallery-thumbs', {
                             spaceBetween: 0,
                             slidesPerView: 5,
@@ -196,14 +207,17 @@
                 <li style="width: 100%">
                     <div class="box" style="height: 362px">
                         <ul class="tit container">
-                            <div class="div" style="display: flex;justify-content: center;align-items: center;">序号</div>
-                            <div class="div" style="display: flex;justify-content: center;align-items: center;">SUP 名称
+                            <div class="div" style="display: flex;justify-content: center;align-items: center;">序号
+                            </div>
+                            <div class="div" style="display: flex;justify-content: center;align-items: center;">SUP
+                                名称
                             </div>
                             <div class="div" style="display: flex;justify-content: center;align-items: center;">下单次数
                             </div>
                             <div class="div" style="display: flex;justify-content: center;align-items: center;">下单人数
                             </div>
-                            <div class="div" style="display: flex;justify-content: center;align-items: center;">下单总金额
+                            <div class="div" style="display: flex;justify-content: center;align-items: center;">
+                                下单总金额
                             </div>
                         </ul>
                         <style>
@@ -221,9 +235,12 @@
                                 margin: auto;
                                 height: 100%;
                                 width: 200px;
-                                white-space: nowrap; /* 防止换行 */
-                                overflow: hidden; /* 超出部分隐藏 */
-                                text-overflow: ellipsis; /* 使用省略号表示被截断的文本 */
+                                white-space: nowrap;
+                                /* 防止换行 */
+                                overflow: hidden;
+                                /* 超出部分隐藏 */
+                                text-overflow: ellipsis;
+                                /* 使用省略号表示被截断的文本 */
                                 font-family: 'static/font/DS-DIGIB.TTF', serif;
                                 font-weight: 700;
                             }
@@ -241,12 +258,11 @@
                             }
 
                             .div:last-child {
-                                margin-right: 0; /* 移除最后一个 div 的右边距 */
+                                margin-right: 0;
+                                /* 移除最后一个 div 的右边距 */
                             }
 
                             .my-e
-
-
                         </style>
                         <div class="boxnav" id="echart4">
                             <ul>
@@ -524,65 +540,157 @@
                                     dataType: "JSON",
                                     success: function (res) {
                                         document.getElementById("spuId").innerHTML = 0;
-                                        document.getElementById("spuName").innerHTML = res.data[0]["spuName"];
-                                        document.getElementById("orderCount").innerHTML = res.data[0]["orderCount"];
-                                        document.getElementById("uuCount").innerHTML = res.data[0]["uuCount"];
-                                        document.getElementById("orderAmount").innerHTML = res.data[0]["orderAmount"];
+                                        document.getElementById("spuName").innerHTML = res.data[0][
+                                            "spuName"
+                                            ];
+                                        document.getElementById("orderCount").innerHTML = res.data[0][
+                                            "orderCount"
+                                            ];
+                                        document.getElementById("uuCount").innerHTML = res.data[0][
+                                            "uuCount"
+                                            ];
+                                        document.getElementById("orderAmount").innerHTML = res.data[0][
+                                            "orderAmount"
+                                            ];
                                         document.getElementById("spuId1").innerHTML = 1;
-                                        document.getElementById("spuName1").innerHTML = res.data[1]["spuName"];
-                                        document.getElementById("orderCount1").innerHTML = res.data[1]["orderCount"];
-                                        document.getElementById("uuCount1").innerHTML = res.data[1]["uuCount"];
-                                        document.getElementById("orderAmount1").innerHTML = res.data[1]["orderAmount"];
+                                        document.getElementById("spuName1").innerHTML = res.data[1][
+                                            "spuName"
+                                            ];
+                                        document.getElementById("orderCount1").innerHTML = res.data[1][
+                                            "orderCount"
+                                            ];
+                                        document.getElementById("uuCount1").innerHTML = res.data[1][
+                                            "uuCount"
+                                            ];
+                                        document.getElementById("orderAmount1").innerHTML = res.data[1][
+                                            "orderAmount"
+                                            ];
                                         document.getElementById("spuId2").innerHTML = 2;
-                                        document.getElementById("spuName2").innerHTML = res.data[2]["spuName"];
-                                        document.getElementById("orderCount2").innerHTML = res.data[2]["orderCount"];
-                                        document.getElementById("uuCount2").innerHTML = res.data[2]["uuCount"];
-                                        document.getElementById("orderAmount2").innerHTML = res.data[2]["orderAmount"];
+                                        document.getElementById("spuName2").innerHTML = res.data[2][
+                                            "spuName"
+                                            ];
+                                        document.getElementById("orderCount2").innerHTML = res.data[2][
+                                            "orderCount"
+                                            ];
+                                        document.getElementById("uuCount2").innerHTML = res.data[2][
+                                            "uuCount"
+                                            ];
+                                        document.getElementById("orderAmount2").innerHTML = res.data[2][
+                                            "orderAmount"
+                                            ];
                                         document.getElementById("spuId3").innerHTML = 3;
-                                        document.getElementById("spuName3").innerHTML = res.data[3]["spuName"];
-                                        document.getElementById("orderCount3").innerHTML = res.data[3]["orderCount"];
-                                        document.getElementById("uuCount3").innerHTML = res.data[3]["uuCount"];
-                                        document.getElementById("orderAmount3").innerHTML = res.data[3]["orderAmount"];
+                                        document.getElementById("spuName3").innerHTML = res.data[3][
+                                            "spuName"
+                                            ];
+                                        document.getElementById("orderCount3").innerHTML = res.data[3][
+                                            "orderCount"
+                                            ];
+                                        document.getElementById("uuCount3").innerHTML = res.data[3][
+                                            "uuCount"
+                                            ];
+                                        document.getElementById("orderAmount3").innerHTML = res.data[3][
+                                            "orderAmount"
+                                            ];
                                         document.getElementById("spuId4").innerHTML = 4;
-                                        document.getElementById("spuName4").innerHTML = res.data[4]["spuName"];
-                                        document.getElementById("orderCount4").innerHTML = res.data[4]["orderCount"];
-                                        document.getElementById("uuCount4").innerHTML = res.data[4]["uuCount"];
-                                        document.getElementById("orderAmount4").innerHTML = res.data[4]["orderAmount"];
+                                        document.getElementById("spuName4").innerHTML = res.data[4][
+                                            "spuName"
+                                            ];
+                                        document.getElementById("orderCount4").innerHTML = res.data[4][
+                                            "orderCount"
+                                            ];
+                                        document.getElementById("uuCount4").innerHTML = res.data[4][
+                                            "uuCount"
+                                            ];
+                                        document.getElementById("orderAmount4").innerHTML = res.data[4][
+                                            "orderAmount"
+                                            ];
                                         document.getElementById("spuId5").innerHTML = 5;
-                                        document.getElementById("spuName5").innerHTML = res.data[5]["spuName"];
-                                        document.getElementById("orderCount5").innerHTML = res.data[5]["orderCount"];
-                                        document.getElementById("uuCount5").innerHTML = res.data[5]["uuCount"];
-                                        document.getElementById("orderAmount5").innerHTML = res.data[5]["orderAmount"];
+                                        document.getElementById("spuName5").innerHTML = res.data[5][
+                                            "spuName"
+                                            ];
+                                        document.getElementById("orderCount5").innerHTML = res.data[5][
+                                            "orderCount"
+                                            ];
+                                        document.getElementById("uuCount5").innerHTML = res.data[5][
+                                            "uuCount"
+                                            ];
+                                        document.getElementById("orderAmount5").innerHTML = res.data[5][
+                                            "orderAmount"
+                                            ];
                                         document.getElementById("spuId6").innerHTML = 6;
-                                        document.getElementById("spuName6").innerHTML = res.data[6]["spuName"];
-                                        document.getElementById("orderCount6").innerHTML = res.data[6]["orderCount"];
-                                        document.getElementById("uuCount6").innerHTML = res.data[6]["uuCount"];
-                                        document.getElementById("orderAmount6").innerHTML = res.data[6]["orderAmount"];
+                                        document.getElementById("spuName6").innerHTML = res.data[6][
+                                            "spuName"
+                                            ];
+                                        document.getElementById("orderCount6").innerHTML = res.data[6][
+                                            "orderCount"
+                                            ];
+                                        document.getElementById("uuCount6").innerHTML = res.data[6][
+                                            "uuCount"
+                                            ];
+                                        document.getElementById("orderAmount6").innerHTML = res.data[6][
+                                            "orderAmount"
+                                            ];
                                         document.getElementById("spuId7").innerHTML = 7;
-                                        document.getElementById("spuName7").innerHTML = res.data[7]["spuName"];
-                                        document.getElementById("orderCount7").innerHTML = res.data[7]["orderCount"];
-                                        document.getElementById("uuCount7").innerHTML = res.data[7]["uuCount"];
-                                        document.getElementById("orderAmount7").innerHTML = res.data[7]["orderAmount"];
+                                        document.getElementById("spuName7").innerHTML = res.data[7][
+                                            "spuName"
+                                            ];
+                                        document.getElementById("orderCount7").innerHTML = res.data[7][
+                                            "orderCount"
+                                            ];
+                                        document.getElementById("uuCount7").innerHTML = res.data[7][
+                                            "uuCount"
+                                            ];
+                                        document.getElementById("orderAmount7").innerHTML = res.data[7][
+                                            "orderAmount"
+                                            ];
                                         document.getElementById("spuId8").innerHTML = 8;
-                                        document.getElementById("spuName8").innerHTML = res.data[8]["spuName"];
-                                        document.getElementById("orderCount8").innerHTML = res.data[8]["orderCount"];
-                                        document.getElementById("uuCount8").innerHTML = res.data[8]["uuCount"];
-                                        document.getElementById("orderAmount8").innerHTML = res.data[8]["orderAmount"];
+                                        document.getElementById("spuName8").innerHTML = res.data[8][
+                                            "spuName"
+                                            ];
+                                        document.getElementById("orderCount8").innerHTML = res.data[8][
+                                            "orderCount"
+                                            ];
+                                        document.getElementById("uuCount8").innerHTML = res.data[8][
+                                            "uuCount"
+                                            ];
+                                        document.getElementById("orderAmount8").innerHTML = res.data[8][
+                                            "orderAmount"
+                                            ];
                                         document.getElementById("spuId9").innerHTML = 9;
-                                        document.getElementById("spuName9").innerHTML = res.data[9]["spuName"];
-                                        document.getElementById("orderCount9").innerHTML = res.data[9]["orderCount"];
-                                        document.getElementById("uuCount9").innerHTML = res.data[9]["uuCount"];
-                                        document.getElementById("orderAmount9").innerHTML = res.data[9]["orderAmount"];
+                                        document.getElementById("spuName9").innerHTML = res.data[9][
+                                            "spuName"
+                                            ];
+                                        document.getElementById("orderCount9").innerHTML = res.data[9][
+                                            "orderCount"
+                                            ];
+                                        document.getElementById("uuCount9").innerHTML = res.data[9][
+                                            "uuCount"
+                                            ];
+                                        document.getElementById("orderAmount9").innerHTML = res.data[9][
+                                            "orderAmount"
+                                            ];
                                         document.getElementById("spuId10").innerHTML = 10;
-                                        document.getElementById("spuName10").innerHTML = res.data[10]["spuName"];
-                                        document.getElementById("orderCount10").innerHTML = res.data[10]["orderCount"];
-                                        document.getElementById("uuCount10").innerHTML = res.data[10]["uuCount"];
-                                        document.getElementById("orderAmount10").innerHTML = res.data[10]["orderAmount"];
+                                        document.getElementById("spuName10").innerHTML = res.data[10][
+                                            "spuName"
+                                            ];
+                                        document.getElementById("orderCount10").innerHTML = res.data[10]
+                                            ["orderCount"];
+                                        document.getElementById("uuCount10").innerHTML = res.data[10][
+                                            "uuCount"
+                                            ];
+                                        document.getElementById("orderAmount10").innerHTML = res.data[
+                                            10]["orderAmount"];
                                         document.getElementById("spuId11").innerHTML = 11;
-                                        document.getElementById("spuName11").innerHTML = res.data[11]["spuName"];
-                                        document.getElementById("orderCount11").innerHTML = res.data[11]["orderCount"];
-                                        document.getElementById("uuCount11").innerHTML = res.data[11]["uuCount"];
-                                        document.getElementById("orderAmount11").innerHTML = res.data[11]["orderAmount"];
+                                        document.getElementById("spuName11").innerHTML = res.data[11][
+                                            "spuName"
+                                            ];
+                                        document.getElementById("orderCount11").innerHTML = res.data[11]
+                                            ["orderCount"];
+                                        document.getElementById("uuCount11").innerHTML = res.data[11][
+                                            "uuCount"
+                                            ];
+                                        document.getElementById("orderAmount11").innerHTML = res.data[
+                                            11]["orderAmount"];
 
                                     }
                                 });
@@ -592,32 +700,43 @@
                         </script>
                         <style>
                             #echart4 {
-                                height: 320px; /* 设置容器的高度 */
-                                overflow: hidden; /* 隐藏溢出内容 */
+                                height: 320px;
+                                /* 设置容器的高度 */
+                                overflow: hidden;
+                                /* 隐藏溢出内容 */
                             }
 
                             #echart4 ul {
                                 list-style-type: none;
                                 margin: 0;
                                 padding: 0;
-                                animation: marquee 15s linear infinite; /* 设置滚动动画 */
-                                position: relative; /* 添加相对定位，用于实现循环效果 */
-                                top: 0; /* 初始位置 */
+                                animation: marquee 15s linear infinite;
+                                /* 设置滚动动画 */
+                                position: relative;
+                                /* 添加相对定位，用于实现循环效果 */
+                                top: 0;
+                                /* 初始位置 */
                             }
 
                             #echart4 li {
-                                line-height: 20px; /* 设置行高，控制垂直间距 */
+                                line-height: 20px;
+                                /* 设置行高，控制垂直间距 */
                             }
 
                             @keyframes marquee {
                                 0% {
-                                    top: 0; /* 初始位置 */
+                                    top: 0;
+                                    /* 初始位置 */
                                 }
+
                                 50% {
-                                    top: -16%; /* 中间位置，根据需要调整滚动距离 */
+                                    top: -16%;
+                                    /* 中间位置，根据需要调整滚动距离 */
                                 }
+
                                 100% {
-                                    top: 0; /* 结束位置，回到初始位置 */
+                                    top: 0;
+                                    /* 结束位置，回到初始位置 */
                                 }
                             }
                         </style>
@@ -635,15 +754,22 @@
                         <div class="">
                             <div class="wt1">
                                 <div class="wt2"><img src="../static/images/weather.png">
-                                    <p id="实时温度">0<sup>℃</sup></p></div>
+                                    <p id="实时温度">0<sup>℃</sup></p>
+                                </div>
                                 <span id="天气情况">c.c.</span>
                             </div>
 
                         </div>
                         <div class="wt03">
-                            <p><span>气温：</span><span id="气温">c.c.</span><span>星期：</span><span id="星期">c.c.</span></p>
-                            <p><span>湿度：</span><span id="湿度">c.c.</span><span>地区：</span><span id="地区">c.c.</span></p>
-                            <p><span>风况：</span><span id="风况">c.c.</span><span>空质：</span><span id="空气质量">c.c</span></p>
+                            <p><span>气温：</span><span id="气温">c.c.</span><span>星期：</span><span
+                                    id="星期">c.c.</span>
+                            </p>
+                            <p><span>湿度：</span><span id="湿度">c.c.</span><span>地区：</span><span
+                                    id="地区">c.c.</span>
+                            </p>
+                            <p><span>风况：</span><span id="风况">c.c.</span><span>空质：</span><span
+                                    id="空气质量">c.c</span>
+                            </p>
                         </div>
                         <script>
                             $.ajax({
@@ -651,32 +777,39 @@
                                 type: "GET",
                                 dataType: "JSON",
                                 success: function (res) {
-                                    document.getElementById("气温").innerHTML = res["tem_day"] + "~" + res["tem_night"] + "℃";
+                                    document.getElementById("气温").innerHTML = res["tem_day"] + "~" +
+                                        res["tem_night"] + "℃";
                                     document.getElementById("实时温度").innerHTML = res["tem"];
                                     document.getElementById("湿度").innerHTML = res["humidity"];
-                                    document.getElementById("风况").innerHTML = res["win"] +"   "+ res["win_speed"];
+                                    document.getElementById("风况").innerHTML = res["win"] + "   " + res[
+                                        "win_speed"];
                                     document.getElementById("天气情况").innerHTML = res["wea"];
                                     document.getElementById("空气质量").innerHTML = res["air"];
                                     document.getElementById("星期").innerHTML = res["week"];
                                     document.getElementById("地区").innerHTML = res["city"];
                                 }
                             });
-                            setInterval(makeAjaxRequest3, 60000);
-                            function makeAjaxRequest3() {
-                                $.ajax({
-                                    url: "https://www.yiketianqi.com/free/day?appid=99843139&appsecret=8Qxh0NDo&unescape=1&cityid=101250101",
-                                    type: "GET",
-                                    dataType: "JSON",
-                                    success: function (res) {
-                                        document.getElementById("qiwen").innerHTML = res["tem_day"] + "~" + res["tem_night"];
-                                        document.getElementById("shishiwendu").innerHTML = res["tem"];
-                                        document.getElementById("jiangshuiliang").innerHTML = res["humidity"];
-                                        document.getElementById("fengkuang").innerHTML = res["win"];
-                                        document.getElementById("tiqnqiqingkuang").innerHTML = res["wea"];
-                                    }
-                                });
-                            }
+                            // setInterval(makeAjaxRequest3, 60000);
 
+                            // function makeAjaxRequest3() {
+                            //     $.ajax({
+                            //         url: "https://www.yiketianqi.com/free/day?appid=99843139&appsecret=8Qxh0NDo&unescape=1&cityid=101250101",
+                            //         type: "GET",
+                            //         dataType: "JSON",
+                            //         success: function (res) {
+                            //             document.getElementById("气温").innerHTML = res["tem_day"] + "~" +
+                            //                 res["tem_night"] + "℃";
+                            //             document.getElementById("实时温度").innerHTML = res["tem"];
+                            //             document.getElementById("湿度").innerHTML = res["humidity"];
+                            //             document.getElementById("风况").innerHTML = res["win"] + "   " +
+                            //                 res["win_speed"];
+                            //             document.getElementById("天气情况").innerHTML = res["wea"];
+                            //             document.getElementById("空气质量").innerHTML = res["air"];
+                            //             document.getElementById("星期").innerHTML = res["week"];
+                            //             document.getElementById("地区").innerHTML = res["city"];
+                            //         }
+                            //     });
+                            // }
                         </script>
                     </div>
                 </div>
@@ -687,27 +820,82 @@
             </div>
 
             <!-- <div class="box">
-                <div class="tit">我是标题四</div>
-                <div class="boxnav" style="height: 220px;" id="echart7"></div>
-            </div> -->
+            <div class="tit">我是标题四</div>
+            <div class="boxnav" style="height: 220px;" id="echart7"></div>
+        </div> -->
             <div class="box">
-                <div class="tit">我是标题五</div>
+                <div class="tit">平台后台统计</div>
                 <div class="boxnav" style="height: 190px;">
                     <ul class="gnlb">
-                        <li><span>月平均小时：<em>119351</em></span></li>
-                        <li><span>月平均小时：<em>119351</em></span></li>
-                        <li><span>月平均小时：<em>119351</em></span></li>
-                        <li><span>月平均小时：<em>119351</em></span></li>
-                        <li><span>月平均小时：<em>119351</em></span></li>
-                        <li><span>月平均小时：<em>119351</em></span></li>
+                        <li><span>小网站已存活：<em id="showLivetime">0</em> 天</span></li>
+                        <li><span>后台管理用户数：<em>{{usercount}}</em> 人</span></li>
+                        <li><span>网站存在用户数：<em>114514</em></span></li>
+                        <li><span>当日下单总金额：<em id="amount_1">0</em> 元</span></li>
+                        <li><span>平台下单数：<em id="下单数_1">0</em> 人</span></li>
+                        <li><span>平台下单用户数：<em id="下单人数_1">0</em> 人</span></li>
+                        <li><span>平台退单数：<em id="退单数_1">0</em> 人</span></li>
+                        <li><span>平台退单用户数：<em id="退单人数_1">0</em> 人</span></li>
                     </ul>
-
                 </div>
             </div>
+            <script>
+                var t = null;
+                t = setTimeout(time, 1000 * 60 * 60); //開始运行
+                function time() {
+                    clearTimeout(t); //清除定时器
+                    dt = new Date();
+                    liveday = new Date('2023-06-17')
+                    const timeDiff = dt - liveday;
+                    const daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+                    document.getElementById("showLivetime").innerHTML = daysDiff;
+                    console.log(daysDiff)
+                    t = setTimeout(time, 1000 * 60 * 60); //设定定时器，循环运行
+                }
+
+                function makeAjaxRequest() {
+                    $.ajax({
+                        url: "http://localhost:8070/api/pyecharts/gmv",
+                        type: "GET",
+                        dataType: "JSON",
+                        success: function (res) {
+                            document.getElementById("amount_1").innerHTML = res.data;
+                        }
+                    });
+                }
+
+                // 每隔10秒执行一次Ajax请求
+                setInterval(makeAjaxRequest, 2000);
+
+                function makeAjaxRequest1() {
+                    $.ajax({
+                        url: "http://localhost:8070/api/pyecharts/statistics",
+                        type: "GET",
+                        dataType: "JSON",
+                        success: function (res) {
+                            document.getElementById(res
+                                .data[0].type + "_1").innerHTML = res
+                                .data[0].value;
+                            document.getElementById(res
+                                .data[1].type + "_1").innerHTML = res
+                                .data[1].value;
+                            document.getElementById(res
+                                .data[2].type + "_1").innerHTML = res
+                                .data[2].value;
+                            document.getElementById(res
+                                .data[3].type + "_1").innerHTML = res
+                                .data[3].value;
+                        }
+                    });
+                }
+
+                // 每隔10秒执行一次Ajax请求
+                setInterval(makeAjaxRequest1, 2000);
+            </script>
         </li>
     </ul>
 
 
 </div>
 </body>
+
 </html>

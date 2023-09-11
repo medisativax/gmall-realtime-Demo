@@ -30,7 +30,10 @@ mysql = pymysql.connect(host=app.config['MYSQL_HOST'],
 @app.route('/index')
 def index():
     if 'username' in session:
-        return render_template('index.html', name='index')
+        cursor = mysql.cursor()
+        cursor.execute('SELECT count(*) from user')
+        usercount = cursor.fetchone()['count(*)']
+        return render_template('index.html', name='index',usercount=usercount)
     else:
         return redirect(url_for('login'))
 
@@ -48,7 +51,7 @@ def login():
         username = request.form['username']
         password = request.form['password']
         cursor = mysql.cursor()
-        print(f'SELECT * FROM user WHERE username={username} AND password={password}')
+        # print(f'SELECT * FROM user WHERE username={username} AND password={password}')    
         cursor.execute('SELECT * FROM user WHERE username=%s AND password=%s', (username, password))
         user = cursor.fetchone()
         if user:
