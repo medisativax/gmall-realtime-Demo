@@ -24,7 +24,7 @@
 
 ### 1.2 框架示意图
 
-![](/img/Snipaste_2023-03-09_19-54-30.png)
+![](img/Snipaste_2023-03-09_19-54-30.png)
 
 ### 1.3 集群规划
 
@@ -48,7 +48,7 @@
 
 ### 2.0 工作流程图
 
-![image-20230314144721711](/img/image-20230314144721711.png)
+![image-20230314144721711](img/image-20230314144721711.png)
 
 ### 2.1 SSH免密登录
 
@@ -121,7 +121,7 @@ rpm -qa | grep i java | xargs -n1 rpm -e --nodeps						--三台机器上都做�
 tar -zxvf /opt/software/jdk-8u212-linux-x64.tar.gz -C /opt/module/					--解压JDK到指定目录里
 ```
 
-**配置JDK环境变量**
+
 
 ```shell
 vim /etc/profile.d/my_env.sh
@@ -417,11 +417,11 @@ chmod +x /root/bin/myhadoop.sh
 jpsall
 ```
 
-![](/img/image-20230309211008552.png)
+![image-20230309211008552.png](img/image-20230309211008552.png)
 
-![image-20230309211034040](/img/image-20230309211034040.png)
+![image-20230309211034040](img/image-20230309211034040.png)
 
-![image-20230309211112560](/img/image-20230309211112560.png)
+![image-20230309211112560](img/image-20230309211112560.png)
 
 ### 2.6 安装ZK（Zookeeper）
 
@@ -513,7 +513,7 @@ zk.sh status
 zk.sh stop
 ```
 
-![image-20230309214430225](/img/image-20230309214430225.png)
+![image-20230309214430225](img/image-20230309214430225.png)
 
 ### 2.7 安装Kafka
 
@@ -644,7 +644,7 @@ zk.sh stop
 jpsall							-- 查看Kafka是否启动成功
 ```
 
-![](/img/image-20230310134324320.png)
+![](img/image-20230310134324320.png)
 
 ### 2.8 安装flume
 
@@ -672,7 +672,7 @@ export JAVA_HOME=/opt/module/jdk1.8.0_212
 
 **Flume安装示意图**
 
-![未命名文件](/img/未命名文件.png)
+![未命名文件](img/未命名文件.png)
 
 #### 2.8.1 配置flume采集日志配置
 
@@ -857,7 +857,7 @@ public class JSONUtils {
 
 **打包**
 
-![image-20230311195257362](/img/image-20230311195257362.png)
+![image-20230311195257362](img/image-20230311195257362.png)
 
 **将打好的包放入到hadoop01的/opt/module/flume/lib文件夹下面**
 
@@ -909,7 +909,7 @@ jpsall
 f1.sh stop
 ```
 
-![image-20230311203619354](/img/image-20230311203619354.png)
+![image-20230311203619354](img/image-20230311203619354.png)
 
 #### 2.8.3 配置flume采集日志配置
 
@@ -1031,7 +1031,7 @@ public class TimeStampInterceptor implements Interceptor {
 
 **打包**
 
-![](/img/image-20230311195257362.png)
+![](img/image-20230311195257362.png)
 
 **将打好的包放入到hadoop03的/opt/module/flume/lib文件夹下面**
 
@@ -1083,7 +1083,7 @@ jps
 f2.sh stop
 ```
 
-![image-20230311204932696](/img/image-20230311204932696.png)
+![image-20230311204932696](img/image-20230311204932696.png)
 
 
 
@@ -1133,11 +1133,11 @@ jpsall
 cluster.sh stop
 ```
 
-![image-20230311210345653](/img/image-20230311210345653.png)
+![image-20230311210345653](img/image-20230311210345653.png)
 
-![image-20230311210408914](/img/image-20230311210408914.png)
+![image-20230311210408914](img/image-20230311210408914.png)
 
-![image-20230311210453630](/img/image-20230311210453630.png)
+![image-20230311210453630](img/image-20230311210453630.png)
 
 
 
@@ -1145,7 +1145,7 @@ cluster.sh stop
 
 **将文件上传到hadoop01的/opt/module/applog目录下**
 
-![image-20230316133352068](/img/image-20230316133352068.png)
+![image-20230316133352068](img/image-20230316133352068.png)
 
 ```shell
 mkdir /opt/module/applog/
@@ -1266,17 +1266,281 @@ chmod +x /root/bin/lg.shg
 
 
 
+### 2.11 安装Flink
+
+**节点规划**
+
+| hadoop01 | hadoop02 | hadoop03 |
+| :------: | :------: | :------: |
+|  master  | cluster  | cluster  |
+|  kafka   |  kafka   |  kafka   |
+
+**用XShell工具将ZooKeeper安装包导入到hadoop01的/opt/software文件夹下面，解压**
+
+```shell
+tar -zxvf /opt/software/flink-1.13.0-bin-scala_2.12.tgz -C /opt/module/	--解压flink到指定目录
+```
+
+#### 2.11.1 编辑Flink配置文件
+
+```shell
+vim /opt/module/flink-1.13.0/conf/workers
+
+hadoop02
+hadoop03
+```
+
+#### 2.11.2 Flink On Yarn
+
+```shell
+vim /etc/profile.d/my_env.sh
+export HADOOP_CLASSPATH=`hadoop classpath`
+```
+
+**启动Flink**
+
+```shell
+/opt/module/flink-1.13.0/bin/start-cluster.sh	--集群模式启动
+/opt/module/flink-1.13.0/bin/yarn-session.sh	--依赖yarn启动
+```
+
+![image-20231011151122709](img\image-20231011151122709.png)
+
+**以per-job方式提及任务**
+
+```shell
+/opt/module/flink-1.13.0/bin/flink run -m yarn-cluster -yn 3 -ys 3 -ynm fristflink -c com.xxx.xxx  /opt/module/flink-1.13.0/jobs/xxxx.jar
+```
+
+```
+-m,–jobmanager : yarn-cluster集群
+-yd,–yarndetached : 后台
+-yjm,–yarnjobManager : jobmanager的内存
+-ytm,–yarntaskManager : taskmanager的内存
+-yn,–yarncontainer : TaskManager的个数
+-yid,–yarnapplicationId : job依附的applicationId
+-ynm,–yarnname : application的名称
+-ys,–yarnslots : 分配的slots个数
+```
+
+
+
+### 2.12 安装Redis
+
+**安装C 语言的编译环境**
+
+```shell
+sudo yum install centos-release-scl scl-utils-build 
+sudo yum install -y devtoolset-8-toolchain
+
+# 注意: 执行此命令会自动切换到 root 用户
+sudo  scl enable devtoolset-8 bash
+```
+
+**测试 gcc版本** 
+
+```
+gcc -version
+```
+
+#### **2.12.1 解压Redis安装包**
+
+```
+tar -zxf /opt/software/redis-3.0.4.tar.gz -C /opt/module/
+cd /opt/module/redis-3.0.4/
+make
+```
+
+![image-20231011155715044](img\image-20231011155715044.png)
+
+```
+make install
+```
+
+**2.12.2 设置后台启动**
+
+```shell
+cp /opt/module/redis-3.0.4/redis.conf /opt/module/redis-3.0.4/my_redis.conf
+```
+
+```bash
+daemonize yes
+```
+
+**启动命令**
+
+```bash
+redis-server /opt/module/redis-3.0.4/my_redis.conf
+```
+
+![image-20231011161622718](img\image-20231011161622718.png)
+
+**客户端访问**
+
+```bash
+redis-cli
+```
+
+
+
+### 2.13 安装ClickHouse
+
+**CentOS取消打开文件数限制**
+
+```bash
+sudo vim /etc/security/limits.conf
+* soft nofile 65536 
+* hard nofile 65536 
+* soft nproc 131072 
+* hard nproc 131072
+vim /etc/security/limits.d/20-nproc.conf
+* soft nofile 65536 
+* hard nofile 65536 
+* soft nproc 131072 
+* hard nproc 131072
+sudo scp -r /etc/security/limits.conf hadoop02:/etc/security/
+sudo scp -r /etc/security/limits.conf hadoop03:/etc/security/
+sudo scp -r /etc/security/limits.d/20-nproc.conf hadoop02:/etc/security/limits.d/
+sudo scp -r /etc/security/limits.d/20-nproc.conf hadoop03:/etc/security/limits.d/
+```
+
+#### 2.13.1 安装依赖项
+
+```bash
+#以下三台虚拟全都做一遍
+sudo yum install -y libtool
+sudo yum install -y *unixODBC*	
+```
+
+**取消selinux**
+
+```bash
+sudo vim /etc/selinux/config 
+SELINUX=disabled
+# 分发
+sudo scp -r /etc/selinux/config hadoop02:/etc/selinux/
+sudo scp -r /etc/selinux/config hadoop03:/etc/selinux/
+```
+
+**重启三台虚拟机**
+
+```bash
+init 6
+```
+
+**安装ClickHouse的rpm包**
+
+```bash
+#三台虚拟机上都要运行
+cd /opt/soft/clickHouse
+sudo rpm -ivh *.rpm
+```
+
+#### **2.13.2 修改配置文件**
+
+```bash
+#把 <listen_host>::</listen_host> 的注释打开
+sudo vim /etc/clickhouse-server/config.xml
+
+<include_from>/etc/clickhouse-server/config.d/metrika.xml</include_from>    #此行在conf文档中没有，需要手动的添加上
+<macros incl="macros" optional="true"/>     #此行在conf文档中没有，需要手动的添加上
+<zookeeper>                                #根据zookeeper的配置IP，写在这里即可
+        <node index="1">                  #"118"指的是：在zookeeper中的server.118后的数字server.118=192.168.30.118:12888:13888
+            <host>hadoop01</host>
+            <port>2181</port>                #12181端口是自己给定的，也可用默认的2181
+        </node>
+        <node index="2">
+            <host>hadoop02</host>
+            <port>2181</port>
+        </node>
+        <node index="3">
+            <host>hadoop03</host>
+            <port>2181</port>
+        </node>
+</zookeeper>
+
+vim /etc/clickhouse-server/metrika.xml
+<yandex>
+    <clickhouse_remote_servers>
+        <ck_cluster>           <!--4分片1副本-->
+            <shard>
+                <internal_replication>true</internal_replication>
+                <replica>
+                    <host>192.168.30.118</host>
+                    <port>9000</port>               
+                    #注意：若在users.xml中设置了用户和密码，此处要添加<user>test</user><password>123</password>
+                </replica>
+            </shard>
+            <shard>
+                <internal_replication>true</internal_replication>
+                <replica>
+                    <host>192.168.30.117</host>
+                    <port>9000</port>
+                </replica>
+            </shard>
+            <shard>
+                 <internal_replication>true</internal_replication>
+                 <replica>
+                    <host>192.168.30.116</host>
+                    <port>9000</port>
+                 </replica>
+            </shard>
+            <shard>
+                 <internal_replication>true</internal_replication>
+                <replica>
+                    <host>192.168.30.115</host>
+                    <port>9000</port>
+                </replica>
+            </shard>
+        </ck_cluster>
+    </clickhouse_remote_servers>
+    <macros>      
+      <shard>01</shard>      #注意：这里的内容，每个服务器的配置文件必须相同，否则复制表将无法操作
+      <replica>192.168.30.118</replica>   #注意:每台服务器的配置文件。写自己的IP地址
+    </macros>
+    <networks>
+        <ip>::</ip>
+    </networks>
+
+    <clickhouse_compression>
+        <case>
+            <min_part_size>10000000000</min_part_size>
+            <min_part_size_ratio>0.01</min_part_size_ratio>
+            <method>lz4</method>
+        </case>
+    </clickhouse_compression>
+</yandex>
+
+
+sudo scp -r /etc/clickhouse-server/config.xml hadoop02:/etc/clickhouse-server/
+sudo scp -r /etc/clickhouse-server/config.xml hadoop03:/etc/clickhouse-server/
+
+```
+
+**启动**
+
+```
+#开启服务
+sudo systemctl start clickhouse-server
+sudo systemctl status clickhouse-server
+sudo systemctl stop clickhouse-server
+#关闭开机自启
+sudo systemctl disable clickhouse-server 
+```
+
+
+
 ## 第三章、业务数据采集集群搭建
 
 ### 3.0 工作流程图
 
-![image-20230314144931927](/img/image-20230314144931927.png)
+![image-20230314144931927](img/image-20230314144931927.png)
 
 ### 3.1 安装mysql
 
 **将安装包和JDBC驱动上传到/opt/software，共计6个**
 
-![image-20230314145136508](/img/image-20230314145136508.png)
+![image-20230314145136508](img/image-20230314145136508.png)
 
 **将虚拟机自带的Mysql-libs卸载**
 
@@ -1312,7 +1576,7 @@ systemctl start mysqld
 cat /var/log/mysqld.log | grep password
 ```
 
-![image-20230314150155089](/img/image-20230314150155089.png)
+![image-20230314150155089](img/image-20230314150155089.png)
 
 ### 3.2 配置Mysql
 
@@ -1367,15 +1631,15 @@ quit;
 
 **连接数据库，执行sql脚本**
 
-![image-20230314151935479](/img/image-20230314151935479.png)
+![image-20230314151935479](img/image-20230314151935479.png)
 
-![image-20230314152322477](/img/image-20230314152322477.png)
+![image-20230314152322477](img/image-20230314152322477.png)
 
 **导入数据库结构脚本（gmall.sql）**
 
 ![image-20230314152607206](img/image-20230314152607206.png)
 
-![image-20230314152656005](/img/image-20230314152656005.png)
+![image-20230314152656005](img/image-20230314152656005.png)
 
 ### 3.3 生成业务数据
 
@@ -1387,7 +1651,7 @@ mkdir /opt/module/db_log
 
 **把gmall2020-mock-db-2021-01-22.jar和application.properties上传到hadoop01的/opt/module/db_log路径上**
 
-![image-20230314153828366](/img/image-20230314153828366.png)
+![image-20230314153828366](img/image-20230314153828366.png)
 
 **根据需求修改application.properties相关配置**
 
@@ -1468,7 +1732,7 @@ java -jar /opt/module/db_log/gmall2020-mock-db-2021-01-22.jar
 
 **上传sqoop的安装包到hadoop01的/opt/software**
 
-![image-20230316180641503](/img/image-20230316180641503.png)
+![image-20230316180641503](img/image-20230316180641503.png)
 
 ```bash
 tar -zxf /opt/software/sqoop-1.4.6.bin__hadoop-2.0.4-alpha.tar.gz -C /opt/module/
@@ -1510,7 +1774,7 @@ cp /opt/software/mysql-connector-java-5.1.27-bin.jar /opt/module/sqoop/lib/
 
 ### 3.5 同步策略
 
-![image-20230317100403155](/img/image-20230317100403155.png)
+![image-20230317100403155](img/image-20230317100403155.png)
 
 #### 3.5.1首日同步脚本（业务数据导入HDFS）
 
@@ -2527,14 +2791,14 @@ esac
 
 **把apache-hive-3.1.2-bin.tar.gz上传到hadoop01的/opt/software目录下**
 
-![image-20230317105713170](/img/image-20230317105713170.png)
+![image-20230317105713170](img/image-20230317105713170.png)
 
 
 
 **解压apache-hive-3.1.2-bin.tar.gz到/opt/module/目录下面**
 
 ```bash
-    tar -zxvf /opt/software/apache-hive-3.1.2-bin.tar.gz -C /opt/module/
+tar -zxvf /opt/software/apache-hive-3.1.2-bin.tar.gz -C /opt/module/
 ```
 
 **修改apache-hive-3.1.2-bin.tar.gz的名称为hive**
@@ -2730,7 +2994,7 @@ default
 
 **上传并解压，解压spark-3.0.0-bin-hadoop3.2.tgz**
 
-![image-20230317160042013](/img/image-20230317160042013.png)
+![image-20230317160042013](img/image-20230317160042013.png)
 
 ```bash
 tar -zxf /opt/software/spark-3.0.0-bin-hadoop3.2.tgz -C /opt/module
@@ -2831,7 +3095,7 @@ hive (default)> create table student(id int, name string);
 hive (default)> insert into table student values(1,"zhangsan");
 ```
 
-![image-20230318150022045](/img/image-20230318150022045.png)
+![image-20230318150022045](img/image-20230318150022045.png)
 
 #### 4.2.2 Yarn配置
 
@@ -2872,7 +3136,7 @@ start-yarn.sh
 
 ### 5.1、数仓分层
 
-![image-20230609143636509](/img/image-20230609143636509.png)
+![image-20230609143636509](img/image-20230609143636509.png)
 
 ### 5.2、ODS脚本
 

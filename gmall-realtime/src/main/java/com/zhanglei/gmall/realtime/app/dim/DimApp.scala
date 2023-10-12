@@ -23,16 +23,16 @@ object DimApp {
   def main(args: Array[String]): Unit = {
     //TODO 1.获取执行环境
     val env: StreamExecutionEnvironment = StreamExecutionEnvironment.getExecutionEnvironment
-    env.setParallelism(1)   // 生产环境中设置为：kafka topic的分区数
-////     1.1 开启Checkpoint (生产环境一定要开启)
-//    env.enableCheckpointing(5 * 60000L,CheckpointingMode.EXACTLY_ONCE)
-//    env.getCheckpointConfig.setCheckpointTimeout(10 * 60000L)
-//    env.getCheckpointConfig.setMaxConcurrentCheckpoints(2)    // 设置checkpoint的同时存在的数量
-//    env.setRestartStrategy(RestartStrategies.fixedDelayRestart(3,5000L))    // 失败：每隔五秒重启一次，总共三次
-////     1.2 设置状态后端 (生产环境一定要开启)
-//    env.setStateBackend(new HashMapStateBackend())
-//    env.getCheckpointConfig.setCheckpointStorage("hdfs://hadoop01:8020/gmall/ck")
-//    System.setProperty("HADOOP_USER_NAME","root")
+    env.setParallelism(1) // 生产环境中设置为：kafka topic的分区数
+    ////     1.1 开启Checkpoint (生产环境一定要开启)
+    //    env.enableCheckpointing(5 * 60000L,CheckpointingMode.EXACTLY_ONCE)
+    //    env.getCheckpointConfig.setCheckpointTimeout(10 * 60000L)
+    //    env.getCheckpointConfig.setMaxConcurrentCheckpoints(2)    // 设置checkpoint的同时存在的数量
+    //    env.setRestartStrategy(RestartStrategies.fixedDelayRestart(3,5000L))    // 失败：每隔五秒重启一次，总共三次
+    ////     1.2 设置状态后端 (生产环境一定要开启)
+    //    env.setStateBackend(new HashMapStateBackend())
+    //    env.getCheckpointConfig.setCheckpointStorage("hdfs://hadoop01:8020/gmall/ck")
+    //    System.setProperty("HADOOP_USER_NAME","root")
 
     //TODO 2.读取kakfa topic_db主题数据创建主流
     val topic = "topic_db"
