@@ -8,10 +8,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ad468a1b-3183-4401-8447-14b93599c91a" name="变更" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gmall-realtime/src/main/java/com/zhanglei/gmall/realtime/app/dim/DimApp.scala" beforeDir="false" afterPath="$PROJECT_DIR$/gmall-realtime/src/main/java/com/zhanglei/gmall/realtime/app/dim/DimApp.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gmall-realtime/target/classes/com/zhanglei/gmall/realtime/util/TimestampLtz3CompareUtil$.class" beforeDir="false" afterPath="$PROJECT_DIR$/gmall-realtime/target/classes/com/zhanglei/gmall/realtime/util/TimestampLtz3CompareUtil$.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -397,7 +394,7 @@
       <workItem from="1696822465321" duration="4869000" />
       <workItem from="1696830605358" duration="10000" />
       <workItem from="1696830715864" duration="4266000" />
-      <workItem from="1697084593631" duration="98000" />
+      <workItem from="1697084593631" duration="461000" />
     </task>
     <task id="LOCAL-00001" summary="code">
       <created>1687089366171</created>
@@ -483,7 +480,14 @@
       <option name="project" value="LOCAL" />
       <updated>1694415345687</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="code">
+      <created>1697084729272</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1697084729272</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

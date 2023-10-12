@@ -1304,7 +1304,7 @@ export HADOOP_CLASSPATH=`hadoop classpath`
 /opt/module/flink-1.13.0/bin/yarn-session.sh	--依赖yarn启动
 ```
 
-![image-20231011151122709](img\image-20231011151122709.png)
+![image-20231011151122709](img/image-20231011151122709.png)
 
 **以per-job方式提及任务**
 
@@ -1351,7 +1351,7 @@ cd /opt/module/redis-3.0.4/
 make
 ```
 
-![image-20231011155715044](img\image-20231011155715044.png)
+![image-20231011155715044](img/image-20231011155715044.png)
 
 ```
 make install
@@ -1373,7 +1373,7 @@ daemonize yes
 redis-server /opt/module/redis-3.0.4/my_redis.conf
 ```
 
-![image-20231011161622718](img\image-20231011161622718.png)
+![image-20231011161622718](img/image-20231011161622718.png)
 
 **客户端访问**
 
